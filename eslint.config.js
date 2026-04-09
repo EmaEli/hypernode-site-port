@@ -5,6 +5,7 @@ import react from 'eslint-plugin-react'
 import a11y from 'eslint-plugin-jsx-a11y'
 
 export default [
+  { ignores: ['.astro/**'] },
   ...eslintPluginAstro.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
