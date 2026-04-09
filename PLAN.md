@@ -45,72 +45,36 @@ This phase covers the work already done before implementation starts.
 
 ---
 
-## PHASE 2 — Foundations (prerequisite for everything)
+## PHASE 2 — Foundations (minimum technical base only)
 
-**Step 2.1** — TypeScript types in `src/types/`
+This phase should stay intentionally narrow. Its job is to make the project routable and structurally ready, not to model every page domain yet.
+
+**Step 2.1** — Core SEO type in `src/types/`
 - `seo.ts`: `SEOProps`, `HreflangEntry`
-- `changelog.ts`: `ChangelogEntry`, `ChangelogCategory`, `StrapiChangelogEntry`, `StrapiListResponse`
-- `pricing.ts`: `Plan`, `Currency` (`'EUR'|'GBP'`), `Environment` (`'production'|'development'`), `BillingPeriod` (`'monthly'|'daily'|'yearly'`), `PricingGroup` (`'cloud-openstack'|'cloud-aws'|'dedicated'|'dedicated-enterprise'`)
 
 **Step 2.2** — `src/layouts/BaseLayout.astro`
-Render the full SEO `<head>`: title, meta description, canonical, Open Graph, Twitter Card, and hreflang. Accept a `seo: SEOProps` prop. Include `global.css`. Expose a slot for page content.
+Render the shared document shell with the central SEO contract: title, meta description, canonical, Open Graph, Twitter Card, and hreflang. Accept a `seo: SEOProps` prop. Include `global.css`. Expose a slot for page content.
 
-SEO values to set as soon as final values are confirmed:
-- Homepage
-  - title: `Hosting Provider for eCommerce & Online stores - Hypernode`
-  - description: `20+ years of experience as Hosting Provider for eCommerce & Online stores with Magento-, Shopware-, and WooCommerce hosting`
-  - canonical: `https://www.hypernode.com/en/`
-- Plans & Prices
-  - title: `Plans and prices - Hypernode`
-  - description: to be confirmed from a live source or a more reliable reference than public HTML alone
-  - canonical: `https://www.hypernode.com/en/plans-and-prices/`
-- Changelog
-  - title: `Changelog - Hypernode`
-  - description: to be confirmed from a live source or a more reliable reference than public HTML alone
-  - canonical: use the final port URL, so `https://www.hypernode.com/changelog/`
+SEO values can stay provisional at this stage where exact descriptions are still unverified. The priority here is the layout contract, not final page content.
 
-**Step 2.3** — Page skeletons (correct URLs)
-- Create `src/pages/en/index.astro` (stub using `BaseLayout`)
-- Create `src/pages/en/plans-and-prices/index.astro` (stub)
-- Create `src/pages/changelog/index.astro` (stub)
-- Convert `src/pages/index.astro` into a redirect to `/en/` (meta redirect or Astro redirect)
+**Step 2.3** — Page skeletons (correct URLs only)
+- Create `src/pages/en/index.astro` as a minimal placeholder page using `BaseLayout`
+- Create `src/pages/en/plans-and-prices/index.astro` as a minimal placeholder page
+- Create `src/pages/changelog/index.astro` as a minimal placeholder page
+- Convert `src/pages/index.astro` into a redirect to `/en/`
 
-**Step 2.4** — Support files
+**Step 2.4** — Minimal support files
 - `public/robots.txt` — must not block any indexable page
 - `.env.example` — `PUBLIC_STRAPI_URL` + `PUBLIC_STRAPI_TOKEN`
-- `strapi/seed.json` — array of `ChangelogEntry` with at least 5 real entries (from changelog.hypernode.com)
-
-**Step 2.5** — `src/lib/strapi.ts`
-Typed client with fallback to `seed.json` when Strapi is unavailable. Export `getChangelogEntries(): Promise<ChangelogEntry[]>`.
-
-**Step 2.6** — `src/lib/pricing.ts` + `src/lib/pricing-data.json`
-- `pricing-data.json`: structure with two sections:
-  1. `featureGroups`: dictionary A-G with feature arrays (defined only once)
-     - A: Falcon XS — base group without pre-installed Magento and Varnish
-     - B: Falcon S/M/L/XL — adds `Pre-installed Magento 2` and `Varnish Cache`
-     - C: Falcon 2XL-5XL — adds `Near zero downtime scaling`
-     - D: Eagle M/L/XL — same as B plus `PCI Compliancy Service`
-     - E: Eagle 2XL-7XL — same as D plus `Near zero downtime scaling`
-     - F: Jackal S/M/L — same as D without `400 Brancher minutes`
-     - G: Enterprise Jackal S/M/L — same as F without `Dedicated IP`
-  2. `plans`: array of plans with this structure:
-     `{ id, name, planGroup, featureGroup, cpus, ssdGb, ramGb, label?, prod: { eurMonth, eurDay?, eurYear?, gbpMonth }, dev: { eurMonth, eurDay?, eurYear?, gbpMonth } | null }`
-  - Cloud OpenStack (9 Falcon XS-5XL): prod+dev, `eurMonth`+`eurDay`+`gbpMonth`
-  - Cloud AWS (9 Eagle M-7XL): prod+dev, `eurMonth`+`eurDay`+`gbpMonth`
-  - Dedicated standard (3 Jackal S/M/L): prod+dev, `eurMonth`+`eurYear`+`gbpMonth`
-  - Dedicated Enterprise (3): prod only, `dev=null` (Enterprise table is empty in Development)
-  - Labels are plan-specific and independent from env
-  - All prices come from the real tables provided, with no approximation
-- `pricing.ts`: helper `getPrice(plan, env, currency, billingPeriod)`, with no derived conversion constant
 
 **Phase 2 Output**
-- The project builds with a base layout, correct routes, and minimum data files in place.
-- The types and utilities needed to start components exist without changing APIs later.
-- The pricing domain is already modeled correctly, including `featureGroups`, `labels`, prod/dev prices, and the empty Enterprise Dev case.
+- The project has the correct routes, a shared base layout, and the minimum project plumbing needed to continue.
+- All page-specific domains that are not globally required remain deferred to their own milestones.
+- The milestone stays small enough that later work can be built page by page without premature modeling.
 
 ---
 
-## PHASE 3 — Shared Components (parallel across ui / layout / shared)
+## PHASE 3 — Shared Shell (common UI and structure only)
 
 **Step 3.1** — UI primitives in `src/components/ui/`
 - `Button.astro` — variants: primary (brand orange), secondary (outline), ghost
@@ -129,13 +93,13 @@ Typed client with fallback to `seed.json` when Strapi is unavailable. Export `ge
 - `IconGrid.astro` — icon + title + body grid, prop `columns: 3|6`
 
 **Phase 3 Output**
-- A minimal reusable component system exists and is sufficient to assemble all three pages.
-- UI primitives contain no business logic.
-- Shared layout components reduce duplication across homepage, pricing, and changelog.
+- The reusable shell exists before any real page implementation begins.
+- Navbar, footer, buttons, and shared section primitives are solved once and reused later.
+- No page-specific pricing or changelog modeling is introduced yet.
 
 ---
 
-## PHASE 4 — Homepage `/en/`
+## PHASE 4 — Homepage `/en/` (first full page only)
 
 **Step 4.1** — Download WordPress images into `src/assets/images/`
 Required image list (all from `wp-content/uploads/`):
@@ -171,6 +135,8 @@ Sections to replicate in page order:
 12. Worldwide coverage (`FeatureBlock`)
 13. Contact CTA section (note: original is a HubSpot form, but it must be implemented as a static section with the `Free hosting consult` link)
 
+If the homepage needs local models, interfaces, constants, or repeated class patterns, introduce them here only for the homepage. Do not pre-model pricing or changelog concerns in this phase.
+
 **Step 4.3** — `TestimonialsCarousel.tsx` in `src/components/islands/`
 Carousel/slider for testimonials. `client:visible`. Data passed as props from the Astro page.
 
@@ -182,15 +148,23 @@ SEO title: `Hosting Provider for eCommerce & Online stores | Hypernode`
 - Homepage complete and navigable at `/en/`.
 - All images used are local in `src/assets/images/`.
 - No real form is implemented: the CTA remains an external link per spec.
+- The visual tone of the project is locked in through the homepage before moving on to the more complex pricing logic.
 
 ---
 
 ## PHASE 5 — Plans & Prices `/en/plans-and-prices/`
 
-**Step 5.1** — Download pricing page images
+This is the first milestone where the pricing domain is modeled in full.
+
+**Step 5.1** — Pricing domain types and data
+- `src/types/pricing.ts`: `Plan`, `Currency`, `Environment`, `BillingPeriod`, `PricingGroup`
+- `src/lib/pricing-data.json`: feature groups A-G and full plan data
+- `src/lib/pricing.ts`: helper `getPrice(plan, env, currency, billingPeriod)` with explicit stored prices only
+
+**Step 5.2** — Download pricing page images
 - `pricing-cloud.png` (2023/10/Frame-195@3x.png)
 
-**Step 5.2** — `PricingTable.tsx` in `src/components/islands/` — `client:load`
+**Step 5.3** — `PricingTable.tsx` in `src/components/islands/` — `client:load`
 3 independent toggles: Environment (Production/Development), Currency (EUR/GBP), Billing.
 - Cloud billing: Monthly/Daily
 - Dedicated billing: Monthly/Yearly (-15%)
@@ -200,10 +174,10 @@ Each card shows: name, price, CPUs, SSD storage, RAM, optional label (`most popu
 The `features` button opens a modal with the plan feature bullet list (from `pricing-data.json`). Features are identical for Dev and Prod for the same plan.
 Data is passed from the Astro page as props (no client-side fetch).
 
-**Step 5.3** — `FAQAccordion.tsx` in `src/components/islands/` — `client:visible`
+**Step 5.4** — `FAQAccordion.tsx` in `src/components/islands/` — `client:visible`
 Hardcoded FAQ questions (text from the original site). Toggle state handled with `useState`.
 
-**Step 5.4** — Assemble `src/pages/en/plans-and-prices/index.astro`
+**Step 5.5** — Assemble `src/pages/en/plans-and-prices/index.astro`
 Hero with title + subtitle, `PricingTable` island (with `plans` prop), `FAQAccordion` island.
 SEO title: `Plans & Prices — Managed eCommerce Hosting | Hypernode`
 
@@ -216,12 +190,19 @@ SEO title: `Plans & Prices — Managed eCommerce Hosting | Hypernode`
 
 ## PHASE 6 — Changelog `/changelog/`
 
-**Step 6.1** — `ChangelogFilters.tsx` in `src/components/islands/` — `client:visible`
+This is the milestone where the changelog domain and fallback data are introduced.
+
+**Step 6.1** — Changelog types and fallback data
+- `src/types/changelog.ts`: `ChangelogEntry`, `ChangelogCategory`, `StrapiChangelogEntry`, `StrapiListResponse`
+- `strapi/seed.json`: array of at least 5 real changelog entries
+- `src/lib/strapi.ts`: typed client with fallback to `seed.json`
+
+**Step 6.2** — `ChangelogFilters.tsx` in `src/components/islands/` — `client:visible`
 Category buttons (All, API, Autoscaling, Cluster, ControlPanel, HypernodeFloating).
 Filter the passed `entries` prop with local `useState`.
 Render entry list: title, date, summary, and `Read more` link.
 
-**Step 6.2** — Assemble `src/pages/changelog/index.astro`
+**Step 6.3** — Assemble `src/pages/changelog/index.astro`
 Fetch entries from Strapi at build time via `getChangelogEntries()`, then pass them to `ChangelogFilters`.
 SEO title: `Changelog | Hypernode`
 
@@ -248,11 +229,11 @@ SEO title: `Changelog | Hypernode`
 ## Recommended Execution Order
 
 1. Complete PHASE 1 first: planning, instructions, prompts, and tracking.
-2. Complete PHASE 2 right after that, so the project has correct routes, types, and base data files.
-3. Complete PHASE 3 next, so homepage, pricing, and changelog share the same components.
-4. Implement the homepage first: it lets you lock in visual tone, shared layout, header/footer, and replica structure early.
-5. Implement the pricing page next: it reuses the stabilized layout and adds the most complex interaction afterward.
-6. Finish with changelog: it is the least risky page and works well as the final integration for `strapi.ts` and client-side filters.
+2. Complete PHASE 2 right after that, but keep it strictly minimal: layout, routing, and support plumbing only.
+3. Complete PHASE 3 next, so the common shell exists before any page is fully implemented.
+4. Implement the homepage first and in isolation: it establishes the visual language, content structure, and shared section patterns.
+5. Implement the pricing page next, including its own domain modeling, once the shared shell and homepage are stable.
+6. Finish with changelog, including its own types, fallback seed, and build-time data integration.
 7. Run PHASE 7 only when all three pages are mounted.
 
 ---
@@ -262,8 +243,8 @@ SEO title: `Changelog | Hypernode`
 - PHASE 2 depends on PHASE 1.
 - PHASE 3 depends on PHASE 2.
 - PHASE 4 depends on PHASE 2 + PHASE 3 + homepage image downloads.
-- PHASE 5 depends on PHASE 2 + PHASE 3 + complete `pricing-data.json`.
-- PHASE 6 depends on PHASE 2 + PHASE 3 + `strapi/seed.json`.
+- PHASE 5 depends on PHASE 2 + PHASE 3 + completion of the homepage shell and pricing data modeling.
+- PHASE 6 depends on PHASE 2 + PHASE 3 + completion of changelog types and fallback data.
 - PHASE 7 depends on completion of PHASE 4, 5, and 6.
 
 ---
@@ -272,8 +253,9 @@ SEO title: `Changelog | Hypernode`
 
 - SEO metadata must match the original: title and description need page-by-page verification.
 - Original images must be downloaded and named consistently; no remote WordPress URLs should remain.
-- The pricing domain is the easiest area to implement incorrectly: toggles, billing modes, and feature groups must be modeled before building the UI.
-- The homepage can become too complex if sections are coded ad hoc instead of using `FeatureBlock`, `IconGrid`, and `SectionHeader`.
+- The homepage should not be blocked by pricing or changelog modeling; keep those concerns deferred to their own phases.
+- The pricing domain is the easiest area to implement incorrectly: toggles, billing modes, and feature groups must be modeled inside the pricing phase, not guessed early.
+- The homepage can become too complex if sections are coded ad hoc instead of using `FeatureBlock`, `IconGrid`, and `SectionHeader` from the shared shell.
 - Changelog build must not fail when Strapi is unreachable.
 
 ---
@@ -301,8 +283,6 @@ Already confirmed decisions:
 
 ### Milestone 2 — Foundations
 - Create `src/types/seo.ts`
-- Create `src/types/changelog.ts`
-- Create `src/types/pricing.ts`
 - Create `src/layouts/BaseLayout.astro`
 - Create `src/pages/en/index.astro`
 - Create `src/pages/en/plans-and-prices/index.astro`
@@ -310,10 +290,6 @@ Already confirmed decisions:
 - Convert `src/pages/index.astro` into a redirect to `/en/`
 - Create `public/robots.txt`
 - Create `.env.example`
-- Create `strapi/seed.json`
-- Create `src/lib/strapi.ts`
-- Create `src/lib/pricing.ts`
-- Create `src/lib/pricing-data.json`
 
 ### Milestone 3 — Shared Shell
 - Create `src/components/ui/Button.astro`
@@ -329,13 +305,16 @@ Already confirmed decisions:
 
 ### Milestone 4 — Homepage
 - Add local placeholder assets for the required homepage images
+- Add homepage-specific models, constants, or repeated class patterns only where they are needed for `/en/`
 - Assemble the hero and main static sections in `/en/`
 - Add `TestimonialsCarousel.tsx` only if it is truly needed to reproduce the minimum behavior
 - Gradually replace placeholders with final assets
 - Verify header, footer, and final CTAs
 
 ### Milestone 5 — Pricing
+- Create `src/types/pricing.ts`
 - Populate `pricing-data.json` with complete featureGroups and plans
+- Create `src/lib/pricing.ts`
 - Implement `PricingTable.tsx`
 - Implement the `features` modal
 - Implement `FAQAccordion.tsx`
@@ -343,7 +322,9 @@ Already confirmed decisions:
 - Verify all toggles: env, currency, billing, tabs, subtabs
 
 ### Milestone 6 — Changelog
+- Create `src/types/changelog.ts`
 - Populate `strapi/seed.json` with at least 5 real entries
+- Create `src/lib/strapi.ts`
 - Implement `ChangelogFilters.tsx`
 - Assemble `/changelog/`
 - Verify build-time fallback from `strapi.ts`
@@ -373,23 +354,23 @@ Always use this structure:
 
 ### Milestone 2 Prompt — Foundations
 
-`Follow [PLAN.md](PLAN.md) and execute only Milestone 2 — Foundations. Create types, BaseLayout, stub pages, root redirect, robots.txt, .env.example, seed.json, strapi.ts, pricing.ts, and pricing-data.json. Do not implement page components yet. At the end, tell me what was created and what is still open.`
+`Follow [PLAN.md](PLAN.md) and execute only Milestone 2 — Foundations. Create only the minimum technical base: SEO type, BaseLayout, route stubs, root redirect, robots.txt, and .env.example. Do not model pricing or changelog domains yet. Do not implement shared UI components yet. At the end, tell me what was created and what remains intentionally deferred.`
 
 ### Milestone 3 Prompt — Shared Shell
 
-`Follow [PLAN.md](PLAN.md) and execute only Milestone 3 — Shared Shell. Create only the shared components in ui, layout, and shared. Keep the mobile navbar as static/minimal as possible. Do not implement full homepage, pricing, or changelog yet.`
+`Follow [PLAN.md](PLAN.md) and execute only Milestone 3 — Shared Shell. Create only the shared components in ui, layout, and shared. Keep the mobile navbar as static/minimal as possible. Do not implement homepage content, pricing logic, or changelog data yet.`
 
 ### Milestone 4 Prompt — Homepage
 
-`Follow [PLAN.md](PLAN.md) and execute only Milestone 4 — Homepage. Implement the homepage at /en/ using the shared components already created. You may use temporary local placeholders for missing assets, but do not use remote WordPress images in the final page version. Do not work on pricing or changelog yet.`
+`Follow [PLAN.md](PLAN.md) and execute only Milestone 4 — Homepage. Implement the homepage at /en/ using the shared components already created. If the homepage needs local models, constants, or repeated class patterns, introduce them only for the homepage in this milestone. You may use temporary local placeholders for missing assets, but do not use remote WordPress images in the final page version. Do not work on pricing or changelog yet.`
 
 ### Milestone 5 Prompt — Pricing
 
-`Follow [PLAN.md](PLAN.md) and execute only Milestone 5 — Pricing. Implement the /en/plans-and-prices/ page, including PricingTable, the features modal, and FAQAccordion. Use only the data in pricing-data.json. Respect env, currency, billing, tabs, and subtabs behavior. Do not change homepage or changelog beyond what is necessary for shared components.`
+`Follow [PLAN.md](PLAN.md) and execute only Milestone 5 — Pricing. First model the pricing domain in pricing.ts and pricing-data.json, then implement the /en/plans-and-prices/ page, including PricingTable, the features modal, and FAQAccordion. Respect env, currency, billing, tabs, and subtabs behavior. Do not change homepage or changelog beyond what is necessary for shared components.`
 
 ### Milestone 6 Prompt — Changelog
 
-`Follow [PLAN.md](PLAN.md) and execute only Milestone 6 — Changelog. Implement /changelog/, ChangelogFilters, and the build-time fallback from strapi.ts to seed.json. Do not introduce client-side fetches.`
+`Follow [PLAN.md](PLAN.md) and execute only Milestone 6 — Changelog. First create the changelog types, seed data, and strapi.ts fallback, then implement /changelog/ and ChangelogFilters. Do not introduce client-side fetches.`
 
 ### Milestone 7 Prompt — Finalization
 
@@ -429,19 +410,17 @@ Minimal manual log template:
 ## Critical Files To Create / Modify
 
 **Create from scratch:**
-- `src/types/seo.ts`, `changelog.ts`, `pricing.ts`
-- `src/layouts/BaseLayout.astro`
-- `src/lib/strapi.ts`, `pricing.ts`, `pricing-data.json`
-- `src/pages/en/index.astro`
-- `src/pages/en/plans-and-prices/index.astro`
-- `src/pages/changelog/index.astro`
+- `src/types/seo.ts` in PHASE 2
+- `src/layouts/BaseLayout.astro` in PHASE 2
+- `src/pages/en/index.astro`, `src/pages/en/plans-and-prices/index.astro`, `src/pages/changelog/index.astro` in PHASE 2 as route stubs
 - `src/components/ui/Button.astro`, `Badge.astro`, `Tag.astro`, `Icon.astro`
 - `src/components/layout/TopBar.astro`, `Navbar.astro`, `Footer.astro`
 - `src/components/shared/SectionHeader.astro`, `FeatureBlock.astro`, `IconGrid.astro`
+- `src/types/pricing.ts`, `src/lib/pricing.ts`, `src/lib/pricing-data.json` in PHASE 5
+- `src/types/changelog.ts`, `src/lib/strapi.ts`, `strapi/seed.json` in PHASE 6
 - `src/components/islands/PricingTable.tsx`, `FAQAccordion.tsx`, `ChangelogFilters.tsx`, `TestimonialsCarousel.tsx`
 - `public/robots.txt`
 - `.env.example`
-- `strapi/seed.json`
 
 **Modify:**
 - `src/pages/index.astro` — convert into a redirect to `/en/`
@@ -454,6 +433,9 @@ Minimal manual log template:
 
 ## Key Decisions
 - `src/pages/index.astro` becomes an HTTP redirect to `/en/` (Astro supports `Astro.redirect`)
+- PHASE 2 stays minimal and must not absorb pricing or changelog domain modeling
+- Shared UI, navbar, footer, and reusable section primitives are built before the first real page is implemented
+- The homepage is the first page implemented end to end and may introduce only homepage-local models or styling helpers where needed
 - Dev/Prod, EUR/GBP, and Month/Day/Year prices must be stored explicitly in `pricing-data.json`, with no derived calculations
 - Pricing modal features are handled through shared `featureGroups`, not duplicated per plan
 - Enterprise Dedicated in Development shows an empty table with header columns only, matching the original site
