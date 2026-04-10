@@ -19,7 +19,7 @@ export interface FeatureBlockProps {
   variant?: 'light' | 'dark'
 }
 
-type Props = FeatureBlockProps
+export interface Props extends FeatureBlockProps {}
 
 const {
   image,
@@ -30,7 +30,7 @@ const {
   cta,
   imagePosition = 'right',
   variant = 'light',
-} = Astro.props
+} = Astro.props as Props
 
 const TAGLINE_CLASS = 'text-[0.8125rem] font-bold tracking-[3.9px] text-brand-orange'
 const sectionClass = variant === 'dark' ? 'bg-brand-blue text-white' : 'bg-white text-brand-blue'

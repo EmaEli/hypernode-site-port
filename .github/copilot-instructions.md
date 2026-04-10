@@ -132,8 +132,10 @@ src/
       blocks/     # FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip,
                   # FormSection, HeroImage, IconGridSection,
                   # TestimonialsGrid, TestimonialsSection
-    islands/      # React components that need client-side hydration
-    pages/        # Full-page assembly components (Homepage.astro, etc.)
+    islands/      # Shared interactive components reused across features
+    pages/        # Feature-first page folders and page assembly components
+      homepage/   # Homepage-specific components
+      pricing/    # Pricing-page-specific components, Astro and React together
   content/
     pages/        # TypeScript data files for static page sections
   layouts/
@@ -300,9 +302,30 @@ const getPrice = (plan: Plan, currency: Currency) => {
 
 1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon, segmented controls, and presentational shells. No business logic. Primitives may be `.astro` or `.tsx` depending on whether interactivity is required.
 2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, TestimonialsGrid, TestimonialsSection. Composed from primitives.
-3. **Islands** (`islands/`) — PricingTable, FAQAccordion, ChangelogFilters. Composed from blocks, adds interactivity.
-4. **Pages** (`components/pages/`) — assemble islands and blocks into full page layouts.
+3. **Islands** (`islands/`) — shared interactive components reused across features, such as FAQAccordion or generic carousels.
+4. **Pages** (`components/pages/`) — feature-first folders that assemble page-specific Astro and React components into full page layouts.
 5. **Layout** (`layout/`) — Navbar, Footer, TopBar. Site chrome, used once in BaseLayout.
+
+### Feature-first structure
+
+- Prefer grouping page-specific components by feature folder under `src/components/pages/`.
+- If a component exists only to serve one page or one feature area, keep it in that page folder even when it is a `.tsx` island.
+- Use `src/components/islands/` only for interactive components that are genuinely shared across multiple pages or domains.
+- Use `src/components/ui/blocks/` only for reusable page-agnostic building blocks.
+- Do not split by renderer first. `.astro` and `.tsx` may live next to each other inside a feature folder when they belong to the same page flow.
+
+### When to split files
+
+- If a file becomes hard to scan or edit in one pass, split it before adding more logic.
+- If a component has multiple distinct render units, extract the stable ones into named subcomponents.
+- Start by splitting logically inside the same file, then promote to separate files when the subcomponent has a clear responsibility.
+- Move a subcomponent to its own file when at least one of these is true:
+  - it is reused in multiple places,
+  - it keeps a large parent file too long to read comfortably,
+  - it has a stable props interface that makes sense on its own,
+  - it represents a distinct UI concept such as a modal, card, controls block, or section header.
+- Avoid creating many tiny files for trivial one-off fragments with no stable API.
+- Prefer feature-local files before promoting a component to `ui/blocks/` or `islands/`.
 
 ### Styling — Tailwind
 
@@ -331,6 +354,17 @@ Use these readability rules when deciding whether to inline classes, extract con
 - If a class list is long or repeated within the same file, extract a local constant.
 - If multiple components share the same visual shell, extract a primitive wrapper component.
 - If only the numeric values recur, prefer theme tokens over new wrappers.
+
+Use this senior-style hygiene checklist when styling components:
+
+- Keep short one-off utility lists inline.
+- Extract long or repeated utility lists into local constants.
+- Centralize recurring numeric values in the theme before creating wrappers.
+- Introduce a primitive wrapper only when the same shell appears across multiple files.
+- Use variant helpers such as `cva` only for primitives with real, stable variant axes.
+- Prefer splitting large components into smaller render units before adding more class abstractions.
+- Avoid using multiple abstraction patterns for the same kind of component at the same layer.
+- Only keep an abstraction if it clearly reduces complexity instead of moving it elsewhere.
 
 ### Responsive design
 
