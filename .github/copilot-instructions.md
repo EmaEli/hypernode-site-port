@@ -108,17 +108,12 @@ Example for the homepage:
 - `public/robots.txt` must be present and must not block any page that was previously crawlable.
 - `@astrojs/sitemap` generates `sitemap.xml` automatically at build time. The `site` option in `astro.config.ts` must be set to `https://www.hypernode.com` for the sitemap URLs to be correct.
 
-### "Free hosting consult" button
+### "Free hosting consult" CTA and homepage form
 
-This is a link to an external page, not a form. Always render it as:
-
-```astro
-<a href="https://www.hypernode.com/en/free-hosting-consult/" class="...">
-  Free hosting consult
-</a>
-```
-
-Never implement a form or modal for this button.
+- The navbar and hero "Free hosting consult" CTA remain links to `https://www.hypernode.com/en/free-hosting-consult/`.
+- The final homepage contact section is a form, not a CTA-only block.
+- Preserve the provided field names and consent labels so the markup remains easy to connect to the lead collection backend during migration.
+- Prefer a static Astro form first. Only introduce a React island if validation, async submission, or CRM embedding requires client-side behaviour.
 
 ---
 
@@ -131,19 +126,26 @@ src/
   assets/
     images/       # All images downloaded from the original site (SVG, WebP)
   components/
-    ui/           # Primitives: Button, Badge, Icon, Tag
-    layout/       # Navbar, Footer, TopBar, TeamBlueBar
-    shared/       # FeatureBlock, IconGrid, SectionHeader (Astro components)
+    layout/       # Navbar, Footer, TopBar
+    ui/
+      primitives/ # Button, Badge, Icon, Tag
+      blocks/     # FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip,
+                  # FormSection, HeroImage, IconGridSection,
+                  # TestimonialsGrid, TestimonialsSection
     islands/      # React components that need client-side hydration
+    pages/        # Full-page assembly components (Homepage.astro, etc.)
   content/
-    pages/        # MDX files for static page sections
+    pages/        # TypeScript data files for static page sections
   layouts/
     BaseLayout.astro
   lib/
     strapi.ts     # typed Strapi client
     pricing.ts    # pricing calculation helpers
   types/
+    seo.ts        # SEOProps, HreflangEntry
+    homepage.ts   # HomepageImageKey, HomepageFeatureSection, Testimonial, etc.
     changelog.ts  # shared interfaces
+    pricing.ts    # Plan, Currency, Environment, BillingPeriod
   pages/
     en/
       index.astro
@@ -232,7 +234,7 @@ Use the most conservative directive that still delivers the right UX:
 
 - `client:load` — above the fold, user interacts immediately (PricingTable, Navbar mobile menu)
 - `client:visible` — below the fold, defer until in viewport (FAQAccordion, ChangelogFilters)
-- `client:idle` — low priority, user must scroll far to reach it (ContactForm)
+- Contact forms should stay static Astro markup unless a real integration requires client-side behaviour
 - Never use `client:only` unless there is a specific reason documented in a comment
 
 ### React — component style
@@ -296,10 +298,11 @@ const getPrice = (plan: Plan, currency: Currency) => {
 
 ### Atomic UI — component decomposition
 
-1. **Primitives** (`ui/`) — Button, Badge, Tag, Icon. No business logic.
-2. **Shared components** (`shared/`) — FeatureBlock, IconGrid, SectionHeader. Composed from primitives.
-3. **Islands** (`islands/`) — PricingTable, FAQAccordion. Composed from shared components, adds interactivity.
-4. **Pages** (`pages/`) — assemble islands and shared components into full layouts.
+1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon. No business logic.
+2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, TestimonialsGrid, TestimonialsSection. Composed from primitives.
+3. **Islands** (`islands/`) — PricingTable, FAQAccordion, ChangelogFilters. Composed from blocks, adds interactivity.
+4. **Pages** (`components/pages/`) — assemble islands and blocks into full page layouts.
+5. **Layout** (`layout/`) — Navbar, Footer, TopBar. Site chrome, used once in BaseLayout.
 
 ### Styling — Tailwind
 
@@ -455,7 +458,8 @@ export type ChangelogCategory =
 
 - Do not change any URL — ever. See the URL mapping table above.
 - Do not omit SEO tags from any page — every page needs title, description, canonical, OG, Twitter Card, and hreflang.
-- Do not implement the "Free hosting consult" button as a form — it is an external link only.
+- Do not replace navbar or hero "Free hosting consult" buttons with forms.
+- Do not remove the homepage contact form or replace it with a CTA-only block.
 - Do not link directly to WordPress image URLs — download images to `src/assets/images/`.
 - Do not use plain `<img>` tags — always use Astro's `<Image />` component.
 - Do not use `any` in TypeScript.

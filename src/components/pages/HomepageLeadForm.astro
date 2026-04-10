@@ -1,0 +1,179 @@
+---
+export interface HomepageLeadFormProps {
+  submitLabel: string
+  newsHref: string
+  privacyPolicyHref: string
+}
+
+type Props = HomepageLeadFormProps
+
+const { submitLabel, newsHref, privacyPolicyHref } = Astro.props
+
+const contactFormInstanceId = '878d43d2-6667-43e7-a80f-5614447b9e2a'
+const contactTextInputClass =
+  'hs-input w-full rounded-2xl border border-white/25 bg-white px-4 py-3 text-brand-blue outline-none transition focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/40'
+const contactCheckboxClass =
+  'hs-input mt-1 h-5 w-5 shrink-0 rounded border border-white/20 bg-white text-brand-orange focus:ring-2 focus:ring-brand-sky/40'
+---
+
+<form method="post">
+  <fieldset class="form-columns-2 grid gap-5 md:grid-cols-2">
+    <div class="hs_firstname hs-firstname hs-fieldtype-text field hs-form-field">
+      <input
+        id={`firstname-${contactFormInstanceId}`}
+        name="firstname"
+        required
+        placeholder="Your first name"
+        type="text"
+        class={contactTextInputClass}
+        inputmode="text"
+        autocomplete="given-name"
+      />
+    </div>
+    <div class="hs_lastname hs-lastname hs-fieldtype-text field hs-form-field">
+      <input
+        id={`lastname-${contactFormInstanceId}`}
+        name="lastname"
+        required
+        placeholder="Your last name"
+        type="text"
+        class={contactTextInputClass}
+        inputmode="text"
+        autocomplete="family-name"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-columns-2 mt-5 grid gap-5 md:grid-cols-2">
+    <div class="hs_company hs-company hs-fieldtype-text field hs-form-field">
+      <input
+        id={`company-${contactFormInstanceId}`}
+        name="company"
+        placeholder="Your company name"
+        type="text"
+        class={contactTextInputClass}
+        inputmode="text"
+        autocomplete="organization"
+      />
+    </div>
+    <div class="hs_website hs-website hs-fieldtype-text field hs-form-field">
+      <input
+        id={`website-${contactFormInstanceId}`}
+        name="website"
+        placeholder="Your website URL"
+        type="text"
+        class={contactTextInputClass}
+        inputmode="url"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-columns-2 mt-5 grid gap-5 md:grid-cols-2">
+    <div class="hs_phone hs-phone hs-fieldtype-phonenumber field hs-form-field">
+      <input
+        id={`phone-${contactFormInstanceId}`}
+        name="phone"
+        placeholder="Your phone number"
+        type="tel"
+        class={contactTextInputClass}
+        inputmode="tel"
+        autocomplete="tel"
+      />
+    </div>
+    <div class="hs_email hs-email hs-fieldtype-text field hs-form-field">
+      <input
+        id={`email-${contactFormInstanceId}`}
+        name="email"
+        required
+        placeholder="Your email"
+        type="email"
+        class={contactTextInputClass}
+        inputmode="email"
+        autocomplete="email"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-columns-1 mt-5">
+    <div class="hs_leave_us_a_message hs-leave_us_a_message hs-fieldtype-text field hs-form-field">
+      <input
+        id={`leave_us_a_message-${contactFormInstanceId}`}
+        name="leave_us_a_message"
+        placeholder="Leave us a message"
+        type="text"
+        class={contactTextInputClass}
+        inputmode="text"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-columns-1 mt-5">
+    <div class="legal-consent-container space-y-4 text-left text-sm text-white/85">
+      <div class="hs-dependent-field">
+        <div class="hs_LEGAL_CONSENT.subscription_type_36279934 hs-LEGAL_CONSENT.subscription_type_36279934 hs-fieldtype-booleancheckbox field hs-form-field">
+          <div class="input">
+            <ul class="inputs-list">
+              <li class="hs-form-booleancheckbox list-none">
+                <label
+                  for={`LEGAL_CONSENT.subscription_type_36279934-${contactFormInstanceId}`}
+                  class="hs-form-booleancheckbox-display flex items-start gap-3 text-left text-white"
+                >
+                  <input
+                    id={`LEGAL_CONSENT.subscription_type_36279934-${contactFormInstanceId}`}
+                    class={contactCheckboxClass}
+                    type="checkbox"
+                    name="LEGAL_CONSENT.subscription_type_36279934"
+                    value="true"
+                  />
+                  <span>
+                    <p>
+                      Yes, keep me informed about <a href={newsHref} target="_blank" rel="noopener">Hypernode news and updates</a>.
+                    </p>
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hs-dependent-field">
+        <div class="hs_LEGAL_CONSENT.subscription_type_20878176 hs-LEGAL_CONSENT.subscription_type_20878176 hs-fieldtype-booleancheckbox field hs-form-field">
+          <div class="input">
+            <ul class="inputs-list">
+              <li class="hs-form-booleancheckbox list-none">
+                <label
+                  for={`LEGAL_CONSENT.subscription_type_20878176-${contactFormInstanceId}`}
+                  class="hs-form-booleancheckbox-display flex items-start gap-3 text-left text-white"
+                >
+                  <input
+                    id={`LEGAL_CONSENT.subscription_type_20878176-${contactFormInstanceId}`}
+                    class={contactCheckboxClass}
+                    type="checkbox"
+                    name="LEGAL_CONSENT.subscription_type_20878176"
+                    value="true"
+                    required
+                  />
+                  <span>
+                    <p>
+                      Yes, I have read the <a href={privacyPolicyHref} target="_blank" rel="noopener">Privacy Policy</a> and give consent to Hypernode.com to store my submitted information.
+                    </p>
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="mt-8 flex justify-center">
+    <button
+      type="submit"
+      class="inline-flex min-h-[60px] items-center justify-center rounded-full border border-transparent bg-brand-orange px-8 text-[15px] font-bold leading-4 text-white transition-all duration-300 hover:border-brand-orange hover:bg-white hover:text-brand-orange focus:outline-2 focus:outline-offset-2 focus:outline-white"
+    >
+      {submitLabel}
+    </button>
+  </div>
+</form>

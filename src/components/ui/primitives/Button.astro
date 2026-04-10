@@ -1,16 +1,22 @@
 ---
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
+  size?: 'default' | 'large'
   href?: string
   type?: 'button' | 'submit' | 'reset'
 }
 
 type Props = ButtonProps
 
-const { variant = 'primary', href, type = 'button' } = Astro.props
+const { variant = 'primary', size = 'default', href, type = 'button' } = Astro.props
+
+const SIZE_MODIFIER: Record<NonNullable<ButtonProps['size']>, string> = {
+  default: 'px-6 py-2',
+  large: 'px-8 h-[60px]',
+}
 
 const BASE_CLASS =
-  'inline-flex items-center justify-center px-6 py-2 rounded-full text-[15px] font-bold leading-4 transition-all duration-300 focus:outline-2 focus:outline-offset-2'
+  'inline-flex items-center justify-center rounded-full text-[15px] font-bold leading-4 transition-all duration-300 focus:outline-2 focus:outline-offset-2'
 
 const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary:
@@ -20,7 +26,7 @@ const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
   ghost: 'text-brand-blue underline-offset-4 hover:underline focus:outline-brand-blue',
 }
 
-const buttonClass = `${BASE_CLASS} ${VARIANT_MODIFIER[variant]}`
+const buttonClass = `${BASE_CLASS} ${SIZE_MODIFIER[size]} ${VARIANT_MODIFIER[variant]}`
 ---
 
 {

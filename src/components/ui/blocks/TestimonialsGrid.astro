@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import type { Testimonial } from '../../../types/homepage'
+
+export interface Props {
+  testimonials: Testimonial[]
+}
+
+const { testimonials } = Astro.props
+---
+
+<div class="flex flex-wrap justify-center gap-[60px]">
+  {testimonials.map(item => (
+    <div class="flex w-[279px] shrink-0 flex-col items-center rounded-[5px] bg-[#052f52] pt-[28px] pr-[18px] pb-[32px] pl-[18px]" style="height: 377px;">
+      <div class="flex h-12 items-center justify-center">
+        <Image
+          src={item.logo}
+          alt={item.logoAlt}
+          height={40}
+          class="max-h-10 w-auto object-contain"
+        />
+      </div>
+
+      <p class="mt-5 flex-1 text-center font-[Montserrat] text-[13px] font-normal leading-[22px] text-white">
+        "{item.quote}"
+      </p>
+
+      <div class="mt-5 flex flex-col items-center gap-2">
+        <Image
+          src={item.photo}
+          alt={item.photoAlt}
+          width={48}
+          height={48}
+          class="h-12 w-12 rounded-full object-cover"
+        />
+        <p class="font-[Montserrat] text-[15px] font-bold leading-[22px] text-white">{item.author}</p>
+        <p class="font-[Montserrat] text-[13px] leading-[22px] text-white">{item.role}</p>
+      </div>
+    </div>
+  ))}
+</div>

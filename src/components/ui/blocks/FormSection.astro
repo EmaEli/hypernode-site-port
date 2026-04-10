@@ -1,0 +1,27 @@
+---
+export interface FormSectionProps {
+  title: string
+  subtitle?: string
+  eyebrow?: string
+}
+
+type Props = FormSectionProps
+
+const { title, subtitle, eyebrow } = Astro.props
+---
+
+<section class="bg-[linear-gradient(135deg,#063B67_0%,#074E8A_45%,#51B3DB_140%)] py-16 text-white md:py-24">
+  <div class="mx-auto max-w-4xl px-4">
+    <div class="text-center">
+      {eyebrow && (
+        <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-sky">{eyebrow}</p>
+      )}
+      <h2 class="mt-4 text-4xl font-bold text-white md:text-5xl">{title}</h2>
+      {subtitle && <p class="mx-auto mt-5 max-w-2xl text-lg text-white/80">{subtitle}</p>}
+    </div>
+
+    <div class="mx-auto mt-10 max-w-3xl">
+      <slot />
+    </div>
+  </div>
+</section>

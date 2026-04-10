@@ -35,9 +35,11 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   ├── ui/                  # Shared primitives (Button, Badge, etc.)
-│   │   ├── layout/              # Navbar, Footer, TopBar, TeamBlueBar
-│   │   ├── shared/              # FeatureBlock, IconGrid, SectionHeader
+│   │   ├── layout/              # Navbar, Footer, TopBar
+│   │   ├── ui/
+│   │   │   ├── primitives/      # Button, Badge, Tag, Icon
+│   │   │   └── blocks/          # FeatureBlock, IconGrid, SectionHeader, etc.
+│   │   ├── pages/               # Full-page assembly components
 │   │   └── islands/             # React islands (PricingTable, FAQAccordion, etc.)
 │   ├── content/
 │   │   └── pages/               # MDX files for static page sections

@@ -8,7 +8,7 @@ This document records the key technical decisions made for the Hypernode.com sit
 
 **Decision:** Use Astro as the framework with React for interactive components only.
 
-**Context:** The site is primarily a marketing website. Most content is static and rarely changes. A small number of components require client-side interactivity (pricing table, FAQ accordion, contact form, changelog filters).
+**Context:** The site is primarily a marketing website. Most content is static and rarely changes. A small number of components require client-side interactivity (pricing table, FAQ accordion, changelog filters).
 
 **Options considered:**
 
@@ -30,9 +30,9 @@ This document records the key technical decisions made for the Hypernode.com sit
 | `Navbar` (mobile menu) | `client:load` | Essential for navigation on all devices |
 | `FAQAccordion` | `client:visible` | Below the fold — defer until in viewport |
 | `ChangelogFilters` | `client:visible` | Below the fold, not critical on first render |
-| `ContactForm` | `client:idle` | Low priority, user must scroll to reach it |
+| Homepage contact form | static Astro | Render the form HTML server-side and only add client logic if CRM integration requires it |
 
-Using `client:visible` and `client:idle` instead of `client:load` everywhere reduces Time to Interactive and avoids hydrating components the user may never interact with.
+Using conservative hydration instead of `client:load` everywhere reduces Time to Interactive and avoids hydrating components the user may never interact with.
 
 ---
 
