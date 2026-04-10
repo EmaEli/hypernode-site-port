@@ -1,6 +1,9 @@
 ---
 import type { SEOProps } from '../types/seo'
 import '../styles/global.css'
+import TopBar from '../components/layout/TopBar.astro'
+import Navbar from '../components/layout/Navbar.astro'
+import Footer from '../components/layout/footer/Footer.astro'
 
 interface Props {
   seo: SEOProps
@@ -17,6 +20,14 @@ const { seo } = Astro.props
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
@@ -41,6 +52,9 @@ const { seo } = Astro.props
     ))}
   </head>
   <body>
+    <TopBar />
+    <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>

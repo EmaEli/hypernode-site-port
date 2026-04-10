@@ -1,0 +1,42 @@
+---
+import { SUB_FOOTER_LINK_CLASS, legalLinks, supportLinks } from './footerData'
+
+const CURRENT_YEAR = new Date().getFullYear()
+---
+
+<div class="border-t border-white/10 pt-8 text-center text-xs leading-6 text-gray-400">
+  <p>
+    Copyright &copy; {CURRENT_YEAR} - Hypernode<br />
+    {legalLinks.map((link, index) => (
+      <>
+        {index > 0 && ' | '}
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={SUB_FOOTER_LINK_CLASS}
+        >
+          {link.label}
+        </a>
+      </>
+    ))}
+    <br />
+    Support:
+    {' '}
+    {supportLinks.map((link, index) => (
+      <>
+        {index > 0 && ' | '}
+        <a
+          href={link.href}
+          target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+          rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+          class={SUB_FOOTER_LINK_CLASS}
+        >
+          {link.label}
+        </a>
+      </>
+    ))}
+    <br />
+    KVK number: 06090748 | VAT number: NL821888080B01
+  </p>
+</div>

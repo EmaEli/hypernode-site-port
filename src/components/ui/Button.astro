@@ -1,0 +1,36 @@
+---
+export interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost'
+  href?: string
+  type?: 'button' | 'submit' | 'reset'
+}
+
+type Props = ButtonProps
+
+const { variant = 'primary', href, type = 'button' } = Astro.props
+
+const BASE_CLASS =
+  'inline-flex items-center justify-center px-6 py-2 rounded-full text-[15px] font-bold leading-4 transition-all duration-300 focus:outline-2 focus:outline-offset-2'
+
+const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
+  primary:
+    'border border-transparent bg-brand-orange text-white hover:bg-white hover:text-brand-orange hover:border-brand-orange focus:outline-brand-orange',
+  secondary:
+    'border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus:outline-brand-blue',
+  ghost: 'text-brand-blue underline-offset-4 hover:underline focus:outline-brand-blue',
+}
+
+const buttonClass = `${BASE_CLASS} ${VARIANT_MODIFIER[variant]}`
+---
+
+{
+  href ? (
+    <a href={href} class={buttonClass}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={buttonClass}>
+      <slot />
+    </button>
+  )
+}

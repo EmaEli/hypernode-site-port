@@ -1,0 +1,19 @@
+---
+export interface BadgeProps {
+  label: string
+  variant?: 'default' | 'highlight'
+}
+
+type Props = BadgeProps
+
+const { label, variant = 'default' } = Astro.props
+
+const VARIANT_CLASSES: Record<NonNullable<BadgeProps['variant']>, string> = {
+  default: 'bg-gray-100 text-gray-700',
+  highlight: 'bg-brand-orange text-white',
+}
+
+const badgeClass = `inline-block text-xs font-medium px-2.5 py-0.5 rounded-full ${VARIANT_CLASSES[variant]}`
+---
+
+<span class={badgeClass}>{label}</span>

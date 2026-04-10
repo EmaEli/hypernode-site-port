@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import Icon from '../../ui/Icon.astro'
+import logo from '../../../assets/images/hypernode-logo-white.png'
+import {
+  COLUMN_HEADING_CLASS,
+  COLUMN_LIST_CLASS,
+  LINK_CLASS,
+  SOCIAL_LINK_CLASS,
+  footerLinkGroups,
+  socialLinks,
+} from './footerData'
+---
+
+<div class="grid grid-cols-2 gap-8 mb-12 md:grid-cols-3 lg:grid-cols-6">
+  <div class="col-span-2 flex flex-col items-start gap-6 md:col-span-1">
+    <a href="/en/" class="inline-block focus:outline-2 focus:outline-offset-2 focus:outline-white">
+      <Image src={logo} alt="Hypernode" width={180} height={51} />
+    </a>
+
+    <div class="flex w-[180px] items-center justify-between">
+      {socialLinks.map((link) => (
+        <a href={link.href} class={SOCIAL_LINK_CLASS} aria-label={link.label}>
+          <Icon name={link.title!} size={20} />
+        </a>
+      ))}
+    </div>
+  </div>
+
+  {footerLinkGroups.map((group) => (
+    <div>
+      <h3 class={COLUMN_HEADING_CLASS}>{group.heading}</h3>
+      <ul class={COLUMN_LIST_CLASS}>
+        {group.links.map((link) => (
+          <li><a href={link.href} class={LINK_CLASS}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

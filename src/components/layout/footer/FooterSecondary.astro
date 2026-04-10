@@ -1,0 +1,51 @@
+---
+import {
+  FOOTER_POST_LINK_CLASS,
+  FOOTER_SECTION_HEADING_CLASS,
+  LINK_CLASS,
+  latestBlogs,
+  latestReleases,
+  supportLinks,
+} from './footerData'
+---
+
+<div class="border-t border-white/10 pt-8">
+  <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+    <div class="grid gap-8 md:grid-cols-2">
+      <section>
+        <h5 class={FOOTER_SECTION_HEADING_CLASS}>Latest releases</h5>
+        <ul class="mt-3 list-none space-y-1 p-0">
+          {latestReleases.map((release) => (
+            <li>
+              <a href={release.href} title={release.title} class={FOOTER_POST_LINK_CLASS}>
+                {release.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h5 class={FOOTER_SECTION_HEADING_CLASS}>Latest blogs</h5>
+        <ul class="mt-3 list-none space-y-1 p-0">
+          {latestBlogs.map((blog) => (
+            <li>
+              <a href={blog.href} title={blog.title} class={FOOTER_POST_LINK_CLASS}>
+                {blog.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h5 class={FOOTER_SECTION_HEADING_CLASS}>Need help?</h5>
+      <ul class="mt-3 list-none space-y-1 p-0 text-sm leading-6">
+        {supportLinks.map((link) => (
+          <li><a href={link.href} class={LINK_CLASS}>{link.label}</a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</div>

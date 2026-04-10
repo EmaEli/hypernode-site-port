@@ -1,0 +1,13 @@
+---
+export interface TagProps {
+  label: string
+}
+
+type Props = TagProps
+
+const { label } = Astro.props
+---
+
+<span class="inline-block text-xs font-medium px-3 py-1 rounded-full border border-brand-blue text-brand-blue">
+  {label}
+</span>
