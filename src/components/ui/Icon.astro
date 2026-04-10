@@ -1,0 +1,24 @@
+---
+import { Icon as AstroIcon } from 'astro-icon/components'
+
+export interface IconProps {
+  name: string
+  size?: 16 | 20 | 24 | 32 | 48
+}
+
+type Props = IconProps
+
+const { name, size = 24 } = Astro.props
+
+const SIZE_CLASS: Record<NonNullable<IconProps['size']>, string> = {
+  16: 'size-4',
+  20: 'size-5',
+  24: 'size-6',
+  32: 'size-8',
+  48: 'size-12',
+}
+
+const sizeClass = SIZE_CLASS[size]
+---
+
+<AstroIcon name={name} class={sizeClass} aria-hidden="true" />
