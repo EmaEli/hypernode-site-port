@@ -1,10 +1,11 @@
 ---
-import BaseLayout from '../../../../src/layouts/BaseLayout.astro'
+import PricingPage from '../../../components/pages/PricingPage.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
   seo={{
-    title: 'Plans & Prices | Hypernode',
+    title: 'Plans & Prices — Managed eCommerce Hosting | Hypernode',
     description: 'Explore our tailored hosting solutions: dedicated and cloud plans for every need. All prices are excluding VAT.',
     canonical: 'https://www.hypernode.com/en/plans-and-prices/',
     hreflang: [
@@ -13,8 +14,5 @@ import BaseLayout from '../../../../src/layouts/BaseLayout.astro'
     ],
   }}
 >
-  <main class="max-w-7xl mx-auto px-4 py-24 text-center">
-    <h1>Pricing Table</h1>
-    <p class="mt-4">Temporary pricing placeholder while Milestone 5 is in progress.</p>
-  </main>
+  <PricingPage />
 </BaseLayout>

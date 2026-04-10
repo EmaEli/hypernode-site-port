@@ -36,7 +36,7 @@ const TestimonialsCarousel = ({ testimonials }: TestimonialsCarouselProps) => {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="rounded-[32px] border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur md:p-12">
+      <div className="rounded-shell border border-white/15 bg-white/10 p-8 shadow-raised backdrop-blur md:p-12">
         <p className="text-2xl font-bold leading-tight text-white md:text-4xl">
           “{activeTestimonial.quote}”
         </p>

@@ -1,0 +1,3578 @@
+{
+    "hetzner": {
+        "name": "hetzner",
+        "display_name": "Hetzner",
+        "products": [
+            {
+                "code": "JACKAL_L_202602",
+                "name": "Jackal L",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "hetzner",
+                            "display_name": "Hetzner"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 251658240
+                    }
+                ],
+                "flavor": {
+                    "name": "HETZ 32CPU/128GB/960GB (AX102-U)",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 111700,
+                "currency": "EUR",
+                "yearly_price": 94700,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": null,
+                "price_gbp": 96000,
+                "yearly_price_gbp": 94700
+            }
+        ]
+    },
+    "teamblue-baremetal": {
+        "name": "teamblue-baremetal",
+        "display_name": "team.blue Bare Metal",
+        "products": [
+            {
+                "code": "JACKAL_S_202310",
+                "name": "Jackal S",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 12,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 12CPU/64GB/960GB 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 63700,
+                "currency": "EUR",
+                "yearly_price": 54300,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_S_202310DEV",
+                    "name": "Jackal S Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 813,
+                    "price": 33400,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 54800,
+                "yearly_price_gbp": 54300
+            },
+            {
+                "code": "JACKAL_M_202310",
+                "name": "Jackal M",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 16CPU/64GB/960GB 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 80700,
+                "currency": "EUR",
+                "yearly_price": 67800,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_M_202310DEV",
+                    "name": "Jackal M Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 813,
+                    "price": 48500,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 69400,
+                "yearly_price_gbp": 67800
+            },
+            {
+                "code": "JACKAL_L_202310",
+                "name": "Jackal L",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 24,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 24CPU/128GB/960GB 2023",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 111700,
+                "currency": "EUR",
+                "yearly_price": 94700,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_L_202310DEV",
+                    "name": "Jackal L Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 960,
+                    "price": 65100,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 96000,
+                "yearly_price_gbp": 94700
+            },
+            {
+                "code": "JACKAL_ENTERPRISE_S_202401",
+                "name": "Enterprise Jackal S",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 36,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 36CPU/128GB/960GB 2024",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 143900,
+                "currency": "EUR",
+                "yearly_price": 122000,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": null,
+                "price_gbp": 123200,
+                "yearly_price_gbp": 122000
+            },
+            {
+                "code": "JACKAL_S_202310DEV",
+                "name": "Jackal S Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 12,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 12CPU/64GB/960GB 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 33400,
+                "currency": "EUR",
+                "yearly_price": 28500,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_S_202310",
+                    "name": "Jackal S",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 813,
+                    "price": 63700,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 28800,
+                "yearly_price_gbp": 28500
+            },
+            {
+                "code": "JACKAL_ENTERPRISE_M_202401",
+                "name": "Enterprise Jackal M",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 96CPU/128GB/960GB 2024",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 192500,
+                "currency": "EUR",
+                "yearly_price": 163400,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": null,
+                "price_gbp": 165600,
+                "yearly_price_gbp": 163400
+            },
+            {
+                "code": "JACKAL_ENTERPRISE_L_202401",
+                "name": "Enterprise Jackal L",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 96CPU/256GB/960GB 2024",
+                    "redis_size": "35717"
+                },
+                "spare_nodes_count": null,
+                "price": 251500,
+                "currency": "EUR",
+                "yearly_price": 213100,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": null,
+                "price_gbp": 216400,
+                "yearly_price_gbp": 213100
+            },
+            {
+                "code": "JACKAL_M_202310DEV",
+                "name": "Jackal M Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 16CPU/64GB/960GB 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 48500,
+                "currency": "EUR",
+                "yearly_price": 41300,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_M_202310",
+                    "name": "Jackal M",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 813,
+                    "price": 80700,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 41800,
+                "yearly_price_gbp": 41300
+            },
+            {
+                "code": "JACKAL_L_202310DEV",
+                "name": "Jackal L Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 24,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "teamblue-baremetal",
+                            "display_name": "team.blue Bare Metal"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006632960,
+                        "inodes": 60710912
+                    }
+                ],
+                "flavor": {
+                    "name": "TBBM 24CPU/128GB/960GB 2023",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 65100,
+                "currency": "EUR",
+                "yearly_price": 55100,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "dedicated",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": true,
+                "related_product": {
+                    "code": "JACKAL_L_202310",
+                    "name": "Jackal L",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 960,
+                    "price": 111700,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "teamblue-baremetal",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 56000,
+                "yearly_price_gbp": 55100
+            }
+        ]
+    },
+    "combell": {
+        "name": "combell",
+        "display_name": "Combell OpenStack",
+        "products": [
+            {
+                "code": "FALCON_XS_202603DEV",
+                "name": "Falcon XS Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": false,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 2,
+                        "ram_in_mb": 4096,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "2CPU/4GB/150GB (Falcon XS 202602)",
+                    "redis_size": "768"
+                },
+                "spare_nodes_count": null,
+                "price": 9800,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_XS_202603",
+                    "name": "Falcon XS",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 12900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": false,
+                    "supports_sla": true
+                },
+                "price_gbp": 8500,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_XS_202603",
+                "name": "Falcon XS",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": false,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 2,
+                        "ram_in_mb": 4096,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "2CPU/4GB/150GB (Falcon XS 202602)",
+                    "redis_size": "768"
+                },
+                "spare_nodes_count": null,
+                "price": 12900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_XS_202603DEV",
+                    "name": "Falcon XS Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 9800,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": false,
+                    "supports_sla": false
+                },
+                "price_gbp": 11000,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_S_202603DEV",
+                "name": "Falcon S Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 2,
+                        "ram_in_mb": 8192,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "2CPU/8GB/150GB (Falcon S 202602)",
+                    "redis_size": "1024"
+                },
+                "spare_nodes_count": null,
+                "price": 12900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_S_202603",
+                    "name": "Falcon S",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 18100,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 11100,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_S_202603",
+                "name": "Falcon S",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 2,
+                        "ram_in_mb": 8192,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "2CPU/8GB/150GB (Falcon S 202602)",
+                    "redis_size": "1024"
+                },
+                "spare_nodes_count": null,
+                "price": 18100,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_S_202603DEV",
+                    "name": "Falcon S Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 12900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 15500,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_M_202603DEV",
+                "name": "Falcon M Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 3,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "3CPU/16GB/160GB (Falcon M 202602)",
+                    "redis_size": "2048"
+                },
+                "spare_nodes_count": null,
+                "price": 15000,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": true,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_M_202603",
+                    "name": "Falcon M",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 23700,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 12900,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_M_202603",
+                "name": "Falcon M",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 3,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157286400,
+                        "inodes": 41156608
+                    }
+                ],
+                "flavor": {
+                    "name": "3CPU/16GB/160GB (Falcon M 202602)",
+                    "redis_size": "2048"
+                },
+                "spare_nodes_count": null,
+                "price": 23700,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": true,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_M_202603DEV",
+                    "name": "Falcon M Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 15000,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 20400,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_L_202203DEV",
+                "name": "Falcon L Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 5,
+                        "ram_in_mb": 24576,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157144428,
+                        "inodes": 41943040
+                    }
+                ],
+                "flavor": {
+                    "name": "5CPU/24GB/160GB",
+                    "redis_size": "3072"
+                },
+                "spare_nodes_count": null,
+                "price": 25800,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_L_202203",
+                    "name": "Falcon L",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 38800,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 22200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_L_202203",
+                "name": "Falcon L",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 5,
+                        "ram_in_mb": 24576,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 150,
+                        "exact_disk_size_in_kb": 157144428,
+                        "inodes": 41943040
+                    }
+                ],
+                "flavor": {
+                    "name": "5CPU/24GB/160GB",
+                    "redis_size": "3072"
+                },
+                "spare_nodes_count": null,
+                "price": 38800,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_L_202203DEV",
+                    "name": "Falcon L Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 150,
+                    "price": 25800,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 33400,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_XL_202203DEV",
+                "name": "Falcon XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 300,
+                        "exact_disk_size_in_kb": 314419820,
+                        "inodes": 83886080
+                    }
+                ],
+                "flavor": {
+                    "name": "8CPU/32GB/320GB",
+                    "redis_size": "4096"
+                },
+                "spare_nodes_count": null,
+                "price": 49600,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_XL_202203",
+                    "name": "Falcon XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 299,
+                    "price": 70300,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 42700,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_XL_202203",
+                "name": "Falcon XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 300,
+                        "exact_disk_size_in_kb": 314419820,
+                        "inodes": 83886080
+                    }
+                ],
+                "flavor": {
+                    "name": "8CPU/32GB/320GB",
+                    "redis_size": "4096"
+                },
+                "spare_nodes_count": null,
+                "price": 70300,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_XL_202203DEV",
+                    "name": "Falcon XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 299,
+                    "price": 49600,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 60500,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_2XL_202203DEV",
+                "name": "Falcon 2XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 12,
+                        "ram_in_mb": 49152,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "12CPU/48GB/1TB (Falcon 2XL 202202)",
+                    "redis_size": "6144"
+                },
+                "spare_nodes_count": null,
+                "price": 81200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_2XL_202203",
+                    "name": "Falcon 2XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 108200,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 69900,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_2XL_202203",
+                "name": "Falcon 2XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 12,
+                        "ram_in_mb": 49152,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "12CPU/48GB/1TB (Falcon 2XL 202202)",
+                    "redis_size": "6144"
+                },
+                "spare_nodes_count": null,
+                "price": 108200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_2XL_202203DEV",
+                    "name": "Falcon 2XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 81200,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 93100,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_3XL_202203DEV",
+                "name": "Falcon 3XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "16CPU/64GB/1TB (Falcon 3XL 202202)",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 114400,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "PHP 5.6 - PHP 8.1",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_3XL_202203",
+                    "name": "Falcon 3XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 158900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 98400,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_3XL_202203",
+                "name": "Falcon 3XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "16CPU/64GB/1TB (Falcon 3XL 202202)",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 158900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_3XL_202203DEV",
+                    "name": "Falcon 3XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 114400,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 136700,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_4XL_202203DEV",
+                "name": "Falcon 4XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 18,
+                        "ram_in_mb": 81920,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "18CPU/80GB/1TB (Falcon 4XL 202202)",
+                    "redis_size": "10240"
+                },
+                "spare_nodes_count": null,
+                "price": 183800,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_4XL_202203",
+                    "name": "Falcon 4XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 231800,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 158400,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_4XL_202203",
+                "name": "Falcon 4XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 18,
+                        "ram_in_mb": 81920,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "18CPU/80GB/1TB (Falcon 4XL 202202)",
+                    "redis_size": "10240"
+                },
+                "spare_nodes_count": null,
+                "price": 231800,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_4XL_202203DEV",
+                    "name": "Falcon 4XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 183800,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 199800,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_5XL_202203DEV",
+                "name": "Falcon 5XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 20,
+                        "ram_in_mb": 98304,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "20CPU/96GB/1TB (Falcon 5XL 202202)",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 268900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_5XL_202203",
+                    "name": "Falcon 5XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 346200,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 230900,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "FALCON_5XL_202203",
+                "name": "Falcon 5XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 20,
+                        "ram_in_mb": 98304,
+                        "provider": {
+                            "name": "combell",
+                            "display_name": "Combell OpenStack"
+                        },
+                        "disk_size_in_gb": 960,
+                        "exact_disk_size_in_kb": 1006431412,
+                        "inodes": 268435456
+                    }
+                ],
+                "flavor": {
+                    "name": "20CPU/96GB/1TB (Falcon 5XL 202202)",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 346200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "FALCON_5XL_202203DEV",
+                    "name": "Falcon 5XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 959,
+                    "price": 268900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "combell",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 298100,
+                "yearly_price_gbp": null
+            }
+        ]
+    },
+    "aws": {
+        "name": "aws",
+        "display_name": "Amazon Web Services",
+        "products": [
+            {
+                "code": "EAGLE_M_202307",
+                "name": "Eagle M",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    },
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    },
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle M 2023",
+                    "redis_size": "2048"
+                },
+                "spare_nodes_count": null,
+                "price": 67200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_M_202307DEV",
+                    "name": "Eagle M Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 248,
+                    "price": 55100,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 57800,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_M_202307DEV",
+                "name": "Eagle M Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    },
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    },
+                    {
+                        "vcpus": 4,
+                        "ram_in_mb": 16384,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 250,
+                        "exact_disk_size_in_kb": 260356488,
+                        "inodes": 69468160
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle M 2023",
+                    "redis_size": "2048"
+                },
+                "spare_nodes_count": null,
+                "price": 55100,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_M_202307",
+                    "name": "Eagle M",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 248,
+                    "price": 67200,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 47300,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_L_202307",
+                "name": "Eagle L",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    },
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    },
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle L 2023",
+                    "redis_size": "4096"
+                },
+                "spare_nodes_count": null,
+                "price": 122100,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_L_202307DEV",
+                    "name": "Eagle L Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 500,
+                    "price": 101400,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 104600,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_L_202307DEV",
+                "name": "Eagle L Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    },
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    },
+                    {
+                        "vcpus": 8,
+                        "ram_in_mb": 32768,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 500,
+                        "exact_disk_size_in_kb": 520843688,
+                        "inodes": 138936320
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle L 2023",
+                    "redis_size": "4096"
+                },
+                "spare_nodes_count": null,
+                "price": 101400,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_L_202307",
+                    "name": "Eagle L",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 500,
+                    "price": 122100,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 87200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_XL_202307",
+                "name": "Eagle XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    },
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    },
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle XL 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 213200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": true,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_XL_202307DEV",
+                    "name": "Eagle XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 500,
+                    "price": 174900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 183200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_XL_202307DEV",
+                "name": "Eagle XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    },
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    },
+                    {
+                        "vcpus": 16,
+                        "ram_in_mb": 65536,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 750,
+                        "exact_disk_size_in_kb": 785324952,
+                        "inodes": 209715200
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle XL 2023",
+                    "redis_size": "8192"
+                },
+                "spare_nodes_count": null,
+                "price": 174900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": true,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_XL_202307",
+                    "name": "Eagle XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 750,
+                    "price": 213200,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 150100,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_2XL_202307",
+                "name": "Eagle 2XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 2XL 2023",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 389100,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_2XL_202307DEV",
+                    "name": "Eagle 2XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 332200,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 334400,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_2XL_202307DEV",
+                "name": "Eagle 2XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 32,
+                        "ram_in_mb": 131072,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 2XL 2023",
+                    "redis_size": "12288"
+                },
+                "spare_nodes_count": null,
+                "price": 332200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "PHP 5.6 - PHP 8.1",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_2XL_202307",
+                    "name": "Eagle 2XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 389100,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 285700,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_3XL_202307",
+                "name": "Eagle 3XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 3XL 2023",
+                    "redis_size": "32768"
+                },
+                "spare_nodes_count": null,
+                "price": 588900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_3XL_202307DEV",
+                    "name": "Eagle 3XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 511200,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 506200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_3XL_202307DEV",
+                "name": "Eagle 3XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 48,
+                        "ram_in_mb": 196608,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 3XL 2023",
+                    "redis_size": "32768"
+                },
+                "spare_nodes_count": null,
+                "price": 511200,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_3XL_202307",
+                    "name": "Eagle 3XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 588900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 439900,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_4XL_202307",
+                "name": "Eagle 4XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 4XL 2023",
+                    "redis_size": "35717"
+                },
+                "spare_nodes_count": null,
+                "price": 936900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_4XL_202307DEV",
+                    "name": "Eagle 4XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 795900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 805300,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_4XL_202307DEV",
+                "name": "Eagle 4XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 64,
+                        "ram_in_mb": 262144,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 4XL 2023",
+                    "redis_size": "35717"
+                },
+                "spare_nodes_count": null,
+                "price": 795900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_4XL_202307",
+                    "name": "Eagle 4XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 936900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 684200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_5XL_202307",
+                "name": "Eagle 5XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 5XL 2023",
+                    "redis_size": "53576"
+                },
+                "spare_nodes_count": null,
+                "price": 1311300,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_5XL_202307DEV",
+                    "name": "Eagle 5XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 1138400,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 1127200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_5XL_202307DEV",
+                "name": "Eagle 5XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 96,
+                        "ram_in_mb": 393216,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 5XL 2023",
+                    "redis_size": "53576"
+                },
+                "spare_nodes_count": null,
+                "price": 1138400,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_5XL_202307",
+                    "name": "Eagle 5XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 1311300,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 979200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_6XL_202307",
+                "name": "Eagle 6XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 6XL 2023",
+                    "redis_size": "65536"
+                },
+                "spare_nodes_count": null,
+                "price": 2568900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_6XL_202307DEV",
+                    "name": "Eagle 6XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 2183900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 2208700,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_6XL_202307DEV",
+                "name": "Eagle 6XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 128,
+                        "ram_in_mb": 524288,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 6XL 2023",
+                    "redis_size": "65536"
+                },
+                "spare_nodes_count": null,
+                "price": 2183900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_6XL_202307",
+                    "name": "Eagle 6XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 2568900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 1877500,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_7XL_202307",
+                "name": "Eagle 7XL",
+                "backups_enabled": true,
+                "is_development": false,
+                "varnish_supported": true,
+                "supports_sla": true,
+                "provider_flavors": [
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 7XL 2023",
+                    "redis_size": "98304"
+                },
+                "spare_nodes_count": null,
+                "price": 3340900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_7XL_202307DEV",
+                    "name": "Eagle 7XL Dev",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 2837900,
+                    "currency": "EUR",
+                    "is_development": true,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": false
+                },
+                "price_gbp": 2873200,
+                "yearly_price_gbp": null
+            },
+            {
+                "code": "EAGLE_7XL_202307DEV",
+                "name": "Eagle 7XL Dev",
+                "backups_enabled": true,
+                "is_development": true,
+                "varnish_supported": true,
+                "supports_sla": false,
+                "provider_flavors": [
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-ireland",
+                            "display_name": "Amazon (Ireland)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-frankfurt",
+                            "display_name": "Amazon (Frankfurt)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    },
+                    {
+                        "vcpus": 192,
+                        "ram_in_mb": 786432,
+                        "provider": {
+                            "name": "aws-north-virginia",
+                            "display_name": "Amazon (North-Virginia)"
+                        },
+                        "disk_size_in_gb": 1000,
+                        "exact_disk_size_in_kb": 1041818320,
+                        "inodes": 277872640
+                    }
+                ],
+                "flavor": {
+                    "name": "Eagle 7XL 2023",
+                    "redis_size": "98304"
+                },
+                "spare_nodes_count": null,
+                "price": 2837900,
+                "currency": "EUR",
+                "yearly_price": null,
+                "features": [
+                    "Free migration service",
+                    "Pre-installed Magento 2",
+                    "Magento optimized NGINX and PHP",
+                    "Intuitive control panel",
+                    "24/7 server monitoring & autorecovery",
+                    "Email, chat & phone support",
+                    "Free SLA Basic",
+                    "400 Brancher minutes",
+                    "Elastic search build-in support",
+                    "PWA compatible",
+                    "Dedicated IP",
+                    "Extensive backup services",
+                    "Extensive security measures",
+                    "PHPFPM",
+                    "Automatic Let's Encrypt configuration'",
+                    "Analysis tools Blackfire & New Relic",
+                    "Rabbit MQ",
+                    "Varnish Cache",
+                    "Near zero downtime scaling",
+                    "PCI Compliancy Service",
+                    "PHP 5.6 - PHP 8.4"
+                ],
+                "type": "cloud",
+                "is_popular": false,
+                "is_order_allowed": true,
+                "is_active": true,
+                "is_visible_to_staff": false,
+                "related_product": {
+                    "code": "EAGLE_7XL_202307",
+                    "name": "Eagle 7XL",
+                    "backups_enabled": true,
+                    "storage_size_in_gb": 1000,
+                    "price": 3340900,
+                    "currency": "EUR",
+                    "is_development": false,
+                    "provider": "aws-frankfurt",
+                    "varnish_supported": true,
+                    "supports_sla": true
+                },
+                "price_gbp": 2440600,
+                "yearly_price_gbp": null
+            }
+        ]
+    }
+}
