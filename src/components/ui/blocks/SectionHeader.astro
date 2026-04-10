@@ -3,13 +3,15 @@ export interface SectionHeaderProps {
   eyebrow?: string
   title: string
   subtitle?: string
+  titleColor?: 'default' | 'white'
 }
 
 type Props = SectionHeaderProps
 
-const { eyebrow, title, subtitle } = Astro.props
+const { eyebrow, title, subtitle, titleColor = 'default' } = Astro.props
 
 const EYEBROW_CLASS = 'text-sm font-semibold uppercase tracking-wider text-brand-orange mb-3'
+const TITLE_COLOR_CLASS = titleColor === 'white' ? 'text-white' : 'text-brand-blue'
 ---
 
 <div class="text-center max-w-3xl mx-auto px-4">
@@ -17,7 +19,7 @@ const EYEBROW_CLASS = 'text-sm font-semibold uppercase tracking-wider text-brand
     <p class={EYEBROW_CLASS}>{eyebrow}</p>
   )}
 
-  <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4">{title}</h2>
+  <h2 class={`text-3xl md:text-4xl font-bold mb-4 ${TITLE_COLOR_CLASS}`}>{title}</h2>
 
   {subtitle && (
     <p class="text-lg text-gray-600">{subtitle}</p>

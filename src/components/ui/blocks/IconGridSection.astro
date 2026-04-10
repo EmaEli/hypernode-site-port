@@ -1,0 +1,34 @@
+---
+import type { HomepageCallToAction } from '../../../types/homepage'
+import type { IconGridItem, IconGridProps } from './IconGrid.astro'
+import IconGrid from './IconGrid.astro'
+import SectionHeader from './SectionHeader.astro'
+import Button from '../primitives/Button.astro'
+
+export interface IconGridSectionProps {
+  title: string
+  subtitle?: string
+  items: IconGridItem[]
+  columns?: IconGridProps['columns']
+  cardStyle?: IconGridProps['cardStyle']
+  cta?: HomepageCallToAction
+}
+
+type Props = IconGridSectionProps
+
+const { title, subtitle, items, columns = 3, cardStyle = 'styled', cta } = Astro.props
+---
+
+<section class="bg-slate-50 py-16 md:py-24">
+  <div class="mx-auto max-w-7xl px-4">
+    <SectionHeader title={title} subtitle={subtitle} />
+  </div>
+
+  <IconGrid items={items} columns={columns} cardStyle={cardStyle} />
+
+  {cta && (
+    <div class="mx-auto mt-4 flex max-w-7xl justify-center px-4">
+      <Button href={cta.href} variant="secondary">{cta.label}</Button>
+    </div>
+  )}
+</section>

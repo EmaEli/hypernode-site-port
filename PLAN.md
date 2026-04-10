@@ -133,7 +133,7 @@ Sections to replicate in page order:
 10. Testimonials — static quote data for the carousel
 11. Support (`FeatureBlock`)
 12. Worldwide coverage (`FeatureBlock`)
-13. Contact CTA section (note: original is a HubSpot form, but it must be implemented as a static section with the `Free hosting consult` link)
+13. Contact section with the provided lead form markup. Keep the field names and consent copy aligned with the source form so backend/CRM wiring can be added later without reshaping the UI.
 
 If the homepage needs local models, interfaces, constants, or repeated class patterns, introduce them here only for the homepage. Do not pre-model pricing or changelog concerns in this phase.
 
@@ -147,7 +147,7 @@ SEO title: `Hosting Provider for eCommerce & Online stores | Hypernode`
 **Phase 4 Output**
 - Homepage complete and navigable at `/en/`.
 - All images used are local in `src/assets/images/`.
-- No real form is implemented: the CTA remains an external link per spec.
+- The final homepage section contains the lead form, ready to be wired to the submission backend.
 - The visual tone of the project is locked in through the homepage before moving on to the more complex pricing logic.
 
 ---
@@ -442,4 +442,4 @@ Minimal manual log template:
 - `TestimonialsCarousel` uses `client:visible` (it is below the fold)
 - Mobile navbar should be implemented statically or with the minimum JS required, avoiding a dedicated React island unless truly necessary
 - No cookie banner should be implemented (it is WordPress-only)
-- The “Would you like to receive more info” section must be implemented as a static section with only the `Free hosting consult` link (per spec: DO NOT implement a form)
+- The “Would you like to receive more info” section must render the provided lead form rather than a CTA-only block.
