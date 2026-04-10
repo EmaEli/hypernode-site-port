@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import SegmentedToggle from '../ui/primitives/SegmentedToggle'
+import SegmentedToggle from '../../ui/primitives/SegmentedToggle'
 
-import type { Environment } from '../../types/pricing'
+import type { Environment } from '../../../types/pricing'
 
-const PRICING_ENVIRONMENT_EVENT = 'pricing:environment-change'
+export const PRICING_ENVIRONMENT_EVENT = 'pricing:environment-change'
 
 const ENVIRONMENT_OPTIONS = [
   { label: 'Production', value: 'production' },

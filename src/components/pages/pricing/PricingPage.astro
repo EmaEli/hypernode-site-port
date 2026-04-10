@@ -1,17 +1,17 @@
 ---
-import pricingData from '../../lib/pricing-data.json'
-import PricingEnvironmentToggle from '../islands/PricingEnvironmentToggle'
-import PricingHero from '../ui/blocks/PricingHero.astro'
-import PricingSidebar from '../ui/blocks/PricingSidebar.astro'
-import PricingTable from '../islands/PricingTable'
-import FAQAccordion from '../islands/FAQAccordion'
+import pricingData from '../../../lib/pricing-data.json'
+import FAQAccordion from '../../islands/FAQAccordion'
 import {
   pricingFaqItems,
   pricingHeroContent,
   pricingSectionContent,
   pricingSidebarContent,
-} from '../../content/pages/pricing/content'
-import type { PricingDataset } from '../../types/pricing'
+} from '../../../content/pages/pricing/content'
+import PricingEnvironmentToggle from './PricingEnvironmentToggle'
+import PricingHero from './PricingHero.astro'
+import PricingSidebar from './PricingSidebar.astro'
+import PricingTable from './PricingTable'
+import type { PricingDataset } from '../../../types/pricing'
 
 const dataset = pricingData as PricingDataset
 ---
