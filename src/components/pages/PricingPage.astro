@@ -1,0 +1,54 @@
+---
+import pricingData from '../../lib/pricing-data.json'
+import PricingEnvironmentToggle from '../islands/PricingEnvironmentToggle'
+import PricingHero from '../ui/blocks/PricingHero.astro'
+import PricingSidebar from '../ui/blocks/PricingSidebar.astro'
+import PricingTable from '../islands/PricingTable'
+import FAQAccordion from '../islands/FAQAccordion'
+import {
+  pricingFaqItems,
+  pricingHeroContent,
+  pricingSectionContent,
+  pricingSidebarContent,
+} from '../../content/pages/pricing/content'
+import type { PricingDataset } from '../../types/pricing'
+
+const dataset = pricingData as PricingDataset
+---
+
+<main>
+  <PricingHero
+    title={pricingHeroContent.title}
+    subtitle={pricingHeroContent.subtitle}
+    note={pricingHeroContent.note}
+  />
+
+  <section class="mx-auto max-w-content px-4 pb-8 lg:hidden">
+    <div class="rounded-panel border border-slate-200 bg-slate-50/80 p-4 shadow-soft backdrop-blur md:p-5">
+      <PricingEnvironmentToggle client:load />
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-content gap-10 px-4 pb-16 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-12 lg:pb-24">
+    <PricingSidebar
+      cloudLabel={pricingSidebarContent.cloudLabel}
+      dedicatedLabel={pricingSidebarContent.dedicatedLabel}
+      consultationText={pricingSidebarContent.consultationText}
+      consultationCta={pricingSidebarContent.consultationCta}
+    />
+
+    <div>
+      <PricingTable
+        client:load
+        dataset={dataset}
+        cloudTitle={pricingSectionContent.cloud.title}
+        cloudDescription={pricingSectionContent.cloud.description}
+        cloudHighlight={pricingSectionContent.cloud.highlight}
+        dedicatedTitle={pricingSectionContent.dedicated.title}
+        dedicatedDescription={pricingSectionContent.dedicated.description}
+      />
+    </div>
+  </section>
+
+  <FAQAccordion client:visible items={pricingFaqItems} />
+</main>

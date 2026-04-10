@@ -1,0 +1,77 @@
+import type { PricingFaqItem } from '../../../types/pricing'
+
+export const pricingHeroContent = {
+  title: 'Pricing Table',
+  subtitle:
+    'Explore Our Tailored Hosting Solutions: Dedicated and Cloud Plans for Every Need.',
+  note: 'All prices are excluding VAT.',
+}
+
+export const pricingSidebarContent = {
+  cloudLabel: 'Cloud hosting plans',
+  dedicatedLabel: 'Dedicated hosting plans',
+  consultationText:
+    'Not sure yet which hosting plan suits you best? Contact us for consultation!',
+  consultationCta: {
+    href: 'https://www.hypernode.com/en/free-hosting-consult/',
+    label: 'Start hosting consult',
+  },
+}
+
+export const pricingSectionContent = {
+  cloud: {
+    title: 'Cloud hosting pricing',
+    description:
+      'Ideal for unpredictable traffic patterns. Cloud hosting provides maximum flexibility and scalability with data redundancy, virtual backups, fast recovery, and pay-as-you-go pricing.',
+    highlight:
+      'Additionally, in 2026, all Combell Openstack plans include 400 complimentary Brancher minutes for free!',
+  },
+  dedicated: {
+    title: 'Dedicated hosting pricing',
+    description:
+      'Great for predictable traffic patterns. Dedicated hosting offers maximum performance and more resources at a comparatively lower cost.',
+  },
+}
+
+export const pricingFaqItems: PricingFaqItem[] = [
+  {
+    question: 'How do I know which hosting plan is right for me?',
+    answer:
+      'We are always ready to help you find the optimal plan for your needs. You can request a Free hosting consult. As soon as we receive your request, one of our e-commerce hosting experts will reach out to you to discuss further.',
+  },
+  {
+    question: "Is there a free trial available to test Hypernode's services?",
+    answer:
+      'Yes, we offer a 14-day free trial that allows you to experience our platform and its features without any obligation. You can start your free trial by visiting our Start Free Trial page.',
+  },
+  {
+    question: 'Can I change my plan at any time?',
+    answer:
+      'Yes, Hypernode offers the flexibility to change your plan at any time to best meet your needs. With the assistance of our support team, you can easily upgrade or downgrade your hosting plan whenever necessary. Additionally, you can schedule up- and downgrades for a specific time and date through Hypernode Control Panel.',
+  },
+  {
+    question: 'What are the legacy plans?',
+    answer:
+      'Legacy plans refer to older hosting plans that were previously offered by Hypernode but are no longer available to new customers. Existing customers on these plans can continue using them, but pricing and support options may differ from current plans.',
+  },
+  {
+    question: 'What support options are included with the hosting plans?',
+    answer:
+      'All our hosting plans come with 24/7 premium support from our team of experts. Whether you need assistance with your online shop, optimisation advice, or help with development processes, our support team is ready to help you.',
+  },
+  {
+    question: 'How can I learn about the prices of add-ons and other services?',
+    answer:
+      'To learn more about the prices of add-ons and additional services, please reach out to us. Our team is here to provide detailed information and answer any questions you may have about tailoring our services to meet your needs.',
+  },
+  {
+    question: 'What are free Brancher minutes?',
+    answer:
+      'Hypernode Brancher is a powerful tool designed for running parallel integration tests, testing software version upgrades, or performing any other tasks requiring a temporary and isolated server environment. With all AWS and OpenStack plans, we offer 400 complementary Brancher minutes for free to new subscriptions.',
+  },
+  {
+    question: 'How can I contact Hypernode for support or inquiries?',
+    answer:
+      'You can call us at +31 20 521 6226 during office hours, Monday to Friday, 9:00 AM - 6:00 PM CE(S)T. For general support, please email us at support@hypernode.com.',
+  },
+]

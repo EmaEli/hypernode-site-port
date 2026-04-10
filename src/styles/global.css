@@ -1,14 +1,40 @@
 @import "tailwindcss";
 
 @theme {
+  --container-content: 1250px;
   --font-sans: 'Montserrat', sans-serif;
   --color-brand-orange: #ff7101;
   --color-brand-blue: #074E8A;
   --color-brand-blue-dark: #063B67;
+  --color-brand-green: #4bb52d;
   --color-brand-sky: #51B3DB;
+  --radius-card: 24px;
+  --radius-panel: 28px;
+  --radius-shell: 32px;
+  --shadow-soft: 0 1px 2px rgba(6, 59, 103, 0.08);
+  --shadow-raised: 0 8px 24px rgba(6, 59, 103, 0.14);
+  --shadow-panel: 0 16px 36px rgba(6, 59, 103, 0.08);
+  --shadow-panel-strong: 0 16px 36px rgba(6, 59, 103, 0.12);
+  --shadow-panel-hover: 0 8px 18px rgba(6, 59, 103, 0.1);
+  --text-ui-xs: 11px;
+  --text-ui-xs--line-height: 18px;
+  --text-ui-sm: 12px;
+  --text-ui-sm--line-height: 16px;
+  --text-ui-label: 15px;
+  --text-ui-label--line-height: 22px;
+  --text-ui-button: 15px;
+  --text-ui-button--line-height: 16px;
+  --text-ui-metric: 16px;
+  --text-ui-metric--line-height: 20px;
+  --text-copy: 15px;
+  --text-copy--line-height: 25px;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: var(--font-sans);
     font-size: 15px;

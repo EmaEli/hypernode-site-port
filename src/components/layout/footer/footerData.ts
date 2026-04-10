@@ -12,10 +12,10 @@ export interface FooterLinkGroup {
 export const LINK_CLASS =
   'text-gray-300 hover:text-brand-orange transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
 
-export const COLUMN_HEADING_CLASS = 'text-[15px] leading-[22px] font-bold uppercase tracking-wider text-white mb-4'
+export const COLUMN_HEADING_CLASS = 'text-ui-label font-bold uppercase tracking-wider text-white mb-4'
 export const COLUMN_LIST_CLASS = 'space-y-2 text-sm list-none p-0'
 export const SOCIAL_LINK_CLASS = 'text-white/50 hover:text-brand-sky transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-white'
-export const FOOTER_SECTION_HEADING_CLASS = 'font-sans text-[15px] leading-[22px] font-bold text-white'
+export const FOOTER_SECTION_HEADING_CLASS = 'font-sans text-ui-label font-bold text-white'
 export const FOOTER_POST_LINK_CLASS = 'block truncate text-sm leading-6 text-gray-300 hover:text-brand-sky transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-white'
 export const SUB_FOOTER_LINK_CLASS = 'text-gray-300 hover:text-brand-sky transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-white'
 

@@ -41,7 +41,7 @@ const bodyItems = Array.isArray(body) ? body : body ? [body] : []
 ---
 
 <section class={`py-16 md:py-24 ${sectionClass}`}>
-  <div class={`max-w-7xl mx-auto px-4 flex flex-col ${rowClass} items-center gap-12`}>
+  <div class={`max-w-content mx-auto px-4 flex flex-col ${rowClass} items-center gap-12`}>
 
     <div class="flex-1">
       <h2 class={`text-[43px] leading-[48px] font-bold mb-4 ${titleClass}`}>{title}</h2>
@@ -51,7 +51,7 @@ const bodyItems = Array.isArray(body) ? body : body ? [body] : []
       )}
 
       {bodyItems.length > 0 && (
-        <div class={`mb-6 space-y-4 text-[15px] leading-[25px] ${bodyTextClass}`}>
+        <div class={`mb-6 space-y-4 text-copy ${bodyTextClass}`}>
           {bodyItems.map(item => (
             <p>{item}</p>
           ))}

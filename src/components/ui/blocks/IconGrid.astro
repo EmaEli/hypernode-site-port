@@ -30,15 +30,15 @@ const GRID_CLASS: Record<NonNullable<IconGridProps['columns']>, string> = {
 const gridClass = GRID_CLASS[columns]
 
 const STATIC_CARD_CLASS: Record<NonNullable<IconGridProps['cardStyle']>, string> = {
-  simple: 'flex h-full flex-col rounded-[28px] border border-brand-blue/10 bg-white p-6',
-  styled: 'flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-[0_16px_36px_rgba(6,59,103,0.08)]',
+  simple: 'flex h-full flex-col rounded-panel border border-brand-blue/10 bg-white p-6',
+  styled: 'flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-panel',
 }
 
 const INTERACTIVE_CARD_CLASS: Record<NonNullable<IconGridProps['cardStyle']>, string> = {
   simple:
-    'group flex h-full flex-col rounded-[28px] border border-brand-blue/10 bg-white p-6 focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
+    'group flex h-full flex-col rounded-panel border border-brand-blue/10 bg-white p-6 focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
   styled:
-    'group flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-[0_16px_36px_rgba(6,59,103,0.12)] transition-all duration-200 hover:translate-y-1 hover:shadow-[0_8px_18px_rgba(6,59,103,0.1)] focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
+    'group flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-panel-strong transition-all duration-200 hover:translate-y-1 hover:shadow-panel-hover focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
 }
 
 const linkedCardClass = INTERACTIVE_CARD_CLASS[cardStyle]
@@ -46,7 +46,7 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
 ---
 
 <section class="py-16">
-  <div class="max-w-7xl mx-auto px-4">
+  <div class="max-w-content mx-auto px-4">
     {title && (
       <h2 class="text-3xl md:text-4xl font-bold text-brand-blue text-center mb-12">{title}</h2>
     )}

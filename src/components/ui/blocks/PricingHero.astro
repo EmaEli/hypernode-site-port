@@ -1,0 +1,20 @@
+---
+export interface PricingHeroProps {
+  title: string
+  subtitle: string
+  note: string
+}
+
+const { title, subtitle, note } = Astro.props
+---
+
+<section class="bg-gradient-to-b from-white via-sky-50 to-white">
+  <div class="mx-auto max-w-content px-4 pb-12 pt-16 md:pb-16 md:pt-24">
+    <div class="max-w-3xl">
+      <p class="text-sm font-bold uppercase tracking-[0.3em] text-brand-sky">Plans &amp; Prices</p>
+      <h1 class="mt-5">{title}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-brand-blue">{subtitle}</p>
+      <p class="mt-4 text-base italic text-brand-blue-dark/75">{note}</p>
+    </div>
+  </div>
+</section>

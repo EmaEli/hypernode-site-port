@@ -298,7 +298,7 @@ const getPrice = (plan: Plan, currency: Currency) => {
 
 ### Atomic UI — component decomposition
 
-1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon. No business logic.
+1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon, segmented controls, and presentational shells. No business logic. Primitives may be `.astro` or `.tsx` depending on whether interactivity is required.
 2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, TestimonialsGrid, TestimonialsSection. Composed from primitives.
 3. **Islands** (`islands/`) — PricingTable, FAQAccordion, ChangelogFilters. Composed from blocks, adds interactivity.
 4. **Pages** (`components/pages/`) — assemble islands and blocks into full page layouts.
@@ -306,10 +306,15 @@ const getPrice = (plan: Plan, currency: Currency) => {
 
 ### Styling — Tailwind
 
-- Use Tailwind utility classes directly in markup. Do not create custom CSS classes that wrap Tailwind utilities.
+- Use Tailwind utility classes directly in markup by default.
+- Prefer Tailwind theme tokens for recurring values such as colours, radius, shadows, spacing, and typography.
+- Do not create global semantic CSS classes that only wrap Tailwind utilities unless there is a clear design-system need shared across multiple components.
 - No inline styles (`style="..."`).
 - Do not hardcode brand colours — use Tailwind theme tokens (`text-brand-orange`, `bg-brand-blue`).
-- For repeated class combinations within the same component, extract to a variable inside the component file.
+- For repeated or long class combinations within the same component, extract to a variable inside the component file.
+- If the same visual shell appears across multiple components, prefer a small reusable UI primitive or wrapper component over duplicating long utility strings.
+- When a class list becomes hard to scan, prefer named local constants such as `cardClass`, `panelClass`, `headerClass`, or `buttonClass`.
+- Keep wrappers presentational. If a reusable wrapper starts accumulating domain-specific props, split it into a domain component instead.
 
 ```typescript
 // correct
@@ -319,6 +324,13 @@ return <button className={buttonClass}>Click</button>
 // wrong
 // .btn-primary { @apply bg-brand-orange text-white px-4 py-2 rounded; }
 ```
+
+Use these readability rules when deciding whether to inline classes, extract constants, or create a wrapper:
+
+- A short one-off class list can stay inline.
+- If a class list is long or repeated within the same file, extract a local constant.
+- If multiple components share the same visual shell, extract a primitive wrapper component.
+- If only the numeric values recur, prefer theme tokens over new wrappers.
 
 ### Responsive design
 
