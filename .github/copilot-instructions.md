@@ -156,6 +156,21 @@ strapi/
 .gitignore
 ```
 
+### Types — one file per domain
+
+Group interfaces and types by domain context, not by component or usage.
+Each file in `src/types/` represents a single bounded context.
+
+| File | Contains |
+|---|---|
+| `src/types/seo.ts` | SEOProps, HreflangEntry |
+| `src/types/changelog.ts` | ChangelogEntry, StrapiChangelogEntry, StrapiListResponse |
+| `src/types/pricing.ts` | Plan, Currency, Environment, BillingPeriod |
+
+Never put interfaces inside component files unless they are props interfaces
+used exclusively by that component and nowhere else.
+
+
 ### Naming
 
 - Component files: PascalCase (`FeatureBlock.astro`, `PricingTable.tsx`)

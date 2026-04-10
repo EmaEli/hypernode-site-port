@@ -57,7 +57,10 @@ Render the shared document shell with the central SEO contract: title, meta desc
 
 SEO values can stay provisional at this stage where exact descriptions are still unverified. The priority here is the layout contract, not final page content.
 
-**Step 2.3** — Root redirect
+**Step 2.3** — Page skeletons (correct URLs only)
+- Create `src/pages/en/index.astro` as a minimal placeholder page using `BaseLayout`
+- Create `src/pages/en/plans-and-prices/index.astro` as a minimal placeholder page
+- Create `src/pages/changelog/index.astro` as a minimal placeholder page
 - Convert `src/pages/index.astro` into a redirect to `/en/`
 
 **Step 2.4** — Minimal support files
@@ -281,6 +284,9 @@ Already confirmed decisions:
 ### Milestone 2 — Foundations
 - Create `src/types/seo.ts`
 - Create `src/layouts/BaseLayout.astro`
+- Create `src/pages/en/index.astro`
+- Create `src/pages/en/plans-and-prices/index.astro`
+- Create `src/pages/changelog/index.astro`
 - Convert `src/pages/index.astro` into a redirect to `/en/`
 - Create `public/robots.txt`
 - Create `.env.example`
@@ -298,7 +304,6 @@ Already confirmed decisions:
 - Create `src/components/shared/IconGrid.astro`
 
 ### Milestone 4 — Homepage
-- Create `src/pages/en/index.astro`
 - Add local placeholder assets for the required homepage images
 - Add homepage-specific models, constants, or repeated class patterns only where they are needed for `/en/`
 - Assemble the hero and main static sections in `/en/`
@@ -313,7 +318,7 @@ Already confirmed decisions:
 - Implement `PricingTable.tsx`
 - Implement the `features` modal
 - Implement `FAQAccordion.tsx`
-- Create `src/pages/en/plans-and-prices/index.astro`
+- Assemble `/en/plans-and-prices/`
 - Verify all toggles: env, currency, billing, tabs, subtabs
 
 ### Milestone 6 — Changelog
@@ -321,7 +326,7 @@ Already confirmed decisions:
 - Populate `strapi/seed.json` with at least 5 real entries
 - Create `src/lib/strapi.ts`
 - Implement `ChangelogFilters.tsx`
-- Create `src/pages/changelog/index.astro`
+- Assemble `/changelog/`
 - Verify build-time fallback from `strapi.ts`
 
 ### Milestone 7 — Finalization
