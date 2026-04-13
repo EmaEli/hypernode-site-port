@@ -62,6 +62,13 @@
     color: var(--color-brand-blue-dark);
   }
 
+  h4 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    color: var(--color-brand-blue-dark);
+  }
+
   h5 {
     font-size: 18px;
     font-weight: 700;

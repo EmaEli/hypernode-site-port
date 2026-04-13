@@ -1,5 +1,7 @@
 # Plan: Rebuild the Three Hypernode Pages
 
+> Historical implementation plan: this document reflects the original execution phases and no longer represents the current repository state.
+
 ## Goal
 Port hypernode.com from WordPress to Astro for three pages: Homepage (`/en/`), Plans & Prices (`/en/plans-and-prices/`), and Changelog (`/changelog/`).
 

@@ -18,6 +18,9 @@ export const CELL_CLASS = 'px-4 py-2 align-top text-sm leading-5 text-brand-blue
 export const CENTERED_CELL_CLASS =
   'px-2 py-2 align-middle text-center text-sm leading-5 text-brand-blue'
 
+export const FEATURES_BUTTON_CLASS =
+  'w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+
 export const MOBILE_SPEC_TERM_CLASS = 'text-ui-metric font-bold text-brand-blue-dark/55'
 
 export const MOBILE_SPEC_VALUE_CLASS = 'text-base font-bold text-brand-blue-dark'

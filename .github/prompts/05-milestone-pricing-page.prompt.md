@@ -60,7 +60,7 @@ Sticky left sidebar with:
 
 The sidebar links must smoothly scroll to the corresponding pricing sections.
 
-7. `src/components/pages/PricingPage.astro`
+7. `src/components/pages-view/pricing/PricingPage.astro`
 Assemble the full page with:
 - hero
 - sidebar + pricing table layout

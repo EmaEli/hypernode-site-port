@@ -1,5 +1,9 @@
 ---
+import ChangelogPage from '../../components/pages-view/changelog/ChangelogPage.astro'
+import { getChangelogEntries } from '../../lib/strapi'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const changelogEntries = await getChangelogEntries()
 ---
 
 <BaseLayout
@@ -9,12 +13,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     canonical: 'https://www.hypernode.com/changelog/',
     hreflang: [
       { lang: 'en', href: 'https://www.hypernode.com/changelog/' },
-      { lang: 'nl', href: 'https://www.hypernode.com/changelog/' },
+      { lang: 'nl', href: 'https://www.hypernode.com/nl/changelog/' },
     ],
   }}
 >
-  <main class="max-w-content mx-auto px-4 py-24 text-center">
-    <h1>Changelog</h1>
-    <p class="mt-4">Temporary changelog placeholder while Milestone 6 is in progress.</p>
-  </main>
+  <ChangelogPage entries={changelogEntries} />
 </BaseLayout>

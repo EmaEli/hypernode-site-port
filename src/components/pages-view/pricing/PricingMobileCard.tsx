@@ -1,5 +1,6 @@
 import {
   BuyIcon,
+  FEATURES_BUTTON_CLASS,
   MOBILE_BUY_LINK_CLASS,
   MOBILE_SPEC_TERM_CLASS,
   MOBILE_SPEC_VALUE_CLASS,
@@ -18,12 +19,8 @@ interface PlanNameBlockProps {
 const PlanNameBlock = ({ plan, onOpenFeatures }: PlanNameBlockProps) => {
   return (
     <div className="min-w-0">
-      <h4 className="text-xl font-bold leading-7 text-brand-blue-dark">{plan.name}</h4>
-      <button
-        type="button"
-        className="mt-0.5 w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange"
-        onClick={() => onOpenFeatures(plan)}
-      >
+      <h4>{plan.name}</h4>
+      <button type="button" className={`mt-0.5 ${FEATURES_BUTTON_CLASS}`} onClick={() => onOpenFeatures(plan)}>
         features
       </button>
       {plan.label && (
