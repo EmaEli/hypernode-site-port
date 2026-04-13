@@ -7,9 +7,9 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 | Layer | Technology | Reason |
 |---|---|---|
 | Framework | [Astro](https://astro.build/) | SSG with fine-grained hydration control |
-| UI islands | React 18 | Interactive components only where needed |
+| UI islands | React 19 | Interactive components only where needed |
 | Styling | Tailwind CSS v4 | Utility-first, consistent design tokens |
-| Static content | MDX | Co-located content for static pages |
+| Static content | TypeScript content modules | Co-located, typed page content for static sections |
 | Changelog CMS | Strapi v5 | Headless CMS for editor-managed entries |
 | Language | TypeScript | Strict mode throughout |
 | Linting | ESLint | Code quality and consistency |
@@ -18,7 +18,7 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 
 | Route | Source | Content strategy |
 |---|---|---|
-| `/en/` | `src/pages/en/index.astro` | MDX sections, near-fully static |
+| `/en/` | `src/pages/en/index.astro` | Typed content modules, near-fully static |
 | `/en/plans-and-prices/` | `src/pages/en/plans-and-prices/index.astro` | Static shell, React island for pricing table |
 | `/changelog/` | `src/pages/changelog/index.astro` | Fetched from Strapi at build time |
 
@@ -31,25 +31,28 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 ├── .github/
 │   └── copilot-instructions.md  # AI assistant context and conventions
 ├── public/
-│   ├── robots.txt
-│   └── favicon.svg
+│   └── robots.txt
 ├── src/
 │   ├── components/
-│   │   ├── layout/              # Navbar, Footer, TopBar
+│   │   ├── pages-view/          # Feature-first page assembly components
 │   │   ├── ui/
 │   │   │   ├── primitives/      # Button, Badge, Tag, Icon
 │   │   │   └── blocks/          # FeatureBlock, IconGrid, SectionHeader, etc.
-│   │   ├── pages/               # Full-page assembly components
-│   │   └── islands/             # React islands (PricingTable, FAQAccordion, etc.)
 │   ├── content/
-│   │   └── pages/               # MDX files for static page sections
+│   │   └── pages/               # TypeScript content files for static sections
 │   ├── layouts/
-│   │   └── BaseLayout.astro     # <head>, SEO, shared structure
+│   │   ├── BaseLayout.astro     # <head>, SEO, shared structure
+│   │   ├── Navbar.astro
+│   │   ├── TopBar.astro
+│   │   └── footer/              # Footer split into focused components
 │   ├── lib/
 │   │   ├── strapi.ts            # Strapi client + typed fetchers
 │   │   └── pricing.ts           # Pricing calculation helpers
 │   ├── types/
-│   │   └── changelog.ts         # Shared TypeScript interfaces
+│   │   ├── changelog.ts
+│   │   ├── homepage.ts
+│   │   ├── pricing.ts
+│   │   └── seo.ts
 │   └── pages/
 │       ├── en/
 │       │   ├── index.astro
@@ -61,14 +64,14 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 │   └── seed.json                # Fixture data for local development
 ├── eslint.config.js
 ├── DECISIONS.md
-└── astro.config.ts
+└── astro.config.mjs
 ```
 
 ## Getting started
 
 ### Prerequisites
 
-- Node.js ≥ 20
+- Node.js >= 22.12.0
 - npm ≥ 10
 
 ### Install dependencies
@@ -77,19 +80,17 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 npm install
 ```
 
-### Start Strapi (changelog CMS)
+### Optional: run Strapi (changelog CMS)
 
 ```bash
 cd strapi
-npx create-strapi-app@latest . --quickstart   # first time only
+npx create-strapi-app@latest . --quickstart
 npm run develop
 ```
 
-Strapi runs at `http://localhost:1337`. On first run, create an admin account and import the seed data:
+Strapi runs at `http://localhost:1337`. If Strapi is unavailable, the app automatically falls back to `strapi/seed.json` during build.
 
-```bash
-npm run seed        # from project root
-```
+No local seed script is required from the root project.
 
 ### Start Astro dev server
 

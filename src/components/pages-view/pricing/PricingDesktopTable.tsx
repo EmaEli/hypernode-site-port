@@ -5,6 +5,7 @@ import { getPrice } from '../../../lib/pricing'
 import {
   BUY_LINK_CLASS,
   BuyIcon,
+  FEATURES_BUTTON_CLASS,
   CELL_CLASS,
   CENTERED_CELL_CLASS,
   HEADER_CELL_CLASS,
@@ -65,7 +66,7 @@ const PricingDesktopTable = ({
                   </div>
                   <button
                     type="button"
-                    className="w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange"
+                    className={FEATURES_BUTTON_CLASS}
                     onClick={() => onOpenFeatures(plan)}
                   >
                     features

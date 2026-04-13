@@ -14,7 +14,7 @@ This document records the key technical decisions made for the Hypernode.com sit
 
 - Next.js (SSR/SSG): Full React, mature ecosystem, but ships a large JS runtime for a site that is 90% static.
 - Remix: Great DX, but optimised for full-stack apps with data mutations — overkill here.
-- Astro with React islands: Ships zero JS by default, hydrates only what needs it, native MDX support, purpose-built for content-heavy sites.
+- Astro with React islands: Ships zero JS by default, hydrates only what needs it, and is purpose-built for content-heavy sites.
 
 **Decision:** Astro. The island architecture directly maps to the site's actual needs. Static sections get no JS overhead. Interactive components opt in to hydration explicitly.
 
@@ -36,13 +36,13 @@ Using conservative hydration instead of `client:load` everywhere reduces Time to
 
 ---
 
-## 3. Content strategy — MDX for static pages, Strapi for changelog only
+## 3. Content strategy — typed static content files for pages, Strapi for changelog only
 
-**Decision:** Homepage and Plans & Prices content lives in MDX files. The changelog is managed through Strapi.
+**Decision:** Homepage and Plans & Prices content lives in typed TypeScript content modules under `src/content/pages/`. The changelog is managed through Strapi.
 
 **Context:** The team asked for a headless CMS. However, not all content benefits equally from a CMS.
 
-- Homepage and pricing copy changes rarely and is owned by developers. Co-locating it in MDX keeps it in version control, reviewable in PRs, and deployable without a CMS dependency.
+- Homepage and pricing copy changes rarely and is owned by developers. Keeping content in typed local modules keeps it in version control, reviewable in PRs, and deployable without a CMS dependency.
 - The changelog is updated frequently by the team and benefits from a structured authoring experience, filtering by category, and a defined content model.
 
 Strapi is therefore scoped to changelog entries only. This reduces CMS complexity and avoids making the static pages dependent on an external service at build time.
@@ -102,7 +102,7 @@ This approach reduces duplication and makes adding new sections (e.g. a future p
 **Context:** The original changelog lives on a separate subdomain. Replicating subdomain routing requires infrastructure configuration beyond the scope of this take-home assignment.
 
 **Production path:** In a real deployment, this would be handled by one of:
-- A separate Astro deployment with `site: "https://changelog.hypernode.com"` in `astro.config.ts`.
+- A separate Astro deployment with `site: "https://changelog.hypernode.com"` in `astro.config.mjs`.
 - A reverse proxy rule routing `changelog.hypernode.com` to the `/changelog/` path of the main deployment.
 
 The component architecture and Strapi integration are identical either way — only the routing configuration changes.
@@ -115,7 +115,7 @@ The component architecture and Strapi integration are identical either way — o
 
 **Context:** The assessment specifies that a seed script or JSON fixture is sufficient. Strapi v5 is the current stable release and uses a cleaner API format than v4.
 
-A `seed.json` fixture provides realistic changelog entries covering multiple categories (API, Autoscaling, Cluster, Control Panel) and date ranges. The Strapi client in `src/lib/strapi.ts` is typed against the `ChangelogEntry` interface and fetches at build time via `Astro.glob` fallback when the Strapi instance is not running — ensuring the build never fails in CI without a live CMS.
+A `seed.json` fixture provides realistic changelog entries covering multiple categories (API, Autoscaling, Cluster, Control Panel) and date ranges. The Strapi client in `src/lib/strapi.ts` is typed against the `ChangelogEntry` interface and falls back to a local JSON import of `strapi/seed.json` when the Strapi instance is unavailable, ensuring the build never fails in CI without a live CMS.
 
 ---
 

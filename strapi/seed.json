@@ -1,0 +1,96 @@
+[
+  {
+    "id": 68930,
+    "title": "Release 10770: MySQL Config Profile 2026.1",
+    "slug": "release-10770-mysql-config-profile-2026-1",
+    "date": "2026-03-18",
+    "category": "Platform",
+    "summary": "Introduced the 2026.1 MySQL configuration profile with safer defaults for heavier Magento catalogs and improved resource balancing during peak traffic.",
+    "href": "https://changelog.hypernode.com/?p=68930",
+    "version": "10770"
+  },
+  {
+    "id": 68926,
+    "title": "Hypernode Deploy v4.8.0",
+    "slug": "hypernode-deploy-v4-8-0",
+    "date": "2026-03-12",
+    "category": "HypernodeDeploy",
+    "summary": "Hypernode Deploy 4.8.0 speeds up static content rollout, improves deploy visibility, and reduces rollback friction for larger storefronts.",
+    "href": "https://changelog.hypernode.com/?p=68926",
+    "version": "4.8.0"
+  },
+  {
+    "id": 68921,
+    "title": "Release 10755: Varnish and HAProxy utilities",
+    "slug": "release-10755-varnish-and-haproxy-utilities",
+    "date": "2026-02-28",
+    "category": "Platform",
+    "summary": "Added new Varnish and HAProxy utility commands to simplify cache inspection and traffic debugging directly from the platform toolchain.",
+    "href": "https://changelog.hypernode.com/?p=68921",
+    "version": "10755"
+  },
+  {
+    "id": 68893,
+    "title": "Release 10647: Two-factor Authentication",
+    "slug": "release-10647-two-factor-authentication",
+    "date": "2025-12-02",
+    "category": "ControlPanel",
+    "summary": "Enabled stronger two-factor authentication flows in the control panel to improve account security and reduce administrative access risk.",
+    "href": "https://changelog.hypernode.com/?p=68893",
+    "version": "10647"
+  },
+  {
+    "id": 68412,
+    "title": "MageReport integration refresh",
+    "slug": "magereport-integration-refresh",
+    "date": "2024-10-09",
+    "category": "MageReport",
+    "summary": "Updated the MageReport integration to surface clearer scan statuses and highlight remediation priorities for Magento stores.",
+    "href": "https://changelog.hypernode.com/?p=68412"
+  },
+  {
+    "id": 67742,
+    "title": "Cluster failover maintenance window improvements",
+    "slug": "cluster-failover-maintenance-window-improvements",
+    "date": "2023-06-21",
+    "category": "Cluster",
+    "summary": "Refined cluster failover orchestration to shorten maintenance windows and provide more predictable node handoff behavior during upgrades.",
+    "href": "https://changelog.hypernode.com/?p=67742"
+  },
+  {
+    "id": 66218,
+    "title": "Autoscaling thresholds tuned for flash sale traffic",
+    "slug": "autoscaling-thresholds-tuned-for-flash-sale-traffic",
+    "date": "2021-11-15",
+    "category": "Autoscaling",
+    "summary": "Adjusted autoscaling thresholds to react faster to short-lived traffic spikes common during campaigns, launches, and flash sales.",
+    "href": "https://changelog.hypernode.com/?p=66218"
+  },
+  {
+    "id": 65103,
+    "title": "API tokens gain scoped deployment permissions",
+    "slug": "api-tokens-gain-scoped-deployment-permissions",
+    "date": "2019-08-07",
+    "category": "API",
+    "summary": "API tokens can now be restricted to deployment-related actions, making automation workflows safer for agencies and larger teams.",
+    "href": "https://changelog.hypernode.com/?p=65103"
+  },
+  {
+    "id": 64088,
+    "title": "Platform monitoring pipeline refresh",
+    "slug": "platform-monitoring-pipeline-refresh",
+    "date": "2016-04-14",
+    "category": "Platform",
+    "summary": "Refreshed the internal monitoring pipeline to improve alert fidelity and reduce noisy notifications during recurring platform events.",
+    "href": "https://changelog.hypernode.com/?p=64088"
+  },
+  {
+    "id": 63021,
+    "title": "First public changelog import",
+    "slug": "first-public-changelog-import",
+    "date": "2010-09-30",
+    "category": "Platform",
+    "summary": "Published the first consolidated changelog import for platform updates, creating a permanent timeline for releases and operational changes.",
+    "href": "https://changelog.hypernode.com/?p=63021"
+  }
+]

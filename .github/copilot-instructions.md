@@ -15,11 +15,11 @@ See `DECISIONS.md` for full architectural rationale.
 ## Tech stack
 
 - **Astro** — framework, SSG, file-based routing
-- **React 18** — used only for interactive islands
+- **React 19** — used only for interactive islands
 - **Tailwind CSS v4** — styling, no custom CSS unless unavoidable
 - **TypeScript** — strict mode, no `any`
 - **Strapi v5** — headless CMS, changelog entries only
-- **MDX** — static page content (homepage, pricing)
+- **TypeScript content modules** — static page content (homepage, pricing)
 - **ESLint** — linting and formatting consistency
 
 ---
@@ -106,7 +106,7 @@ Example for the homepage:
 ### robots.txt and sitemap
 
 - `public/robots.txt` must be present and must not block any page that was previously crawlable.
-- `@astrojs/sitemap` generates `sitemap.xml` automatically at build time. The `site` option in `astro.config.ts` must be set to `https://www.hypernode.com` for the sitemap URLs to be correct.
+- `@astrojs/sitemap` generates `sitemap.xml` automatically at build time. The `site` option in `astro.config.mjs` must be set to `https://www.hypernode.com` for the sitemap URLs to be correct.
 
 ### "Free hosting consult" CTA and homepage form
 
@@ -126,20 +126,26 @@ src/
   assets/
     images/       # All images downloaded from the original site (SVG, WebP)
   components/
-    layout/       # Navbar, Footer, TopBar
+    pages-view/   # Feature-first page folders and page assembly components
+      changelog/  # Changelog-specific components
+      homepage/   # Homepage-specific components
+      pricing/    # Pricing-page-specific components, Astro and React together
     ui/
       primitives/ # Button, Badge, Icon, Tag
       blocks/     # FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip,
                   # FormSection, HeroImage, IconGridSection,
                   # TestimonialsGrid, TestimonialsSection
-    islands/      # Shared interactive components reused across features
-    pages/        # Feature-first page folders and page assembly components
-      homepage/   # Homepage-specific components
-      pricing/    # Pricing-page-specific components, Astro and React together
   content/
     pages/        # TypeScript data files for static page sections
   layouts/
     BaseLayout.astro
+    Navbar.astro
+    TopBar.astro
+    footer/
+      Footer.astro
+      FooterLegal.astro
+      FooterMain.astro
+      FooterSecondary.astro
   lib/
     strapi.ts     # typed Strapi client
     pricing.ts    # pricing calculation helpers
@@ -302,15 +308,16 @@ const getPrice = (plan: Plan, currency: Currency) => {
 
 1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon, segmented controls, and presentational shells. No business logic. Primitives may be `.astro` or `.tsx` depending on whether interactivity is required.
 2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, TestimonialsGrid, TestimonialsSection. Composed from primitives.
-3. **Islands** (`islands/`) — shared interactive components reused across features, such as FAQAccordion or generic carousels.
-4. **Pages** (`components/pages/`) — feature-first folders that assemble page-specific Astro and React components into full page layouts.
-5. **Layout** (`layout/`) — Navbar, Footer, TopBar. Site chrome, used once in BaseLayout.
+3. **Islands (feature-local first)** — interactive components live inside `components/pages-view/*` when page-specific; promote to `components/islands/` only when genuinely shared across multiple pages/domains.
+4. **Pages** (`components/pages-view/`) — feature-first folders that assemble page-specific Astro and React components into full page layouts.
+5. **Layout** (`layouts/`) — BaseLayout, Navbar, TopBar, Footer modules. Site chrome and document shell.
 
 ### Feature-first structure
 
-- Prefer grouping page-specific components by feature folder under `src/components/pages/`.
+- Prefer grouping page-specific components by feature folder under `src/components/pages-view/`.
 - If a component exists only to serve one page or one feature area, keep it in that page folder even when it is a `.tsx` island.
 - Use `src/components/islands/` only for interactive components that are genuinely shared across multiple pages or domains.
+- Keep page-specific interactive components in `src/components/pages-view/*`.
 - Use `src/components/ui/blocks/` only for reusable page-agnostic building blocks.
 - Do not split by renderer first. `.astro` and `.tsx` may live next to each other inside a feature folder when they belong to the same page flow.
 
@@ -510,7 +517,7 @@ export type ChangelogCategory =
 - Do not use plain `<img>` tags — always use Astro's `<Image />` component.
 - Do not use `any` in TypeScript.
 - Do not use `function` declarations or class components in React.
-- Do not add `client:*` directives outside `src/components/islands/`.
+- Do not spread `client:*` directives indiscriminately; keep hydration at page assembly boundaries and use the most conservative directive that still delivers the required UX.
 - Do not fetch data client-side — fetch at build time in `.astro` files.
 - Do not use inline styles.
 - Do not create custom CSS classes that wrap Tailwind utilities.

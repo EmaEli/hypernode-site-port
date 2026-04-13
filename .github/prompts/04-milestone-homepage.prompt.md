@@ -42,7 +42,7 @@ The homepage implementation should use the local images for:
 
 **Astro page assembly**
 
-4. `src/components/pages/Homepage.astro`
+4. `src/components/pages-view/homepage/Homepage.astro`
 Assemble the complete homepage with the correct section order and map content data to local Astro blocks.
 
 The homepage should include these sections in order:
@@ -96,7 +96,7 @@ Requirements:
 
 **Lead form**
 
-8. `src/components/pages/HomepageLeadForm.astro`
+8. `src/components/pages-view/homepage/HomepageLeadForm.astro`
 Render the homepage contact form as static Astro markup.
 
 Requirements:
