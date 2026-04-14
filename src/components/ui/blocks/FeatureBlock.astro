@@ -40,11 +40,11 @@ const rowClass = imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row
 const bodyItems = Array.isArray(body) ? body : body ? [body] : []
 ---
 
-<section class={`py-16 md:py-24 ${sectionClass}`}>
-  <div class={`max-w-content mx-auto px-4 flex flex-col ${rowClass} items-center gap-12`}>
+<section class={`section-space ${sectionClass}`}>
+  <div class={`layout-container flex flex-col ${rowClass} items-center gap-12`}>
 
     <div class="flex-1">
-      <h2 class={`text-[43px] leading-[48px] font-bold mb-4 ${titleClass}`}>{title}</h2>
+      <h2 class={`mb-4 ${titleClass}`}>{title}</h2>
 
       {tagline && (
         <p class={`${TAGLINE_CLASS} mb-4`}>{tagline}</p>

@@ -48,10 +48,10 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
 <section class="py-16">
   <div class="max-w-content mx-auto px-4">
     {title && (
-      <h2 class="text-3xl md:text-4xl font-bold text-brand-blue text-center mb-12">{title}</h2>
+      <h2 class="text-brand-blue text-center mb-12">{title}</h2>
     )}
 
-    <ul class={`grid ${gridClass} gap-8 list-none p-0`}>
+    <ul class={`grid ${gridClass} gap-8 list-reset`}>
       {items.map(item => (
         <li class="h-full">
           {
@@ -68,7 +68,7 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
                   </div>
                 ) : null}
 
-                <h3 class="mb-3 text-left text-2xl font-bold text-brand-blue transition-colors group-hover:text-brand-orange">
+                <h3 class="mb-3 text-left text-brand-blue transition-colors group-hover:text-brand-orange">
                   {item.title}
                 </h3>
                 <p class="text-sm text-gray-600">{item.body}</p>
@@ -83,7 +83,7 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
                   </div>
                 ) : null}
 
-                <h3 class="mb-3 text-left text-2xl font-bold text-brand-blue">{item.title}</h3>
+                <h3 class="mb-3 text-left text-brand-blue">{item.title}</h3>
                 <p class="text-sm text-gray-600">{item.body}</p>
               </div>
             )

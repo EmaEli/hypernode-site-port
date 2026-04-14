@@ -1,9 +1,9 @@
 ---
 import type { SEOProps } from '../types/seo'
 import '../styles/global.css'
-import TopBar from './TopBar.astro'
-import Navbar from './Navbar.astro'
-import Footer from './footer/Footer.astro'
+import Footer from '../components/layout/footer/Footer.astro'
+import Navbar from '../components/layout/navbar/Navbar.astro'
+import TopBar from '../components/layout/topbar/TopBar.astro'
 
 interface Props {
   seo: SEOProps
@@ -51,10 +51,14 @@ const { seo } = Astro.props
       <link rel="alternate" hreflang={lang} href={href} />
     ))}
   </head>
+
   <body>
     <TopBar />
+
     <Navbar />
+
     <slot />
+
     <Footer />
   </body>
 </html>

@@ -12,17 +12,17 @@ Create exactly these files, nothing more:
 
 4. `Icon.astro` — thin wrapper for inline SVG icons. Accept `name: string` and optional `size?: number` (default 24). The component renders a placeholder `<span>` for now — actual SVG wiring happens in Milestone 4 when icons are needed. Export an `IconProps` interface.
 
-**Layout components — `src/components/layout/`**
+**Layout components — `src/layouts/`**
 
-5. `TopBar.astro` — slim bar above the navbar. Render a login link (`<a href="https://my.hypernode.com">Login</a>`) and the NL language toggle (`<a href="https://www.hypernode.com/nl/">NL</a>`). No props needed.
+5. `TopBar.astro` — slim bar above the navbar. Render a login link and the NL language toggle (`<a href="https://www.hypernode.com/nl/">NL</a>`). No props needed.
 
 6. `Navbar.astro` — main navigation bar. Static HTML only — no React, no client-side JS. Links: Why Hypernode, Products, Plans & prices (`/en/plans-and-prices/`), Partners, Resources. Right side: NL toggle (same as TopBar) and the "Free hosting consult" CTA rendered as:
    `<a href="https://www.hypernode.com/en/free-hosting-consult/">Free hosting consult</a>`
    Include a hamburger icon placeholder for mobile — static only (no toggle logic). Use `aria-label` on the hamburger button.
 
-7. `Footer.astro` — five link columns: Applications, Services, Support & Resources, Partners, About Hypernode. Each column has a heading and 4–6 placeholder `<a href="#">` links for now. Below the columns: copyright line, social icons as icon-only `<a>` links with `aria-label`, and a "Need help?" contact line. No props needed.
+7. `footer/Footer.astro` — five link columns: Applications, Services, Support & Resources, Partners, About Hypernode. Each column has a heading and 4–6 placeholder `<a href="#">` links for now. Below the columns: copyright line, social icons as icon-only `<a>` links with `aria-label`, and a "Need help?" contact line. No props needed.
 
-**Shared section components — `src/components/shared/`**
+**Shared section components — `src/components/ui/blocks/`**
 
 8. `SectionHeader.astro` — centered eyebrow + h2 + subtitle. Props: `eyebrow?: string`, `title: string`, `subtitle?: string`. Export a `SectionHeaderProps` interface.
 

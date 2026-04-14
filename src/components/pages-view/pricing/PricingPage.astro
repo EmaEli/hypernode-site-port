@@ -1,19 +1,25 @@
 ---
+import { getEntry } from 'astro:content'
 import pricingData from '../../../lib/pricing-data.json'
 import FAQAccordion from './FAQAccordion'
-import {
+import PricingHero from './PricingHero.astro'
+import PricingSidebar from './PricingSidebar.astro'
+import PricingTable from './PricingTable'
+import { PricingDatasetSchema } from '../../../lib/pricingSchema'
+
+const dataset = PricingDatasetSchema.parse(pricingData)
+const pricingEntry = await getEntry('pricing', 'content')
+
+if (!pricingEntry) {
+  throw new Error('Pricing content entry not found: src/content/pricing/content.mdx')
+}
+
+const {
   pricingFaqItems,
   pricingHeroContent,
   pricingSectionContent,
   pricingSidebarContent,
-} from '../../../content/pages/pricing/content'
-import PricingEnvironmentToggle from './PricingEnvironmentToggle'
-import PricingHero from './PricingHero.astro'
-import PricingSidebar from './PricingSidebar.astro'
-import PricingTable from './PricingTable'
-import type { PricingDataset } from '../../../types/pricing'
-
-const dataset = pricingData as PricingDataset
+} = pricingEntry.data
 ---
 
 <main>
@@ -22,12 +28,6 @@ const dataset = pricingData as PricingDataset
     subtitle={pricingHeroContent.subtitle}
     note={pricingHeroContent.note}
   />
-
-  <section class="mx-auto max-w-content px-4 pb-8 lg:hidden">
-    <div class="rounded-panel border border-slate-200 bg-slate-50/80 p-4 shadow-soft backdrop-blur md:p-5">
-      <PricingEnvironmentToggle client:load />
-    </div>
-  </section>
 
   <section class="mx-auto grid max-w-content gap-10 px-4 pb-16 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-12 lg:pb-24">
     <PricingSidebar

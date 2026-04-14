@@ -16,4 +16,6 @@ const VARIANT_CLASSES: Record<NonNullable<BadgeProps['variant']>, string> = {
 const badgeClass = `inline-block text-xs font-medium px-2.5 py-0.5 rounded-full ${VARIANT_CLASSES[variant]}`
 ---
 
-<span class={badgeClass}>{label}</span>
+<span class={badgeClass}>
+  {label}
+</span>

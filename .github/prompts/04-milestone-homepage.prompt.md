@@ -82,17 +82,14 @@ SEO must be:
 
 These should stay static Astro components unless interactivity is actually needed.
 
-**Homepage React island**
+**Homepage interactivity**
 
-7. `src/components/islands/TestimonialsCarousel.tsx`
-Create the homepage testimonial carousel as a React island.
+7. Keep testimonials static unless a concrete UX requirement needs interactivity.
 
 Requirements:
-- Arrow function component only
-- No `any`
-- `import type` for type-only imports
-- receive testimonial data as props from Astro
-- keep it lightweight and client-side only where necessary
+- Prefer Astro-first implementation
+- Introduce a React island only if there is a clear interaction need
+- If an island is required, keep it feature-local under `src/components/pages-view/homepage/`
 
 **Lead form**
 

@@ -33,9 +33,9 @@ const PricingProviderSection = ({
   const plans = provider.plans.filter(plan => plan.environment === environment)
 
   return (
-    <section className="rounded-shell border border-slate-200 bg-white p-4 shadow-soft md:p-6">
+    <section className="rounded-shell border border-slate-200 bg-white pad-card-md shadow-soft">
       <div>
-        <h3 className="text-[22px] font-bold leading-7 text-brand-blue-dark">{provider.title}</h3>
+        <h3 className="text-brand-blue-dark">{provider.title}</h3>
         <p className="mt-2 text-sm leading-6 text-brand-blue-dark/70">
           {environment === 'development' ? 'Development pricing' : 'Production pricing'}
         </p>

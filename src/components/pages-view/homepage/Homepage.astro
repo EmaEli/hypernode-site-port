@@ -1,24 +1,5 @@
 ---
-import type { ImageMetadata } from 'astro'
-import agenciesTrustUs from '../../../assets/images/homepage/agencies-trust.svg'
-import cloudHosting from '../../../assets/images/homepage/cloud-hosting.svg'
-import clusterHosting from '../../../assets/images/homepage/cluster-hosting.svg'
-import controlPanel from '../../../assets/images/homepage/control-panel.png'
-import dedicatedHosting from '../../../assets/images/homepage/dedicated-hosting.svg'
-import developersFavourite from '../../../assets/images/homepage/developers-favourite.svg'
-import enterpriseMonitoring from '../../../assets/images/homepage/enterprise-monitoring.svg'
-import fasterThanFast from '../../../assets/images/homepage/faster-than-fast.svg'
-import greenHosting from '../../../assets/images/homepage/green-hosting.svg'
-import hostingSolutions from '../../../assets/images/homepage/hosting-solutions.svg'
-import hypernodeInsights from '../../../assets/images/homepage/hypernode-insights.webp'
-import offeringAllHostingTypes from '../../../assets/images/homepage/offering-all-hosting-types.svg'
-import relyOnMagento from '../../../assets/images/homepage/rely-on-magento.svg'
-import scaleWheneverYouWant from '../../../assets/images/homepage/scale-whenever-you-want.svg'
-import serverUpdates from '../../../assets/images/homepage/server-updates.svg'
-import support from '../../../assets/images/homepage/support.svg'
-import worldwideCoverage from '../../../assets/images/homepage/worldwide-coverage.svg'
-import { homepageFeatureSections, reliabilityItems, platformItems, heroContent, companyLogos, moreFeaturesCta, testimonials, contactSection } from '../../../content/pages/homepage/content'
-import type { HomepageImageKey } from '../../../types/homepage'
+import { getEntry } from 'astro:content'
 import FeatureBlock from '../../ui/blocks/FeatureBlock.astro'
 import CompanyLogoStrip from '../../ui/blocks/CompanyLogoStrip.astro'
 import FormSection from '../../ui/blocks/FormSection.astro'
@@ -26,40 +7,75 @@ import HeroImage from '../../ui/blocks/HeroImage.astro'
 import IconGridSection from '../../ui/blocks/IconGridSection.astro'
 import TestimonialsSection from '../../ui/blocks/TestimonialsSection.astro'
 import HomepageLeadForm from './HomepageLeadForm.astro'
+import {
+  HOMEPAGE_COMPANY_LOGO_BY_KEY,
+  HOMEPAGE_IMAGE_BY_KEY,
+  HOMEPAGE_TESTIMONIAL_ASSETS,
+} from './homepageMediaMaps'
 
-const imageByKey: Record<HomepageImageKey, ImageMetadata> = {
-  agenciesTrustUs,
-  cloudHosting,
-  clusterHosting,
-  controlPanel,
-  dedicatedHosting,
-  developersFavourite,
-  enterpriseMonitoring,
-  fasterThanFast,
-  greenHosting,
-  hostingSolutions,
-  hypernodeInsights,
-  offeringAllHostingTypes,
-  relyOnMagento,
-  scaleWheneverYouWant,
-  serverUpdates,
-  support,
-  worldwideCoverage,
+const homepageEntry = await getEntry('homepage', 'content')
+
+if (!homepageEntry) {
+  throw new Error('Homepage content entry not found: src/content/homepage/content.mdx')
 }
 
-const featureSections = homepageFeatureSections.map(section => ({
+const {
+  heroContent,
+  featureSectionsIntro,
+  featureSectionsHostingTypes,
+  featureSectionsGreen,
+  featureSectionsTrust,
+  reliabilityItems,
+  platformItems,
+  companyLogos: companyLogoItems,
+  testimonials: testimonialItems,
+  contactSection,
+  moreFeaturesCta,
+} = homepageEntry.data
+
+const introSections = featureSectionsIntro.map(section => ({
   ...section,
-  image: imageByKey[section.imageKey],
+  image: HOMEPAGE_IMAGE_BY_KEY[section.imageKey],
+}))
+
+const hostingTypeSections = featureSectionsHostingTypes.map(section => ({
+  ...section,
+  image: HOMEPAGE_IMAGE_BY_KEY[section.imageKey],
+}))
+
+const greenSections = featureSectionsGreen.map(section => ({
+  ...section,
+  image: HOMEPAGE_IMAGE_BY_KEY[section.imageKey],
+}))
+
+const trustSections = featureSectionsTrust.map(section => ({
+  ...section,
+  image: HOMEPAGE_IMAGE_BY_KEY[section.imageKey],
 }))
 
 const reliabilityGridItems = reliabilityItems.map(item => ({
   ...item,
-  image: imageByKey[item.imageKey],
+  image: HOMEPAGE_IMAGE_BY_KEY[item.imageKey],
 }))
 
 const platformGridItems = platformItems.map(item => ({
   ...item,
-  image: imageByKey[item.imageKey],
+  image: HOMEPAGE_IMAGE_BY_KEY[item.imageKey],
+}))
+
+const companyLogos = companyLogoItems.map(item => ({
+  image: HOMEPAGE_COMPANY_LOGO_BY_KEY[item.imageKey],
+  alt: item.alt,
+}))
+
+const testimonials = testimonialItems.map(item => ({
+  quote: item.quote,
+  author: item.author,
+  role: item.role,
+  logo: HOMEPAGE_TESTIMONIAL_ASSETS.logos[item.logoKey],
+  logoAlt: item.logoAlt,
+  photo: HOMEPAGE_TESTIMONIAL_ASSETS.photos[item.photoKey],
+  photoAlt: item.photoAlt,
 }))
 ---
 
@@ -72,7 +88,7 @@ const platformGridItems = platformItems.map(item => ({
     videoSrc="https://www.hypernode.com/wp-content/uploads/2023/09/servers.webm"
   />
 
-  {featureSections.slice(0, 2).map(section => (
+  {introSections.map(section => (
     <FeatureBlock
       image={section.image}
       imageAlt={section.imageAlt}
@@ -95,7 +111,7 @@ const platformGridItems = platformItems.map(item => ({
 
   <CompanyLogoStrip logos={companyLogos} />
 
-  {featureSections.slice(2, 5).map(section => (
+  {hostingTypeSections.map(section => (
     <FeatureBlock
       image={section.image}
       imageAlt={section.imageAlt}
@@ -116,7 +132,7 @@ const platformGridItems = platformItems.map(item => ({
     cta={moreFeaturesCta}
   />
 
-  {featureSections.slice(5, 6).map(section => (
+  {greenSections.map(section => (
     <FeatureBlock
       image={section.image}
       imageAlt={section.imageAlt}
@@ -134,7 +150,7 @@ const platformGridItems = platformItems.map(item => ({
     testimonials={testimonials}
   />
 
-  {featureSections.slice(6).map(section => (
+  {trustSections.map(section => (
     <FeatureBlock
       image={section.image}
       imageAlt={section.imageAlt}

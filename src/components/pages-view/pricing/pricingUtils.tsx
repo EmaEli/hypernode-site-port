@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import { formatPrice } from '../../../lib/pricing'
 
 import type { Currency, PlanLabel } from '../../../types/pricing'
@@ -54,9 +55,7 @@ export const formatPlanPrice = (price: number | null, currency: Currency) => {
 }
 
 export const BuyIcon = ({ className = 'h-7 w-7' }: { className?: string }) => {
-  return (
-    <svg viewBox="0 0 24 24" className={`${className} fill-current`} aria-hidden="true">
-      <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 1.5a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm-1.5 4.2 6 3.8-6 3.8V8.2Z" />
-    </svg>
-  )
+  return <Icon icon="heroicons:play-circle-20-solid"
+className={className}
+aria-hidden="true" />
 }

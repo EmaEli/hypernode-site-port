@@ -23,7 +23,9 @@ const SegmentedToggle = <Option extends string>({
   ariaLabel,
 }: SegmentedToggleProps<Option>) => {
   return (
-    <div className={CONTAINER_CLASS} role="group" aria-label={ariaLabel}>
+    <div className={CONTAINER_CLASS}
+role="group"
+aria-label={ariaLabel}>
       {options.map(option => {
         const isActive = option.value === value
 

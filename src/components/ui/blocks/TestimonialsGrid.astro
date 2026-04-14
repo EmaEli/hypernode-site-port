@@ -7,11 +7,12 @@ export interface Props {
 }
 
 const { testimonials } = Astro.props
+
 ---
 
-<div class="flex flex-wrap justify-center gap-[60px]">
+<ul class="grid-3-responsive list-reset gap-6">
   {testimonials.map(item => (
-    <div class="flex w-[279px] shrink-0 flex-col items-center rounded-[5px] bg-[#052f52] pt-[28px] pr-[18px] pb-[32px] pl-[18px]" style="height: 377px;">
+    <li class="card-testimonial">
       <div class="flex h-12 items-center justify-center">
         <Image
           src={item.logo}
@@ -21,7 +22,7 @@ const { testimonials } = Astro.props
         />
       </div>
 
-      <p class="mt-5 flex-1 text-center font-[Montserrat] text-[13px] font-normal leading-[22px] text-white">
+      <p class="mt-5 flex-1 text-center text-ui-label font-normal leading-relaxed text-white">
         "{item.quote}"
       </p>
 
@@ -33,9 +34,9 @@ const { testimonials } = Astro.props
           height={48}
           class="h-12 w-12 rounded-full object-cover"
         />
-        <p class="font-[Montserrat] text-ui-label font-bold text-white">{item.author}</p>
-        <p class="font-[Montserrat] text-[13px] leading-[22px] text-white">{item.role}</p>
+        <p class="text-ui-label font-bold text-white">{item.author}</p>
+        <p class="text-ui-sm text-white/80">{item.role}</p>
       </div>
-    </div>
+    </li>
   ))}
-</div>
+</ul>

@@ -1,19 +1,16 @@
----
+import type { ReactNode } from 'react'
+
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'default' | 'large'
   href?: string
   type?: 'button' | 'submit' | 'reset'
+  className?: string
+  target?: string
+  rel?: string
+  onClick?: () => void
+  children: ReactNode
 }
-
-type Props = ButtonProps
-
-const {
-  variant = 'primary',
-  size = 'default',
-  href,
-  type = 'button',
-} = Astro.props
 
 const SIZE_MODIFIER: Record<NonNullable<ButtonProps['size']>, string> = {
   default: 'px-6 py-2',
@@ -32,17 +29,44 @@ const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
     'text-brand-blue underline-offset-4 hover:underline focus:outline-brand-blue',
 }
 
-const buttonClass = `${BASE_CLASS} ${SIZE_MODIFIER[size]} ${VARIANT_MODIFIER[variant]}`
----
+const Button = ({
+  variant = 'primary',
+  size = 'default',
+  href,
+  type = 'button',
+  className,
+  target,
+  rel,
+  onClick,
+  children,
+}: ButtonProps) => {
+  const buttonClass = [BASE_CLASS, SIZE_MODIFIER[size], VARIANT_MODIFIER[variant], className]
+    .filter(Boolean)
+    .join(' ')
 
-{
-  href ? (
-    <a href={href} class={buttonClass}>
-      <slot />
-    </a>
-  ) : (
-    <button type={type} class={buttonClass}>
-      <slot />
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={buttonClass}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    )
+  }
+
+  return (
+    <button
+      type={type}
+      className={buttonClass}
+      onClick={onClick}
+    >
+      {children}
     </button>
   )
 }
+
+export default Button

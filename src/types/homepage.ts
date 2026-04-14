@@ -24,6 +24,23 @@ export interface HomepageCallToAction {
   href: string
 }
 
+export interface HomepageHeroContent {
+  title: string
+  subtitle: string
+  primaryCta: HomepageCallToAction
+  secondaryCta: HomepageCallToAction
+}
+
+export interface HomepageContactSection {
+  title: string
+  subtitle: string
+  submitLabel: string
+  newsHref: string
+  privacyPolicyHref: string
+}
+
+export type HomepageMoreFeaturesCta = HomepageCallToAction
+
 export interface CompanyLogo {
   image: ImageMetadata
   alt: string
