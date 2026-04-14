@@ -1,0 +1,27 @@
+---
+import pricingData from '../../../lib/pricing-data.json'
+import { PricingDatasetSchema } from '../../../lib/pricingSchema'
+import PricingTable from './PricingTable'
+
+const dataset = PricingDatasetSchema.parse(pricingData)
+
+interface Props {
+  cloudTitle: string
+  cloudDescription: string
+  cloudHighlight?: string
+  dedicatedTitle: string
+  dedicatedDescription: string
+}
+
+const { cloudTitle, cloudDescription, cloudHighlight, dedicatedTitle, dedicatedDescription } = Astro.props
+---
+
+<PricingTable
+  client:load
+  dataset={dataset}
+  cloudTitle={cloudTitle}
+  cloudDescription={cloudDescription}
+  cloudHighlight={cloudHighlight}
+  dedicatedTitle={dedicatedTitle}
+  dedicatedDescription={dedicatedDescription}
+/>

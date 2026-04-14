@@ -38,6 +38,7 @@ const titleClass = variant === 'dark' ? 'text-white' : 'text-brand-blue'
 const bodyTextClass = variant === 'dark' ? 'text-white/80' : 'text-brand-blue'
 const rowClass = imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
 const bodyItems = Array.isArray(body) ? body : body ? [body] : []
+const hasSlotContent = Astro.slots.has('default')
 ---
 
 <section class={`section-space ${sectionClass}`}>
@@ -50,7 +51,11 @@ const bodyItems = Array.isArray(body) ? body : body ? [body] : []
         <p class={`${TAGLINE_CLASS} mb-4`}>{tagline}</p>
       )}
 
-      {bodyItems.length > 0 && (
+      {hasSlotContent ? (
+        <div class={`mb-6 space-y-4 text-copy ${bodyTextClass}`}>
+          <slot />
+        </div>
+      ) : bodyItems.length > 0 && (
         <div class={`mb-6 space-y-4 text-copy ${bodyTextClass}`}>
           {bodyItems.map(item => (
             <p>{item}</p>

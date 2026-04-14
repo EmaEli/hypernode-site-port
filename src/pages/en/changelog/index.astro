@@ -1,7 +1,8 @@
 ---
-import ChangelogPage from '../../components/pages-view/changelog/ChangelogPage.astro'
-import { getChangelogEntries } from '../../lib/strapi'
-import BaseLayout from '../../layouts/BaseLayout.astro'
+import ChangelogPage from "../../../components/pages-view/changelog/ChangelogPage.astro"
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import { getChangelogEntries } from "../../../lib/strapi"
+
 
 const changelogEntries = await getChangelogEntries()
 ---
