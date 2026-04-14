@@ -1,12 +1,21 @@
 ---
+import { getEntry } from 'astro:content'
 import PricingPage from '../../../components/pages-view/pricing/PricingPage.astro'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+const entry = await getEntry('pricing', 'content')
+
+if (!entry) {
+  throw new Error('Pricing content entry not found: src/content/pricing/content.mdx')
+}
+
+const { seo } = entry.data
 ---
 
 <BaseLayout
   seo={{
-    title: 'Plans & Prices — Managed eCommerce Hosting | Hypernode',
-    description: 'Explore our tailored hosting solutions: dedicated and cloud plans for every need. All prices are excluding VAT.',
+    title: seo.title,
+    description: seo.description,
     canonical: 'https://www.hypernode.com/en/plans-and-prices/',
     ogImage: 'https://www.hypernode.com/wp-content/uploads/2023/09/Hypernode-OG-image.jpg',
     hreflang: [
@@ -16,5 +25,5 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
     ],
   }}
 >
-  <PricingPage />
+  <PricingPage entry={entry} />
 </BaseLayout>

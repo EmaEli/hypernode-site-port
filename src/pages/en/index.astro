@@ -1,12 +1,21 @@
 ---
+import { getEntry } from 'astro:content'
 import Homepage from '../../components/pages-view/homepage/Homepage.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const entry = await getEntry('homepage', 'content')
+
+if (!entry) {
+  throw new Error('Homepage content entry not found: src/content/homepage/content.mdx')
+}
+
+const { seo } = entry.data
 ---
 
 <BaseLayout
   seo={{
-    title: 'Hosting Provider for eCommerce & Online stores | Hypernode',
-    description: '20+ years of experience as Hosting Provider for eCommerce & Online stores with Magento-, Shopware-, and WooCommerce hosting',
+    title: seo.title,
+    description: seo.description,
     canonical: 'https://www.hypernode.com/en/',
     ogImage: 'https://www.hypernode.com/wp-content/uploads/2023/09/Hypernode-OG-image.jpg',
     hreflang: [
@@ -16,5 +25,5 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     ],
   }}
 >
-  <Homepage />
+  <Homepage entry={entry} />
 </BaseLayout>

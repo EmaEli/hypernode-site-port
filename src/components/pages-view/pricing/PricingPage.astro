@@ -1,54 +1,15 @@
 ---
-import { getEntry } from 'astro:content'
-import pricingData from '../../../lib/pricing-data.json'
-import FAQAccordion from './FAQAccordion'
-import PricingHero from './PricingHero.astro'
-import PricingSidebar from './PricingSidebar.astro'
-import PricingTable from './PricingTable'
-import { PricingDatasetSchema } from '../../../lib/pricingSchema'
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
 
-const dataset = PricingDatasetSchema.parse(pricingData)
-const pricingEntry = await getEntry('pricing', 'content')
-
-if (!pricingEntry) {
-  throw new Error('Pricing content entry not found: src/content/pricing/content.mdx')
+interface Props {
+  entry: CollectionEntry<'pricing'>
 }
 
-const {
-  pricingFaqItems,
-  pricingHeroContent,
-  pricingSectionContent,
-  pricingSidebarContent,
-} = pricingEntry.data
+const { entry } = Astro.props
+const { Content } = await render(entry)
 ---
 
 <main>
-  <PricingHero
-    title={pricingHeroContent.title}
-    subtitle={pricingHeroContent.subtitle}
-    note={pricingHeroContent.note}
-  />
-
-  <section class="mx-auto grid max-w-content gap-10 px-4 pb-16 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-12 lg:pb-24">
-    <PricingSidebar
-      cloudLabel={pricingSidebarContent.cloudLabel}
-      dedicatedLabel={pricingSidebarContent.dedicatedLabel}
-      consultationText={pricingSidebarContent.consultationText}
-      consultationCta={pricingSidebarContent.consultationCta}
-    />
-
-    <div>
-      <PricingTable
-        client:load
-        dataset={dataset}
-        cloudTitle={pricingSectionContent.cloud.title}
-        cloudDescription={pricingSectionContent.cloud.description}
-        cloudHighlight={pricingSectionContent.cloud.highlight}
-        dedicatedTitle={pricingSectionContent.dedicated.title}
-        dedicatedDescription={pricingSectionContent.dedicated.description}
-      />
-    </div>
-  </section>
-
-  <FAQAccordion client:visible items={pricingFaqItems} />
+  <Content />
 </main>

@@ -20,7 +20,7 @@ export interface PricingTableProps {
   dataset: PricingDataset
   cloudTitle: string
   cloudDescription: string
-  cloudHighlight: string
+  cloudHighlight?: string
   dedicatedTitle: string
   dedicatedDescription: string
 }

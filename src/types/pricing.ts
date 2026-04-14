@@ -1,15 +1,9 @@
 export type Currency = 'EUR' | 'GBP'
-
 export type Environment = 'production' | 'development'
-
 export type BillingPeriod = 'monthly' | 'daily' | 'yearly'
-
 export type PricingGroup = 'cloud' | 'dedicated'
-
 export type FeatureGroupId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
-
 export type PlanLabel = 'most popular' | 'Near zero downtime scaling'
-
 export type ProviderId = 'combell' | 'aws' | 'standard' | 'enterprise'
 
 export interface PriceByCurrency {
@@ -47,32 +41,4 @@ export interface PricingDataset {
 export interface PricingFaqItem {
   question: string
   answer: string
-}
-
-export interface PricingHeroContent {
-  title: string
-  subtitle: string
-  note: string
-}
-
-export interface PricingSidebarContent {
-  cloudLabel: string
-  dedicatedLabel: string
-  consultationText: string
-  consultationCta: {
-    href: string
-    label: string
-  }
-}
-
-export interface PricingSectionContent {
-  cloud: {
-    title: string
-    description: string
-    highlight: string
-  }
-  dedicated: {
-    title: string
-    description: string
-  }
 }
