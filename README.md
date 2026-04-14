@@ -9,7 +9,7 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 | Framework | [Astro](https://astro.build/) | SSG with fine-grained hydration control |
 | UI islands | React 19 | Interactive components only where needed |
 | Styling | Tailwind CSS v4 | Utility-first, consistent design tokens |
-| Static content | TypeScript content modules | Co-located, typed page content for static sections |
+| Static content | Markdown/MDX content collections | Structured, typed content validated with Zod |
 | Changelog CMS | Strapi v5 | Headless CMS for editor-managed entries |
 | Language | TypeScript | Strict mode throughout |
 | Linting | ESLint | Code quality and consistency |
@@ -18,7 +18,7 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 
 | Route | Source | Content strategy |
 |---|---|---|
-| `/en/` | `src/pages/en/index.astro` | Typed content modules, near-fully static |
+| `/en/` | `src/pages/en/index.astro` | MDX content collection, near-fully static |
 | `/en/plans-and-prices/` | `src/pages/en/plans-and-prices/index.astro` | Static shell, React island for pricing table |
 | `/changelog/` | `src/pages/changelog/index.astro` | Fetched from Strapi at build time |
 
@@ -39,7 +39,9 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 │   │   │   ├── primitives/      # Button, Badge, Tag, Icon
 │   │   │   └── blocks/          # FeatureBlock, IconGrid, SectionHeader, etc.
 │   ├── content/
-│   │   └── pages/               # TypeScript content files for static sections
+│   │   ├── homepage/            # MDX content entry for homepage
+│   │   ├── pricing/             # MDX content entry for pricing
+│   │   └── config.ts            # Content collection schemas (Zod)
 │   ├── layouts/
 │   │   ├── BaseLayout.astro     # <head>, SEO, shared structure
 │   │   ├── Navbar.astro
@@ -116,17 +118,48 @@ npm run lint:fix    # auto-fix where possible
 
 ## Environment variables
 
+Create a `.env.local` file in the project root (copy from `.env.example`):
+
 ```bash
-# .env.local
+# Strapi configuration (optional — build falls back to seed.json if unavailable)
 PUBLIC_STRAPI_URL=http://localhost:1337
 PUBLIC_STRAPI_TOKEN=your-api-token-here
+
+# Lead form API endpoint (optional — form data is logged to console if not configured)
+PUBLIC_LEAD_API_URL=http://localhost:3000/api/leads
+PUBLIC_LEAD_API_TOKEN=your-lead-api-token-here
 ```
+
+See `.env.example` for the full template.
 
 ## SEO
 
 All pages preserve the original URL structure from `hypernode.com`. Each page renders full `<meta>`, Open Graph, Twitter Card, and `hreflang` tags via `BaseLayout.astro`. A sitemap is generated at build time via `@astrojs/sitemap`.
 
 See [`DECISIONS.md`](./DECISIONS.md) for the full SEO strategy.
+
+## Forms and API Routes
+
+### Lead form (`/api/leads`)
+
+The homepage contact form (`src/components/pages-view/homepage/HomepageLeadForm.astro`) submits to `POST /api/leads`.
+
+**Flow:**
+1. Form data is validated server-side (required fields: `firstname`, `lastname`, `email`, privacy consent)
+2. Submission is logged to console (development)
+3. If `PUBLIC_LEAD_API_URL` is configured, the data is forwarded to that endpoint
+4. Response is returned as JSON to the client
+5. UI provides feedback (success message, error toast, or retry)
+
+**For production:** Connect `PUBLIC_LEAD_API_URL` to your lead management backend (HubSpot, Marketo, etc.). The `src/pages/api/leads.ts` route handles the bridge.
+
+## Changelog
+
+The changelog is fetched from Strapi at build time (`src/pages/changelog/index.astro`). Entries are cached in `strapi/seed.json` as a fallback if Strapi is unavailable.
+
+**To update changelog entries:** Add/edit records in Strapi, then rebuild (`npm run build`).
+
+**Offline development:** If Strapi is not running, the build automatically uses `strapi/seed.json`.
 
 ## Development approach
 

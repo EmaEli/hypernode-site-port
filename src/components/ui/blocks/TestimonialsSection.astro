@@ -11,9 +11,10 @@ export interface Props {
 const { title, testimonials } = Astro.props
 ---
 
-<section class="bg-brand-blue-dark py-[90px]">
-  <div class="mx-auto max-w-content px-4">
+<section class="section-space bg-brand-blue-dark">
+  <div class="layout-container">
     <SectionHeader title={title} titleColor="white" />
+
     <div class="mt-12">
       <TestimonialsGrid testimonials={testimonials} />
     </div>

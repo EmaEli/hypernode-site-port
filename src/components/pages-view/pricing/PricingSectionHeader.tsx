@@ -12,7 +12,8 @@ const PricingSectionHeader = ({
   highlight,
 }: PricingSectionHeaderProps) => {
   return (
-    <header id={id} className="scroll-mt-32">
+    <header id={id}
+className="scroll-mt-32">
       <h2>{title}</h2>
       <p className="mt-5 max-w-4xl text-base leading-8 text-brand-blue">{description}</p>
       {highlight && (

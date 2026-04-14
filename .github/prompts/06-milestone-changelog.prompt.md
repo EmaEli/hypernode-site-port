@@ -5,7 +5,7 @@ description: Implement only Milestone 6 changelog page for the Hypernode Astro p
 Follow PLAN.md and execute only MILESTONE 6 — Changelog.
 
 Before implementing the changelog page, check the shared content width token in `src/styles/global.css`.
-If the intended final centralized page width is `1250px` instead of `1250px`, fix it first and keep the width token reusable for shared page layouts.
+Keep the shared width token centralized and reusable for shared page layouts.
 
 Implement the full changelog page for `/changelog/`.
 
@@ -26,7 +26,9 @@ The category union must support:
 - `Autoscaling`
 - `Cluster`
 - `ControlPanel`
-- `HypernodeFloating`
+- `HypernodeDeploy`
+- `MageReport`
+- `Platform`
 - `All`
 
 2. `strapi/seed.json`
@@ -50,7 +52,7 @@ Requirements:
 
 **Changelog page**
 
-4. `src/components/islands/ChangelogFilters.tsx`
+4. `src/components/pages-view/changelog/ChangelogFilters.tsx`
 Create the changelog filtering React island.
 
 Requirements:

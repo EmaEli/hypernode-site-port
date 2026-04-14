@@ -14,10 +14,13 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/mdx": "^5.0.3",
     "@astrojs/react": "^5.0.3",
     "@astrojs/sitemap": "^3.7.2",
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.77",
+    "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -25,7 +28,9 @@
     "astro-icon": "^1.1.5",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.58.1",

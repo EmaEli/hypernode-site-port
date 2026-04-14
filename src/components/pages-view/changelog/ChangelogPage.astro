@@ -10,7 +10,7 @@ const { entries } = Astro.props
 ---
 
 <main>
-  <section class="mx-auto max-w-content px-4 pb-10 pt-16 md:pb-12 md:pt-24">
+  <section class="layout-container pb-10 pt-16 md:pb-12 md:pt-24">
     <p class="text-sm font-bold uppercase tracking-[0.3em] text-brand-sky">Platform updates</p>
     <div class="mt-4 max-w-4xl">
       <h1>Changelog</h1>
@@ -20,7 +20,7 @@ const { entries } = Astro.props
     </div>
   </section>
 
-  <div class="mx-auto max-w-content px-4">
+  <div class="layout-container">
     <ChangelogFilters client:visible entries={entries} />
   </div>
 </main>

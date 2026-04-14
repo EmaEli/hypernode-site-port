@@ -67,36 +67,13 @@ const parseSeedEntries = async (): Promise<ChangelogEntry[]> => {
   return seedPayload.map(toChangelogEntry).sort((leftEntry, rightEntry) => rightEntry.date.localeCompare(leftEntry.date))
 }
 
-const mapStrapiEntry = (entry: StrapiChangelogEntry): ChangelogEntry => {
-  return {
-    id: entry.id,
-    title: entry.title,
-    slug: entry.slug,
-    date: entry.date,
-    category: normalizeCategory(entry.category),
-    summary: entry.summary,
-    href: entry.href && entry.href.length > 0 ? entry.href : `/changelog/#${entry.slug}`,
-    version: entry.version,
-  }
-}
-
 const readStrapiEntries = (payload: unknown): ChangelogEntry[] => {
   if (!isRecord(payload) || !Array.isArray(payload.data)) {
     throw new Error('Invalid Strapi changelog response')
   }
 
-  const rawEntries = payload.data
-
-  return rawEntries
-    .map(rawEntry => {
-      if (!isRecord(rawEntry)) {
-        throw new Error('Invalid Strapi changelog entry')
-      }
-
-      const entry = rawEntry as unknown as StrapiChangelogEntry
-
-      return mapStrapiEntry(entry)
-    })
+  return payload.data
+    .map(rawEntry => toChangelogEntry(rawEntry))
     .sort((leftEntry, rightEntry) => rightEntry.date.localeCompare(leftEntry.date))
 }
 

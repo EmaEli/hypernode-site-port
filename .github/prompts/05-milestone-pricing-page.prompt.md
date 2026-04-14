@@ -47,10 +47,10 @@ The hero content must be:
 
 **Astro blocks and page assembly**
 
-5. `src/components/ui/blocks/PricingHero.astro`
+5. `src/components/pages-view/pricing/PricingHero.astro`
 Static hero block for the pricing page.
 
-6. `src/components/ui/blocks/PricingSidebar.astro`
+6. `src/components/pages-view/pricing/PricingSidebar.astro`
 Sticky left sidebar with:
 - a `Production / Development` environment switch
 - two stacked navigation cards:
@@ -76,7 +76,7 @@ SEO must be:
 
 **React islands**
 
-9. `src/components/islands/PricingTable.tsx`
+9. `src/components/pages-view/pricing/PricingTable.tsx`
 Create the interactive pricing table as a React island using `client:load`.
 
 Requirements:
@@ -119,7 +119,7 @@ Feature modal requirements:
 - reduced font size
 - tighter spacing in the feature list
 
-10. `src/components/islands/FAQAccordion.tsx`
+10. `src/components/pages-view/pricing/FAQAccordion.tsx`
 Create the FAQ section as a React island using `client:visible`.
 
 Requirements:

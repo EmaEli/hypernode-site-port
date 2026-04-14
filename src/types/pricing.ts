@@ -48,3 +48,31 @@ export interface PricingFaqItem {
   question: string
   answer: string
 }
+
+export interface PricingHeroContent {
+  title: string
+  subtitle: string
+  note: string
+}
+
+export interface PricingSidebarContent {
+  cloudLabel: string
+  dedicatedLabel: string
+  consultationText: string
+  consultationCta: {
+    href: string
+    label: string
+  }
+}
+
+export interface PricingSectionContent {
+  cloud: {
+    title: string
+    description: string
+    highlight: string
+  }
+  dedicated: {
+    title: string
+    description: string
+  }
+}

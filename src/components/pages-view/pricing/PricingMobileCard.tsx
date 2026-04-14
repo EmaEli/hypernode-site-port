@@ -20,7 +20,9 @@ const PlanNameBlock = ({ plan, onOpenFeatures }: PlanNameBlockProps) => {
   return (
     <div className="min-w-0">
       <h4>{plan.name}</h4>
-      <button type="button" className={`mt-0.5 ${FEATURES_BUTTON_CLASS}`} onClick={() => onOpenFeatures(plan)}>
+      <button type="button"
+className={`mt-0.5 ${FEATURES_BUTTON_CLASS}`}
+onClick={() => onOpenFeatures(plan)}>
         features
       </button>
       {plan.label && (
@@ -51,7 +53,8 @@ const PricingMobileCard = ({
     <article className="flex h-full flex-col rounded-panel border border-slate-200 bg-white p-4 shadow-soft">
       <div className="-mx-4 -mt-4 rounded-t-panel bg-sky-50/70 px-4 py-4">
         <div className="flex items-start justify-between gap-4">
-          <PlanNameBlock plan={plan} onOpenFeatures={onOpenFeatures} />
+          <PlanNameBlock plan={plan}
+onOpenFeatures={onOpenFeatures} />
 
           <div className="shrink-0 text-right">
             <p className="text-2xl font-bold leading-none text-brand-blue-dark">
@@ -83,7 +86,9 @@ const PricingMobileCard = ({
         </dl>
       </div>
 
-      <a href={plan.orderUrl} className={MOBILE_BUY_LINK_CLASS} aria-label={`Buy ${plan.name}`}>
+      <a href={plan.orderUrl}
+className={MOBILE_BUY_LINK_CLASS}
+aria-label={`Buy ${plan.name}`}>
         <BuyIcon className="h-7 w-7" />
       </a>
     </article>

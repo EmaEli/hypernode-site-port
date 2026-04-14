@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Icon } from '@iconify/react'
 
-import type { PricingFaqItem } from '../../types/pricing'
+import type { PricingFaqItem } from '../../../types/pricing'
 
 export interface FAQAccordionProps {
   items: PricingFaqItem[]
@@ -21,7 +22,8 @@ const FAQAccordion = ({ items }: FAQAccordionProps) => {
           const isOpen = index === openIndex
 
           return (
-            <article key={item.question} className="border-b border-slate-200">
+            <article key={item.question}
+className="border-b border-slate-200">
               <h3 className="m-0">
                 <button
                   type="button"
@@ -36,9 +38,8 @@ const FAQAccordion = ({ items }: FAQAccordionProps) => {
                     }`}
                     aria-hidden="true"
                   >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                      <path d="M12 15.5 5.5 9l1.4-1.4L12 12.7l5.1-5.1L18.5 9 12 15.5Z" />
-                    </svg>
+                    <Icon icon="heroicons:chevron-down-20-solid"
+className="h-5 w-5" />
                   </span>
                 </button>
               </h3>

@@ -1,0 +1,19 @@
+---
+const topBarLinks = [
+  { label: 'NL', href: 'https://www.hypernode.com/nl/' },
+  { label: 'Login', href: 'https://auth.hypernode.com/login/' },
+] as const
+---
+
+<div class="bg-brand-blue-dark text-white text-sm">
+  <div class="max-w-content mx-auto px-4 py-2 flex justify-end items-center gap-6">
+    {topBarLinks.map(link => (
+      <a
+        href={link.href}
+        class="hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-white"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</div>

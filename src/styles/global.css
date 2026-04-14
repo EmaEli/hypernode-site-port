@@ -85,3 +85,49 @@
     color: var(--color-brand-sky);
   }
 }
+
+@layer components {
+  .list-reset {
+    @apply m-0 list-none p-0;
+  }
+
+  .grid-3-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .card-testimonial {
+    @apply flex flex-col items-center rounded-panel bg-brand-blue-dark px-5 pb-8 pt-7;
+  }
+
+  .layout-container {
+    @apply mx-auto max-w-content px-4;
+  }
+
+  .section-space {
+    @apply py-16 md:py-24;
+  }
+
+  .section-space-compact {
+    @apply py-12 md:py-16;
+  }
+
+  .pad-card-sm {
+    @apply p-4;
+  }
+
+  .pad-card-md {
+    @apply p-4 md:p-6;
+  }
+
+  .pad-card-lg {
+    @apply p-5 md:p-8;
+  }
+
+  .pad-card-xl {
+    @apply p-6 md:p-8;
+  }
+
+  .pad-card-shell {
+    @apply p-4 md:p-5;
+  }
+}

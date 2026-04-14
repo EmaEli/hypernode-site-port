@@ -19,15 +19,15 @@ type Props = IconGridSectionProps
 const { title, subtitle, items, columns = 3, cardStyle = 'styled', cta } = Astro.props
 ---
 
-<section class="bg-slate-50 py-16 md:py-24">
-  <div class="mx-auto max-w-content px-4">
+<section class="section-space bg-slate-50">
+  <div class="layout-container">
     <SectionHeader title={title} subtitle={subtitle} />
   </div>
 
   <IconGrid items={items} columns={columns} cardStyle={cardStyle} />
 
   {cta && (
-    <div class="mx-auto mt-4 flex max-w-content justify-center px-4">
+    <div class="layout-container mt-4 flex justify-center">
       <Button href={cta.href} variant="secondary">{cta.label}</Button>
     </div>
   )}
