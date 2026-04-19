@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'active' | 'inactive'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'active' | 'inactive' | 'link'
   size?: 'default' | 'large'
   href?: string
   type?: 'button' | 'submit' | 'reset'
@@ -9,6 +9,7 @@ export interface ButtonProps {
   target?: string
   rel?: string
   onClick?: () => void
+  disabled?: boolean
   'aria-pressed'?: boolean
   children: ReactNode
 }
@@ -19,9 +20,12 @@ const SIZE_MODIFIER: Record<NonNullable<ButtonProps['size']>, string> = {
 }
 
 const BASE_CLASS =
-  'inline-flex items-center justify-center rounded-full text-ui-button font-bold transition-all duration-300 focus:outline-2 focus:outline-offset-2'
+  'inline-flex items-center justify-center rounded-full text-ui-button font-bold transition-all duration-300 focus:outline-2 focus:outline-offset-2 disabled:opacity-60 disabled:cursor-not-allowed'
 
-const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
+const LINK_CLASS =
+  'w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+
+const VARIANT_MODIFIER: Record<Exclude<NonNullable<ButtonProps['variant']>, 'link'>, string> = {
   primary:
     'border border-transparent bg-brand-orange text-white hover:bg-white hover:text-brand-orange hover:border-brand-orange focus:outline-brand-orange',
   secondary:
@@ -43,12 +47,13 @@ const Button = ({
   target,
   rel,
   onClick,
+  disabled,
   'aria-pressed': ariaPressed,
   children,
 }: ButtonProps) => {
-  const buttonClass = [BASE_CLASS, SIZE_MODIFIER[size], VARIANT_MODIFIER[variant], className]
-    .filter(Boolean)
-    .join(' ')
+  const buttonClass = variant === 'link'
+    ? [LINK_CLASS, className].filter(Boolean).join(' ')
+    : [BASE_CLASS, SIZE_MODIFIER[size], VARIANT_MODIFIER[variant], className].filter(Boolean).join(' ')
 
   if (href) {
     return (
@@ -69,6 +74,7 @@ const Button = ({
       type={type}
       className={buttonClass}
       onClick={onClick}
+      disabled={disabled}
       aria-pressed={ariaPressed}
     >
       {children}

@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(npx astro *)"
+      "Bash(npx astro *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

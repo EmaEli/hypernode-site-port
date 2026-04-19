@@ -1,11 +1,8 @@
-import type { ReactNode } from 'react'
-
 import { getPrice } from '../../../lib/pricing'
 
 import {
   BUY_LINK_CLASS,
   BuyIcon,
-  FEATURES_BUTTON_CLASS,
   CELL_CLASS,
   CENTERED_CELL_CLASS,
   HEADER_CELL_CLASS,
@@ -13,25 +10,32 @@ import {
   formatPlanPrice,
   getLabelClassName,
 } from './pricingUtils'
+import Button from '../../ui/primitives/Button'
+import PricingControls from './PricingControls'
 
-import type { BillingPeriod, Currency, Plan } from '../../../types/pricing'
+import type { BillingPeriod, Currency, Plan, PricingGroup } from '../../../types/pricing'
 
 export interface PricingDesktopTableProps {
   billingPeriod: BillingPeriod
   currency: Currency
+  group: PricingGroup
+  onBillingChange: (value: BillingPeriod) => void
+  onCurrencyChange: (value: Currency) => void
   onOpenFeatures: (plan: Plan) => void
   plans: Plan[]
-  priceHeader: ReactNode
 }
 
 const PricingDesktopTable = ({
   billingPeriod,
   currency,
+  group,
+  onBillingChange,
+  onCurrencyChange,
   onOpenFeatures,
   plans,
-  priceHeader,
 }: PricingDesktopTableProps) => {
   return (
+    <div className="mt-5 hidden overflow-x-auto lg:block">
     <table className="min-w-full border-collapse">
       <thead>
         <tr className="border-b border-slate-200">
@@ -41,7 +45,13 @@ const PricingDesktopTable = ({
             </th>
           ))}
           <th scope="col" className={`${HEADER_CELL_CLASS} min-w-[220px]`}>
-            {priceHeader}
+            <PricingControls
+              billingPeriod={billingPeriod}
+              currency={currency}
+              group={group}
+              onBillingChange={onBillingChange}
+              onCurrencyChange={onCurrencyChange}
+            />
           </th>
           <th scope="col" className={HEADER_CELL_CLASS}>
             Buy
@@ -64,13 +74,9 @@ const PricingDesktopTable = ({
                       </div>
                     )}
                   </div>
-                  <button
-                    type="button"
-                    className={FEATURES_BUTTON_CLASS}
-                    onClick={() => onOpenFeatures(plan)}
-                  >
+                  <Button variant="link" onClick={() => onOpenFeatures(plan)}>
                     features
-                  </button>
+                  </Button>
                 </div>
               </td>
               <td className={CENTERED_CELL_CLASS}>{plan.cpu}</td>
@@ -89,6 +95,7 @@ const PricingDesktopTable = ({
         })}
       </tbody>
     </table>
+    </div>
   )
 }
 

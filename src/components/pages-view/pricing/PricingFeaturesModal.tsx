@@ -22,8 +22,7 @@ const PricingFeaturesModal = ({ featureGroups, plan, onClose }: PricingFeaturesM
         onClick={event => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3">
-          <h3 id="pricing-feature-dialog-title"
-className="mt-2">
+          <h3 id="pricing-feature-dialog-title" className="mt-2">
             {plan.name}
           </h3>
 
@@ -33,19 +32,17 @@ className="mt-2">
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-brand-blue-dark transition hover:border-brand-orange hover:text-brand-orange focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange"
             aria-label="Close features modal"
           >
-            <Icon icon="heroicons:x-mark-20-solid"
-className="h-4 w-4"
-aria-hidden="true" />
+            <Icon icon="heroicons:x-mark-20-solid" className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
         <ul className="mt-4 space-y-1.5">
           {featureGroups[plan.featureGroup].map(feature => (
-            <li key={feature}
-className="flex gap-2 text-sm leading-5.5 text-brand-blue">
-              <span className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full bg-brand-orange"
-aria-hidden="true" />
-              <span>{feature}</span>
+            <li
+              key={feature}
+              className="flex gap-2 text-sm leading-5.5 text-brand-blue before:mt-1.5 before:h-2 before:w-2 before:shrink-0 before:rounded-full before:bg-brand-orange before:content-['']"
+            >
+              {feature}
             </li>
           ))}
         </ul>
