@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets'
 import pricingStack from '../../../assets/images/pricing/frame-195-3x.png'
-import Button from '../../ui/primitives/Button.astro'
+import Button from '../../ui/primitives/Button'
 import PricingEnvironmentToggle from './PricingEnvironmentToggle'
+import VerticalFlex from '../../ui/primitives/VerticalFlex.astro'
 
 export interface PricingSidebarProps {
   cloudLabel: string
@@ -24,7 +25,7 @@ const CARD_CLASS =
   <div class="sticky top-28 rounded-shell border border-slate-200 bg-slate-50/80 p-4 shadow-soft backdrop-blur">
     <PricingEnvironmentToggle client:load />
 
-    <div class="mt-6 flex flex-col gap-3">
+    <VerticalFlex gap="3" class="mt-6">
       <a href="#cloud-hosting-pricing" class={CARD_CLASS} data-scroll-target="cloud-hosting-pricing">
         <Image src={pricingStack} alt="Cloud hosting plans icon" class="h-[60px] w-[59px] shrink-0" />
         <span class="font-bold leading-6 text-brand-blue-dark">{cloudLabel}</span>
@@ -34,7 +35,7 @@ const CARD_CLASS =
         <Image src={pricingStack} alt="Dedicated hosting plans icon" class="h-[60px] w-[59px] shrink-0" />
         <span class="font-bold leading-6 text-brand-blue-dark">{dedicatedLabel}</span>
       </a>
-    </div>
+    </VerticalFlex>
 
     <div class="mt-6 rounded-card bg-brand-blue-dark px-5 py-6 text-white shadow-soft">
       <p class="text-sm leading-6 text-white/85">{consultationText}</p>

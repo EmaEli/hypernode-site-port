@@ -1,5 +1,6 @@
 ---
-import Button from '../primitives/Button.astro'
+import Button from '../primitives/Button'
+import Section from '../primitives/Section.astro'
 
 export interface HeroImageCta {
   label: string
@@ -17,7 +18,7 @@ export interface HeroImageProps {
 const { title, subtitle, primaryCta, secondaryCta, videoSrc } = Astro.props
 ---
 
-<section class="relative isolate overflow-hidden bg-brand-blue-dark text-white">
+<Section bg="bg-brand-blue-dark" class="relative isolate overflow-hidden text-white">
   <video
     class="absolute inset-0 h-full w-full object-cover"
     autoplay
@@ -43,4 +44,4 @@ const { title, subtitle, primaryCta, secondaryCta, videoSrc } = Astro.props
       </div>
     </div>
   </div>
-</section>
+</Section>

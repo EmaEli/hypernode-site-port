@@ -1,16 +1,18 @@
 ---
 import { Image } from 'astro:assets'
 import type { Testimonial } from '../../../types/homepage'
+import VerticalFlex from '../primitives/VerticalFlex.astro'
 
 export interface Props {
   testimonials: Testimonial[]
+  class?: string
 }
 
-const { testimonials } = Astro.props
-
+const { testimonials, class: className } = Astro.props
+const ulClass = ['grid-3-responsive list-reset gap-6', className].filter(Boolean).join(' ')
 ---
 
-<ul class="grid-3-responsive list-reset gap-6">
+<ul class={ulClass}>
   {testimonials.map(item => (
     <li class="card-testimonial">
       <div class="flex h-12 items-center justify-center">
@@ -26,7 +28,7 @@ const { testimonials } = Astro.props
         "{item.quote}"
       </p>
 
-      <div class="mt-5 flex flex-col items-center gap-2">
+      <VerticalFlex align="center" gap="2" class="mt-5">
         <Image
           src={item.photo}
           alt={item.photoAlt}
@@ -36,7 +38,7 @@ const { testimonials } = Astro.props
         />
         <p class="text-ui-label font-bold text-white">{item.author}</p>
         <p class="text-ui-sm text-white/80">{item.role}</p>
-      </div>
+      </VerticalFlex>
     </li>
   ))}
 </ul>

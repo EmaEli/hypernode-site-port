@@ -39,6 +39,12 @@ const validateLeadData = (data: Record<string, unknown>): { valid: boolean; erro
   }
 }
 
+export const GET: APIRoute = () =>
+  new Response(JSON.stringify({ error: 'Method not allowed' }), {
+    status: 405,
+    headers: { 'Content-Type': 'application/json', Allow: 'POST' },
+  })
+
 export const POST: APIRoute = async ({ request }) => {
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 })

@@ -84,15 +84,69 @@ npm install
 
 ### Optional: run Strapi (changelog CMS)
 
+The changelog is fetched from Strapi at build time. If Strapi is not configured the build falls back to `strapi/seed.json` automatically — no setup required for local development.
+
+To run a full Strapi instance with real data:
+
+**1. Create the Strapi app**
+
 ```bash
 cd strapi
 npx create-strapi-app@latest . --quickstart
+```
+
+This scaffolds a Strapi v5 app with SQLite in the `strapi/` directory.
+
+**2. Register the `changelog-entry` content type**
+
+Copy the schema file into the Strapi app:
+
+```bash
+mkdir -p strapi/src/api/changelog-entry/content-types/changelog-entry
+cp strapi/content-type-schema.json \
+   strapi/src/api/changelog-entry/content-types/changelog-entry/schema.json
+```
+
+**3. Start Strapi**
+
+```bash
+cd strapi
 npm run develop
 ```
 
-Strapi runs at `http://localhost:1337`. If Strapi is unavailable, the app automatically falls back to `strapi/seed.json` during build.
+Strapi runs at `http://localhost:1337`. Open the admin panel and create your admin account on first launch.
 
-No local seed script is required from the root project.
+**4. Generate an API token**
+
+In the Strapi admin: **Settings → API Tokens → Create new token**
+
+- Name: `astro-build`
+- Token type: **Full access**
+
+Copy the token.
+
+**5. Configure environment variables**
+
+Add the following to `.env.local` in the project root:
+
+```bash
+PUBLIC_STRAPI_URL=http://localhost:1337
+PUBLIC_STRAPI_TOKEN=<paste-token-here>
+```
+
+**6. Import seed data**
+
+```bash
+npm run strapi:seed
+```
+
+This POSTs all entries from `strapi/seed.json` into Strapi via the REST API and logs each import. Exit code is non-zero on any failure.
+
+**7. Build with live Strapi data**
+
+```bash
+npm run build
+```
 
 ### Start Astro dev server
 

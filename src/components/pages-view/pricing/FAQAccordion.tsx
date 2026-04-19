@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
 
+import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 import type { PricingFaqItem } from '../../../types/pricing'
 
 export interface FAQAccordionProps {
@@ -59,4 +60,10 @@ className="h-5 w-5" />
   )
 }
 
-export default FAQAccordion
+const FAQAccordionWithBoundary = (props: FAQAccordionProps) => (
+  <ErrorBoundary>
+    <FAQAccordion {...props} />
+  </ErrorBoundary>
+)
+
+export default FAQAccordionWithBoundary

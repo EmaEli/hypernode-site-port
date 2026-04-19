@@ -1,0 +1,47 @@
+---
+export interface FormFieldProps {
+  id: string
+  name?: string
+  type?: 'text' | 'email' | 'tel'
+  placeholder?: string
+  inputmode?: 'text' | 'email' | 'tel' | 'url'
+  autocomplete?: string
+  required?: boolean
+  errorMessage?: string
+}
+
+type Props = FormFieldProps
+
+const {
+  id,
+  name = id,
+  type = 'text',
+  placeholder,
+  inputmode = 'text',
+  autocomplete,
+  required = false,
+  errorMessage,
+} = Astro.props
+
+const INPUT_CLASS =
+  'w-full rounded-2xl border border-white/25 bg-white px-4 py-3 text-brand-blue outline-none transition focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/40 aria-[invalid=true]:border-red-400 aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-red-400/40'
+---
+
+<div>
+  <input
+    {id}
+    {name}
+    {type}
+    {placeholder}
+    {inputmode}
+    {autocomplete}
+    aria-required={required ? 'true' : undefined}
+    aria-describedby={errorMessage ? `${id}-error` : undefined}
+    class={INPUT_CLASS}
+  />
+  {errorMessage && (
+    <p id={`${id}-error`} role="alert" class="mt-1 text-sm text-red-300 hidden">
+      {errorMessage}
+    </p>
+  )}
+</div>

@@ -1,0 +1,31 @@
+---
+export type SectionSpacing = 'default' | 'compact'
+
+export interface SectionProps {
+  spacing?: SectionSpacing
+  bg?: string
+  as?: 'section' | 'div' | 'article'
+  class?: string
+}
+
+type Props = SectionProps
+
+const { spacing, bg, as: Tag = 'section', class: className } = Astro.props
+
+const SPACING_MAP: Record<SectionSpacing, string> = {
+  default: 'section-space',
+  compact: 'section-space-compact',
+}
+
+const classes = [
+  spacing ? SPACING_MAP[spacing] : '',
+  bg ?? '',
+  className ?? '',
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<Tag class={classes}>
+  <slot />
+</Tag>
