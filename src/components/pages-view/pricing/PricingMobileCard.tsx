@@ -1,6 +1,5 @@
 import {
   BuyIcon,
-  FEATURES_BUTTON_CLASS,
   MOBILE_BUY_LINK_CLASS,
   MOBILE_SPEC_TERM_CLASS,
   MOBILE_SPEC_VALUE_CLASS,
@@ -8,6 +7,7 @@ import {
   formatPlanPrice,
   getLabelClassName,
 } from './pricingUtils'
+import Button from '../../ui/primitives/Button'
 
 import type { BillingPeriod, Currency, Plan } from '../../../types/pricing'
 
@@ -20,11 +20,9 @@ const PlanNameBlock = ({ plan, onOpenFeatures }: PlanNameBlockProps) => {
   return (
     <div className="min-w-0">
       <h4>{plan.name}</h4>
-      <button type="button"
-className={`mt-0.5 ${FEATURES_BUTTON_CLASS}`}
-onClick={() => onOpenFeatures(plan)}>
+      <Button variant="link" className="mt-0.5" onClick={() => onOpenFeatures(plan)}>
         features
-      </button>
+      </Button>
       {plan.label && (
         <div className="mt-1.5">
           <span className={getLabelClassName(plan.label)}>{plan.label}</span>
@@ -50,7 +48,7 @@ const PricingMobileCard = ({
   price,
 }: PricingMobileCardProps) => {
   return (
-    <article className="flex h-full flex-col rounded-panel border border-slate-200 bg-white p-4 shadow-soft">
+    <article className="flex h-full flex-col rounded-panel surface-card p-4">
       <div className="-mx-4 -mt-4 rounded-t-panel bg-sky-50/70 px-4 py-4">
         <div className="flex items-start justify-between gap-4">
           <PlanNameBlock plan={plan}

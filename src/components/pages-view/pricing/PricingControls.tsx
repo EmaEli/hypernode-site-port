@@ -2,7 +2,7 @@ import PricingToggle, { CURRENCY_OPTIONS, getBillingOptions } from './PricingTog
 
 import type { BillingPeriod, Currency, PricingGroup } from '../../../types/pricing'
 
-export interface PricingProviderControlsProps {
+export interface PricingControlsProps {
   billingPeriod: BillingPeriod
   currency: Currency
   group: PricingGroup
@@ -10,13 +10,13 @@ export interface PricingProviderControlsProps {
   onCurrencyChange: (value: Currency) => void
 }
 
-const PricingProviderControls = ({
+const PricingControls = ({
   billingPeriod,
   currency,
   group,
   onBillingChange,
   onCurrencyChange,
-}: PricingProviderControlsProps) => {
+}: PricingControlsProps) => {
   return (
     <div className="rounded-card bg-slate-50 px-4 py-3 shadow-soft">
       <div className="grid grid-cols-2 gap-4 sm:gap-6">
@@ -43,4 +43,4 @@ const PricingProviderControls = ({
   )
 }
 
-export default PricingProviderControls
+export default PricingControls

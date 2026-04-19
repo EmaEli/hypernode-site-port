@@ -1,6 +1,7 @@
 import { useDeferredValue, useMemo, useState } from 'react'
 
 import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
+import ErrorMessage from '../../ui/primitives/ErrorMessage'
 import type { ChangelogCategory, ChangelogEntry } from '../../../types/changelog'
 
 export interface ChangelogFiltersProps {
@@ -55,7 +56,7 @@ interface ChangelogCardProps {
 }
 
 const ChangelogCard = ({ entry }: ChangelogCardProps) => (
-  <article className="rounded-[28px] border border-slate-200 bg-white pad-card-xl shadow-soft transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-panel-hover">
+  <article className="rounded-[28px] surface-card pad-card-xl transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-panel-hover">
     <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-brand-blue">
       <span>{formatDate(entry.date)}</span>
       <span
@@ -133,7 +134,7 @@ const ChangelogFilters = ({ entries }: ChangelogFiltersProps) => {
 
   return (
     <section className="pb-20 md:pb-24">
-      <div className="rounded-[28px] border border-slate-200 bg-white pad-card-lg shadow-soft">
+      <div className="rounded-[28px] surface-card pad-card-lg">
         <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-end">
           <label
             htmlFor="changelog-year"
@@ -207,9 +208,7 @@ const ChangelogFilters = ({ entries }: ChangelogFiltersProps) => {
 const ChangelogFiltersWithBoundary = (props: ChangelogFiltersProps) => (
   <ErrorBoundary
     fallback={
-      <p className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-10 text-center text-brand-blue">
-        The changelog could not be loaded. Please refresh the page.
-      </p>
+      <ErrorMessage rounded message="The changelog could not be loaded. Please refresh the page." />
     }
   >
     <ChangelogFilters {...props} />

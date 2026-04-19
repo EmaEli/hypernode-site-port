@@ -10,7 +10,7 @@ import IconGridSection from '../../components/ui/blocks/IconGridSection.astro'
 import CompanyLogoStrip from '../../components/ui/blocks/CompanyLogoStrip.astro'
 import TestimonialsSection from '../../components/ui/blocks/TestimonialsSection.astro'
 import FormSection from '../../components/ui/blocks/FormSection.astro'
-import HomepageLeadForm from '../../components/pages-view/homepage/HomepageLeadForm.astro'
+import HomepageLeadForm from '../../components/pages-view/homepage/HomepageLeadForm'
 
 import hypernodeInsightsImg from '../../assets/images/homepage/hypernode-insights.webp'
 import hostingSolutionsImg from '../../assets/images/homepage/hosting-solutions.svg'
@@ -206,6 +206,7 @@ export const testimonials = [
   subtitle="Get in contact with one of our experts!"
 >
   <HomepageLeadForm
+    client:load
     submitLabel="Submit"
     newsHref="https://www.hypernode.com/blog/"
     privacyPolicyHref="https://www.hypernode.com/assets/documents/Privacy-Policy-Hypernode.pdf"

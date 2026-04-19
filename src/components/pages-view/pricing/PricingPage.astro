@@ -1,15 +1,32 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { render } from 'astro:content'
+import { getImage } from 'astro:assets'
 
-interface Props {
-  entry: CollectionEntry<'pricing'>
-}
+import pricingStackSrc from '../../../assets/images/pricing/frame-195-3x.png'
+import pricingContent from '../../../lib/pricing-content.json'
+import pricingData from '../../../lib/pricing-data.json'
+import { PricingDatasetSchema } from '../../../lib/pricingSchema'
 
-const { entry } = Astro.props
-const { Content } = await render(entry)
+import PageHero from '../../ui/blocks/PageHero.astro'
+import FAQAccordion from '../../ui/blocks/FAQAccordion'
+import PricingSection from './PricingSection'
+
+const dataset = PricingDatasetSchema.parse(pricingData)
+const sidebarImage = await getImage({ src: pricingStackSrc })
 ---
 
 <main>
-  <Content />
+  <PageHero
+    eyebrow={pricingContent.hero.eyebrow}
+    title={pricingContent.hero.title}
+    subtitle={pricingContent.hero.subtitle}
+    note={pricingContent.hero.note}
+  />
+
+  <PricingSection
+    client:load
+    dataset={dataset}
+    sidebarImageSrc={sidebarImage.src}
+  />
+
+  <FAQAccordion client:visible items={pricingContent.faq} />
 </main>

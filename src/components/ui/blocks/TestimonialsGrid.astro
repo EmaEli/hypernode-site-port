@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import type { Testimonial } from '../../../types/homepage'
-import VerticalFlex from '../primitives/VerticalFlex.astro'
+import VerticalFlex from '../primitives/VerticalFlex'
 
 export interface Props {
   testimonials: Testimonial[]
@@ -28,7 +28,7 @@ const ulClass = ['grid-3-responsive list-reset gap-6', className].filter(Boolean
         "{item.quote}"
       </p>
 
-      <VerticalFlex align="center" gap="2" class="mt-5">
+      <VerticalFlex align="center" gap="2" className="mt-5">
         <Image
           src={item.photo}
           alt={item.photoAlt}

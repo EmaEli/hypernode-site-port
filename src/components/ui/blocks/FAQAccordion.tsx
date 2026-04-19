@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
 
-import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
-import type { PricingFaqItem } from '../../../types/pricing'
+import ErrorBoundary from '../primitives/ErrorBoundary'
+
+export interface FaqItem {
+  question: string
+  answer: string
+}
 
 export interface FAQAccordionProps {
-  items: PricingFaqItem[]
+  items: FaqItem[]
 }
 
 const FAQAccordion = ({ items }: FAQAccordionProps) => {
@@ -23,24 +27,23 @@ const FAQAccordion = ({ items }: FAQAccordionProps) => {
           const isOpen = index === openIndex
 
           return (
-            <article key={item.question}
-className="border-b border-slate-200">
+            <article key={item.question} className="border-b border-slate-200">
               <h3 className="m-0">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-6 px-0 py-5 text-left text-xl font-bold text-brand-blue-dark focus:outline-2 focus:outline-offset-[-2px] focus:outline-brand-orange"
+                  className="flex w-full items-center justify-between gap-6 px-0 py-5 text-left text-xl font-bold text-brand-blue-dark"
                   onClick={() => setOpenIndex(currentIndex => (currentIndex === index ? -1 : index))}
                   aria-expanded={isOpen}
                 >
                   <span>{item.question}</span>
+
                   <span
                     className={`inline-flex shrink-0 items-center justify-center text-brand-orange transition-transform duration-300 ease-out ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                     aria-hidden="true"
                   >
-                    <Icon icon="heroicons:chevron-down-20-solid"
-className="h-5 w-5" />
+                    <Icon icon="heroicons:chevron-down-20-solid" className="h-5 w-5" />
                   </span>
                 </button>
               </h3>
