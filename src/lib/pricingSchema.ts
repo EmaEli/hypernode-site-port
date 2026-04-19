@@ -14,7 +14,7 @@ const PlanSchema = z.object({
   ssdGb: z.number().positive(),
   monthlyPrice: CURRENCY_RECORD,
   yearlyPrice: CURRENCY_RECORD.optional(),
-  orderUrl: z.string().url(),
+  orderUrl: z.string(),
   featureGroup: FEATURE_GROUP_ID,
   label: PLAN_LABEL,
 })

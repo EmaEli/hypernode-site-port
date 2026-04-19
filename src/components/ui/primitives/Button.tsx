@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'active' | 'inactive'
   size?: 'default' | 'large'
   href?: string
   type?: 'button' | 'submit' | 'reset'
@@ -9,6 +9,7 @@ export interface ButtonProps {
   target?: string
   rel?: string
   onClick?: () => void
+  'aria-pressed'?: boolean
   children: ReactNode
 }
 
@@ -27,6 +28,10 @@ const VARIANT_MODIFIER: Record<NonNullable<ButtonProps['variant']>, string> = {
     'border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus:outline-brand-blue',
   ghost:
     'text-brand-blue underline-offset-4 hover:underline focus:outline-brand-blue',
+  active:
+    'bg-brand-orange text-white shadow-soft',
+  inactive:
+    'text-brand-blue-dark hover:text-brand-orange',
 }
 
 const Button = ({
@@ -38,6 +43,7 @@ const Button = ({
   target,
   rel,
   onClick,
+  'aria-pressed': ariaPressed,
   children,
 }: ButtonProps) => {
   const buttonClass = [BASE_CLASS, SIZE_MODIFIER[size], VARIANT_MODIFIER[variant], className]
@@ -63,6 +69,7 @@ const Button = ({
       type={type}
       className={buttonClass}
       onClick={onClick}
+      aria-pressed={ariaPressed}
     >
       {children}
     </button>

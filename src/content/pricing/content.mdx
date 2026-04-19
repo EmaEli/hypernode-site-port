@@ -4,7 +4,7 @@ seo:
   description: "Explore our tailored hosting solutions: dedicated and cloud plans for every need. All prices are excluding VAT."
 ---
 
-import PricingHero from '../../components/pages-view/pricing/PricingHero.astro'
+import PageHero from '../../components/ui/blocks/PageHero.astro'
 import PricingSidebar from '../../components/pages-view/pricing/PricingSidebar.astro'
 import PricingContentWrapper from '../../components/pages-view/pricing/PricingContentWrapper.astro'
 import PricingTableSection from '../../components/pages-view/pricing/PricingTableSection.astro'
@@ -45,7 +45,8 @@ export const faqItems = [
   },
 ]
 
-<PricingHero
+<PageHero
+  eyebrow="Plans & Prices"
   title="Pricing Table"
   subtitle="Explore Our Tailored Hosting Solutions: Dedicated and Cloud Plans for Every Need."
   note="All prices are excluding VAT."

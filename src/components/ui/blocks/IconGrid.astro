@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
 import Icon from '../primitives/Icon.astro'
+import Section from '../primitives/Section.astro'
 
 export interface IconGridItem {
   icon?: string
@@ -45,7 +46,7 @@ const linkedCardClass = INTERACTIVE_CARD_CLASS[cardStyle]
 const staticCardClass = STATIC_CARD_CLASS[cardStyle]
 ---
 
-<section class="py-16">
+<Section class="py-16">
   <div class="max-w-content mx-auto px-4">
     {title && (
       <h2 class="text-brand-blue text-center mb-12">{title}</h2>
@@ -63,9 +64,7 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
                 {item.image ? (
                   <Image src={item.image} alt={item.imageAlt ?? ''} class="mb-5 h-12 w-12 object-contain" />
                 ) : item.icon ? (
-                  <div class="mb-5 text-brand-orange">
-                    <Icon name={item.icon} size={32} />
-                  </div>
+                  <Icon name={item.icon} size={32} class="mb-5 text-brand-orange" />
                 ) : null}
 
                 <h3 class="mb-3 text-left text-brand-blue transition-colors group-hover:text-brand-orange">
@@ -78,9 +77,7 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
                 {item.image ? (
                   <Image src={item.image} alt={item.imageAlt ?? ''} class="mb-5 h-28 w-full object-contain object-left" />
                 ) : item.icon ? (
-                  <div class="mb-5 text-brand-orange">
-                    <Icon name={item.icon} size={32} />
-                  </div>
+                  <Icon name={item.icon} size={32} class="mb-5 text-brand-orange" />
                 ) : null}
 
                 <h3 class="mb-3 text-left text-brand-blue">{item.title}</h3>
@@ -92,4 +89,4 @@ const staticCardClass = STATIC_CARD_CLASS[cardStyle]
       ))}
     </ul>
   </div>
-</section>
+</Section>

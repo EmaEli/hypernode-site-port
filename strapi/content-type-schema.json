@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "changelog_entries",
+  "info": {
+    "singularName": "changelog-entry",
+    "pluralName": "changelog-entries",
+    "displayName": "Changelog Entry",
+    "description": "Release notes and platform updates published on the Hypernode changelog"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "API",
+        "Autoscaling",
+        "Cluster",
+        "ControlPanel",
+        "HypernodeDeploy",
+        "MageReport",
+        "Platform"
+      ],
+      "required": true
+    },
+    "summary": {
+      "type": "text",
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
+import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 import PricingFeaturesModal from './PricingFeaturesModal'
 import PricingProviderSection from './PricingProviderSection'
 import PricingSectionHeader from './PricingSectionHeader'
@@ -163,4 +164,16 @@ const PricingTable = ({
   )
 }
 
-export default PricingTable
+const PricingTableWithBoundary = (props: PricingTableProps) => (
+  <ErrorBoundary
+    fallback={
+      <p className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-10 text-center text-brand-blue">
+        The pricing table could not be loaded. Please refresh the page.
+      </p>
+    }
+  >
+    <PricingTable {...props} />
+  </ErrorBoundary>
+)
+
+export default PricingTableWithBoundary

@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "strapi:seed": "node scripts/strapi-seed.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

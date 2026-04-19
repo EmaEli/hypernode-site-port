@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
-import Button from '../primitives/Button.astro'
+import Button from '../primitives/Button'
+import Section from '../primitives/Section.astro'
 
 export interface FeatureBlockCTA {
   label: string
@@ -33,7 +34,8 @@ const {
 } = Astro.props as Props
 
 const TAGLINE_CLASS = 'text-[0.8125rem] font-bold tracking-[3.9px] text-brand-orange'
-const sectionClass = variant === 'dark' ? 'bg-brand-blue text-white' : 'bg-white text-brand-blue'
+const bgClass = variant === 'dark' ? 'bg-brand-blue' : 'bg-white'
+const textClass = variant === 'dark' ? 'text-white' : 'text-brand-blue'
 const titleClass = variant === 'dark' ? 'text-white' : 'text-brand-blue'
 const bodyTextClass = variant === 'dark' ? 'text-white/80' : 'text-brand-blue'
 const rowClass = imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
@@ -41,7 +43,7 @@ const bodyItems = Array.isArray(body) ? body : body ? [body] : []
 const hasSlotContent = Astro.slots.has('default')
 ---
 
-<section class={`section-space ${sectionClass}`}>
+<Section spacing="default" bg={bgClass} class={textClass}>
   <div class={`layout-container flex flex-col ${rowClass} items-center gap-12`}>
 
     <div class="flex-1">
@@ -73,4 +75,4 @@ const hasSlotContent = Astro.slots.has('default')
     </div>
 
   </div>
-</section>
+</Section>

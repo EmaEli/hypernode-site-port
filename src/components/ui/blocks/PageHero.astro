@@ -1,0 +1,31 @@
+---
+import Section from '../primitives/Section.astro'
+
+export interface PageHeroProps {
+  eyebrow?: string
+  title: string
+  subtitle?: string
+  note?: string
+}
+
+type Props = PageHeroProps
+
+const { eyebrow, title, subtitle, note } = Astro.props
+---
+
+<Section class="bg-gradient-to-b from-white via-sky-50 to-white">
+  <div class="layout-container pb-12 pt-16 md:pb-16 md:pt-24">
+    <div class="max-w-3xl">
+      {eyebrow && (
+        <p class="text-sm font-bold uppercase tracking-[0.3em] text-brand-sky">{eyebrow}</p>
+      )}
+      <h1 class="mt-5">{title}</h1>
+      {subtitle && (
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-brand-blue">{subtitle}</p>
+      )}
+      {note && (
+        <p class="mt-4 text-base italic text-brand-blue-dark/75">{note}</p>
+      )}
+    </div>
+  </div>
+</Section>

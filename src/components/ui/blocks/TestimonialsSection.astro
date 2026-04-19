@@ -2,6 +2,7 @@
 import type { Testimonial } from '../../../types/homepage'
 import SectionHeader from './SectionHeader.astro'
 import TestimonialsGrid from './TestimonialsGrid.astro'
+import Section from '../primitives/Section.astro'
 
 export interface Props {
   title: string
@@ -11,12 +12,10 @@ export interface Props {
 const { title, testimonials } = Astro.props
 ---
 
-<section class="section-space bg-brand-blue-dark">
+<Section spacing="default" bg="bg-brand-blue-dark">
   <div class="layout-container">
     <SectionHeader title={title} titleColor="white" />
 
-    <div class="mt-12">
-      <TestimonialsGrid testimonials={testimonials} />
-    </div>
+    <TestimonialsGrid testimonials={testimonials} class="mt-12" />
   </div>
-</section>
+</Section>

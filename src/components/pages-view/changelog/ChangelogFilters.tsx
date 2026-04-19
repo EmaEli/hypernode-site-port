@@ -1,5 +1,6 @@
 import { useDeferredValue, useMemo, useState } from 'react'
 
+import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 import type { ChangelogCategory, ChangelogEntry } from '../../../types/changelog'
 
 export interface ChangelogFiltersProps {
@@ -203,4 +204,16 @@ const ChangelogFilters = ({ entries }: ChangelogFiltersProps) => {
   )
 }
 
-export default ChangelogFilters
+const ChangelogFiltersWithBoundary = (props: ChangelogFiltersProps) => (
+  <ErrorBoundary
+    fallback={
+      <p className="rounded-2xl border border-slate-200 bg-slate-50 px-6 py-10 text-center text-brand-blue">
+        The changelog could not be loaded. Please refresh the page.
+      </p>
+    }
+  >
+    <ChangelogFilters {...props} />
+  </ErrorBoundary>
+)
+
+export default ChangelogFiltersWithBoundary

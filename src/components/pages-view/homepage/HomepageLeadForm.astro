@@ -1,5 +1,10 @@
 ---
-import Button from '../../ui/primitives/Button.astro'
+import Button from '../../ui/primitives/Button'
+import CheckboxField from '../../ui/primitives/CheckboxField.astro'
+import FormField from '../../ui/primitives/FormField.astro'
+import Grid from '../../ui/primitives/Grid.astro'
+import HorizontalFlex from '../../ui/primitives/HorizontalFlex.astro'
+import VerticalFlex from '../../ui/primitives/VerticalFlex.astro'
 
 export interface HomepageLeadFormProps {
   submitLabel: string
@@ -10,199 +15,107 @@ export interface HomepageLeadFormProps {
 type Props = HomepageLeadFormProps
 
 const { submitLabel, newsHref, privacyPolicyHref } = Astro.props
-
-const inputClass =
-  'w-full rounded-2xl border border-white/25 bg-white px-4 py-3 text-brand-blue outline-none transition focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/40'
-const checkboxClass =
-  'mt-1 h-5 w-5 shrink-0 rounded border border-white/20 bg-white text-brand-orange focus:ring-2 focus:ring-brand-sky/40'
 ---
 
-<form method="post" action="/api/leads" id="homepage-lead-form">
-  <fieldset class="grid gap-5 md:grid-cols-2">
-    <input
-      id="firstname"
-      name="firstname"
-      required
-      placeholder="Your first name"
-      type="text"
-      class={inputClass}
-      inputmode="text"
-      autocomplete="given-name"
-    />
+<form method="post" action="/api/leads" id="homepage-lead-form" novalidate>
+  <Grid mdCols={2} gap="5">
+    <FormField id="firstname" placeholder="Your first name" autocomplete="given-name" required errorMessage="First name is required" />
+    <FormField id="lastname" placeholder="Your last name" autocomplete="family-name" required errorMessage="Last name is required" />
 
-    <input
-      id="lastname"
-      name="lastname"
-      required
-      placeholder="Your last name"
-      type="text"
-      class={inputClass}
-      inputmode="text"
-      autocomplete="family-name"
-    />
-  </fieldset>
+    <FormField id="company" placeholder="Your company name" autocomplete="organization" />
+    <FormField id="website" placeholder="Your website URL" inputmode="url" />
 
-  <fieldset class="mt-5 grid gap-5 md:grid-cols-2">
-    <input
-      id="company"
-      name="company"
-      placeholder="Your company name"
-      type="text"
-      class={inputClass}
-      inputmode="text"
-      autocomplete="organization"
-    />
+    <FormField id="phone" placeholder="Your phone number" type="tel" inputmode="tel" autocomplete="tel" />
+    <FormField id="email" placeholder="Your email" type="email" inputmode="email" autocomplete="email" required errorMessage="Valid email address is required" />
 
-    <input
-      id="website"
-      name="website"
-      placeholder="Your website URL"
-      type="text"
-      class={inputClass}
-      inputmode="url"
-    />
-  </fieldset>
+    <div class="md:col-span-2">
+      <FormField id="leave_us_a_message" placeholder="Leave us a message" required errorMessage="Message is required" />
+    </div>
+  </Grid>
 
-  <fieldset class="mt-5 grid gap-5 md:grid-cols-2">
-    <input
-      id="phone"
-      name="phone"
-      placeholder="Your phone number"
-      type="tel"
-      class={inputClass}
-      inputmode="tel"
-      autocomplete="tel"
-    />
+    <VerticalFlex gap="4" class="my-4">
+      <CheckboxField id="consent-news" name="LEGAL_CONSENT.subscription_type_36279934">
+        Yes, keep me informed about <a href={newsHref} target="_blank" rel="noopener">Hypernode news and updates</a>.
+      </CheckboxField>
 
-    <input
-      id="email"
-      name="email"
-      required
-      placeholder="Your email"
-      type="email"
-      class={inputClass}
-      inputmode="email"
-      autocomplete="email"
-    />
-  </fieldset>
+      <CheckboxField id="consent-privacy" name="LEGAL_CONSENT.subscription_type_20878176" required errorMessage="Privacy policy consent is required">
+        Yes, I have read the <a href={privacyPolicyHref} target="_blank" rel="noopener">Privacy Policy</a> and give consent to Hypernode.com to store my submitted information.
+      </CheckboxField>
+    </VerticalFlex>
 
-  <fieldset class="mt-5">
-    <input
-      id="leave_us_a_message"
-      name="leave_us_a_message"
-      placeholder="Leave us a message"
-      type="text"
-      class={inputClass}
-      inputmode="text"
-    />
-  </fieldset>
-
-  <fieldset class="mt-5 space-y-4 text-left text-sm text-white/85">
-    <label for="consent-news" class="flex items-start gap-3 text-white">
-      <input
-        id="consent-news"
-        class={checkboxClass}
-        type="checkbox"
-        name="LEGAL_CONSENT.subscription_type_36279934"
-        value="true"
-      />
-      <span
-        >Yes, keep me informed about <a
-          href={newsHref}
-          target="_blank"
-          rel="noopener">Hypernode news and updates</a
-        >.</span
-      >
-    </label>
-
-    <label for="consent-privacy" class="flex items-start gap-3 text-white">
-      <input
-        id="consent-privacy"
-        class={checkboxClass}
-        type="checkbox"
-        name="LEGAL_CONSENT.subscription_type_20878176"
-        value="true"
-        required
-      />
-      <span
-        >Yes, I have read the <a
-          href={privacyPolicyHref}
-          target="_blank"
-          rel="noopener">Privacy Policy</a
-        > and give consent to Hypernode.com to store my submitted information.</span
-      >
-    </label>
-  </fieldset>
-
-  <div class="mt-8 flex justify-center">
-    <Button type="submit" size="large">
-      {submitLabel}
-    </Button>
-  </div>
+    <HorizontalFlex justify="center">
+      <Button type="submit" size="large">
+        {submitLabel}
+      </Button>
+    </HorizontalFlex>
 </form>
 
 <script>
-  const form = document.getElementById(
-    'homepage-lead-form',
-  ) as HTMLFormElement | null
-  if (!form) throw new Error('Lead form not found')
+  const form = document.getElementById('homepage-lead-form') as HTMLFormElement
+  const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!
+  const originalLabel = submitBtn.textContent
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault()
+  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 
-    const submitButton = form.querySelector(
-      'button[type="submit"]',
-    ) as HTMLButtonElement | null
-    if (!submitButton) return
+  function setFieldError(id: string, invalid: boolean) {
+    const input = form.querySelector(`#${id}`)
+    const error = form.querySelector(`#${id}-error`)
+    if (invalid) {
+      input?.setAttribute('aria-invalid', 'true')
+      error?.classList.remove('hidden')
+    } else {
+      input?.removeAttribute('aria-invalid')
+      error?.classList.add('hidden')
+    }
+  }
 
-    // Disable button and show loading state
-    submitButton.disabled = true
-    const originalText = submitButton.textContent
-    submitButton.textContent = 'Sending...'
+  function validate() {
+    const first = (form.querySelector<HTMLInputElement>('#firstname')?.value ?? '').trim()
+    const last = (form.querySelector<HTMLInputElement>('#lastname')?.value ?? '').trim()
+    const email = (form.querySelector<HTMLInputElement>('#email')?.value ?? '').trim()
+    const message = (form.querySelector<HTMLInputElement>('#leave_us_a_message')?.value ?? '').trim()
+    const privacy = form.querySelector<HTMLInputElement>('#consent-privacy')?.checked ?? false
+
+    setFieldError('firstname', !first)
+    setFieldError('lastname', !last)
+    setFieldError('email', !isValidEmail(email))
+    setFieldError('leave_us_a_message', !message)
+    setFieldError('consent-privacy', !privacy)
+
+    return Boolean(first && last && isValidEmail(email) && message && privacy)
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    if (!validate()) {
+      form.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus()
+      return
+    }
+
+    submitBtn.disabled = true
+    submitBtn.textContent = 'Sending…'
 
     try {
-      const formData = new FormData(form)
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-      })
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) })
+      const data = (await res.json()) as { success?: boolean; error?: string }
 
-      const result = (await response.json()) as {
-        success?: boolean
-        error?: string
-        errors?: string[]
-      }
-
-      if (response.ok && result.success) {
-        // Success — reset form
+      if (res.ok && data.success) {
         form.reset()
-        submitButton.textContent = "Message sent. We'll be in touch."
-        submitButton.classList.add('bg-green-500', 'hover:bg-green-600')
-        setTimeout(() => {
-          submitButton.textContent = originalText
-          submitButton.classList.remove('bg-green-500', 'hover:bg-green-600')
-          submitButton.disabled = false
-        }, 3000)
+        submitBtn.textContent = "Message sent. We'll be in touch."
+        submitBtn.classList.add('bg-green-500', 'hover:bg-green-600')
       } else {
-        // Error
-        const errorMessage =
-          result.error || result.errors?.[0] || 'Something went wrong'
-        submitButton.textContent = `Error: ${errorMessage}`
-        submitButton.classList.add('bg-red-500')
-        setTimeout(() => {
-          submitButton.textContent = originalText
-          submitButton.classList.remove('bg-red-500')
-          submitButton.disabled = false
-        }, 3000)
+        submitBtn.textContent = data.error ?? 'Something went wrong'
+        submitBtn.classList.add('bg-red-500')
       }
-    } catch (error) {
-      console.error('Form submission error:', error)
-      submitButton.textContent = 'Error sending message'
-      submitButton.classList.add('bg-red-500')
+    } catch {
+      submitBtn.textContent = 'Error sending message'
+      submitBtn.classList.add('bg-red-500')
+    } finally {
       setTimeout(() => {
-        submitButton.textContent = originalText
-        submitButton.classList.remove('bg-red-500')
-        submitButton.disabled = false
+        submitBtn.textContent = originalLabel
+        submitBtn.disabled = false
+        submitBtn.classList.remove('bg-green-500', 'hover:bg-green-600', 'bg-red-500')
       }, 3000)
     }
   })

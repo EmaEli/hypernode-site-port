@@ -3,7 +3,8 @@ import type { HomepageCallToAction } from '../../../types/homepage'
 import type { IconGridItem, IconGridProps } from './IconGrid.astro'
 import IconGrid from './IconGrid.astro'
 import SectionHeader from './SectionHeader.astro'
-import Button from '../primitives/Button.astro'
+import Button from '../primitives/Button'
+import Section from '../primitives/Section.astro'
 
 export interface IconGridSectionProps {
   title: string
@@ -19,7 +20,7 @@ type Props = IconGridSectionProps
 const { title, subtitle, items, columns = 3, cardStyle = 'styled', cta } = Astro.props
 ---
 
-<section class="section-space bg-slate-50">
+<Section spacing="default" bg="bg-slate-50">
   <div class="layout-container">
     <SectionHeader title={title} subtitle={subtitle} />
   </div>
@@ -31,4 +32,4 @@ const { title, subtitle, items, columns = 3, cardStyle = 'styled', cta } = Astro
       <Button href={cta.href} variant="secondary">{cta.label}</Button>
     </div>
   )}
-</section>
+</Section>

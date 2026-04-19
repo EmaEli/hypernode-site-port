@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Icon } from '@iconify/react'
 import { NAVBAR_LINKS } from './navbarLinks'
 import Button from '../../ui/primitives/Button'
+import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 
 const focusRing = 'focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
 const iconButtonClass = `rounded p-2 text-gray-700 hover:text-brand-orange ${focusRing}`
@@ -155,4 +156,10 @@ const NavbarMobileDrawer = () => {
   )
 }
 
-export default NavbarMobileDrawer
+const NavbarMobileDrawerWithBoundary = () => (
+  <ErrorBoundary>
+    <NavbarMobileDrawer />
+  </ErrorBoundary>
+)
+
+export default NavbarMobileDrawerWithBoundary
