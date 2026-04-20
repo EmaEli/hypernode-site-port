@@ -140,4 +140,22 @@
   .surface-card {
     @apply border border-slate-200 bg-white shadow-soft;
   }
+
+  .focus-ring {
+    @apply focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange;
+  }
+
+  /* Inline link: blue text that transitions to orange on hover */
+  .link-hover {
+    @apply text-brand-blue no-underline transition-colors duration-200 hover:text-brand-orange hover:no-underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange;
+  }
+
+  /* Decorative bullet dot in brand orange */
+  .bullet-dot {
+    display: inline-block;
+    height: 0.375rem;
+    width: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--color-brand-orange);
+  }
 }

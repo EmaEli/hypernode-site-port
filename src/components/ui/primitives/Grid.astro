@@ -1,7 +1,5 @@
 ---
-import type { FlexGap } from './flexTypes'
-
-export type { FlexGap } from './flexTypes'
+import type { FlexGap } from '../../../types/uitypes'
 
 export type GridCols = 1 | 2 | 3 | 4 | 6 | 12
 
@@ -16,8 +14,6 @@ export interface GridProps {
   as?: 'div' | 'section' | 'article' | 'ul'
   class?: string
 }
-
-type Props = GridProps
 
 const {
   cols,

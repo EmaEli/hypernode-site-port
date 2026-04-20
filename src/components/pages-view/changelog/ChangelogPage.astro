@@ -4,20 +4,25 @@ import PageHero from '../../ui/blocks/PageHero.astro'
 import type { ChangelogEntry } from '../../../types/changelog'
 
 export interface ChangelogPageProps {
-  entries: ChangelogEntry[]
+  initialEntries: ChangelogEntry[]
+  initialTotal: number
 }
 
-const { entries } = Astro.props
+const { initialEntries, initialTotal } = Astro.props
 ---
 
 <main>
   <PageHero
     eyebrow="Platform updates"
     title="Changelog"
-    subtitle="Explore Hypernode releases by year, category, or keyword. Every entry is loaded at build time and remains available even when the CMS is offline."
+    subtitle="Explore Hypernode releases by year, category, or keyword."
   />
 
   <div class="layout-container">
-    <ChangelogFilters client:visible entries={entries} />
+    <ChangelogFilters
+      client:visible
+      initialEntries={initialEntries}
+      initialTotal={initialTotal}
+    />
   </div>
 </main>

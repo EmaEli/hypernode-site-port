@@ -3,10 +3,7 @@ import { Icon } from '@iconify/react'
 
 import ErrorBoundary from '../primitives/ErrorBoundary'
 
-export interface FaqItem {
-  question: string
-  answer: string
-}
+import type { FaqItem } from '../../../types/core'
 
 export interface FAQAccordionProps {
   items: FaqItem[]

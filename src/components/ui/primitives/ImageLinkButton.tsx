@@ -1,5 +1,5 @@
 const CLASS =
-  'group flex items-center gap-4 rounded-card surface-card p-4 text-left no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-orange hover:shadow-raised focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'group flex items-center gap-4 rounded-card surface-card p-4 text-left no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-orange hover:shadow-raised focus-ring'
 
 interface ImageLinkButtonProps {
   imageSrc: string

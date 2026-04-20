@@ -37,9 +37,9 @@ const STATIC_CARD_CLASS: Record<NonNullable<IconGridProps['cardStyle']>, string>
 
 const INTERACTIVE_CARD_CLASS: Record<NonNullable<IconGridProps['cardStyle']>, string> = {
   simple:
-    'group flex h-full flex-col rounded-panel border border-brand-blue/10 bg-white p-6 focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
+    'group flex h-full flex-col rounded-panel border border-brand-blue/10 bg-white p-6 focus-ring',
   styled:
-    'group flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-panel-strong transition-all duration-200 hover:translate-y-1 hover:shadow-panel-hover focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange',
+    'group flex h-full flex-col border border-brand-blue/10 bg-white p-6 shadow-panel-strong transition-all duration-200 hover:translate-y-1 hover:shadow-panel-hover focus-ring',
 }
 
 const linkedCardClass = INTERACTIVE_CARD_CLASS[cardStyle]

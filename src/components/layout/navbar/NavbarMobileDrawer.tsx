@@ -4,7 +4,7 @@ import { NAVBAR_LINKS } from './navbarLinks'
 import Button from '../../ui/primitives/Button'
 import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 
-const focusRing = 'focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+const focusRing = 'focus-ring'
 const iconButtonClass = `rounded p-2 text-gray-700 hover:text-brand-orange ${focusRing}`
 const navLinkClass = `block rounded-lg px-3 py-3 text-base font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors ${focusRing}`
 

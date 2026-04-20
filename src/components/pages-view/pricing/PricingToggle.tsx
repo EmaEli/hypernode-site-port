@@ -1,10 +1,5 @@
+import { CLOUD_BILLING_OPTIONS, DEDICATED_BILLING_OPTIONS } from '../../../types/pricing'
 import type { BillingPeriod, Currency, PricingGroup } from '../../../types/pricing'
-
-export const CURRENCY_OPTIONS: Currency[] = ['EUR', 'GBP']
-
-const CLOUD_BILLING_OPTIONS: BillingPeriod[] = ['monthly', 'daily']
-
-const DEDICATED_BILLING_OPTIONS: BillingPeriod[] = ['monthly', 'yearly']
 
 export const getBillingOptions = (group: PricingGroup) =>
   group === 'cloud' ? CLOUD_BILLING_OPTIONS : DEDICATED_BILLING_OPTIONS
@@ -40,7 +35,7 @@ const PricingToggle = ({
             key={option}
             type="button"
             onClick={() => onChange(option)}
-            className={`inline-flex items-center gap-2 text-ui-xs font-bold uppercase tracking-[0.18em] focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange ${
+            className={`inline-flex items-center gap-2 text-ui-xs font-bold uppercase tracking-[0.18em] focus-ring ${
               disabled ? 'cursor-not-allowed text-brand-blue-dark/35' : 'text-brand-blue-dark/75'
             }`}
             aria-pressed={isActive}

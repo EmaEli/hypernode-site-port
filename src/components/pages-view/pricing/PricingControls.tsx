@@ -1,5 +1,6 @@
-import PricingToggle, { CURRENCY_OPTIONS, getBillingOptions } from './PricingToggle'
+import PricingToggle, { getBillingOptions } from './PricingToggle'
 
+import { CURRENCY_OPTIONS } from '../../../types/pricing'
 import type { BillingPeriod, Currency, PricingGroup } from '../../../types/pricing'
 
 export interface PricingControlsProps {

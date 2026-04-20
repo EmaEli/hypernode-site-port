@@ -34,11 +34,11 @@ See `DECISIONS.md` for full architectural rationale.
 |---|---|---|
 | Homepage | `src/pages/en/index.astro` | `/en/` |
 | Plans & Prices | `src/pages/en/plans-and-prices/index.astro` | `/en/plans-and-prices/` |
-| Changelog | `src/pages/changelog/index.astro` | `/changelog/` |
+| Changelog | `src/pages/en/changelog/index.astro` | `/en/changelog/` |
 
 - Never rename, move, or restructure these files — the file path is the URL in Astro.
 - Never add or remove trailing slashes inconsistently — all URLs use a trailing slash.
-- The changelog lives at `changelog.hypernode.com` in production. For this port it is at `/changelog/`. Do not change this path.
+- The changelog lives at `changelog.hypernode.com` in production. For this port it is at `/en/changelog/`. Do not change this path.
 
 ### SEO metadata — required on every page
 
@@ -124,42 +124,53 @@ Example for the homepage:
 ```
 src/
   assets/
-    images/       # All images downloaded from the original site (SVG, WebP)
+    images/       # All images downloaded from the original site (SVG, WebP, PNG)
   components/
+    layout/
+      navbar/     # Navbar.astro, NavbarMobileDrawer.tsx, navbarLinks.ts
+      topbar/     # TopBar.astro
+      footer/     # Footer.astro, FooterMain.astro, FooterLegal.astro,
+                  # FooterSecondary.astro, footerData.ts
     pages-view/   # Feature-first page folders and page assembly components
-      changelog/  # Changelog-specific components
-      homepage/   # Homepage-specific components
-      pricing/    # Pricing-page-specific components, Astro and React together
+      changelog/  # ChangelogPage.astro, ChangelogFilters.tsx, ChangelogCard.tsx
+      homepage/   # Homepage.astro, HomepageLeadForm.tsx
+      pricing/    # PricingPage.astro + all pricing React islands
     ui/
-      primitives/ # Button, Badge, Icon, Tag
+      primitives/ # Button, Badge, Tag, Icon, FormField, CheckboxField,
+                  # Grid, HorizontalFlex, VerticalFlex, Section,
+                  # RoundedCard, Pagination, SearchField, SelectField,
+                  # ImageLinkButton, ErrorBoundary, ErrorMessage
       blocks/     # FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip,
-                  # FormSection, HeroImage, IconGridSection,
-                  # TestimonialsGrid, TestimonialsSection
+                  # FormSection, HeroImage, IconGridSection, FAQAccordion,
+                  # TestimonialsGrid, TestimonialsSection, SectionAnchorIntro
   content/
-    pages/        # TypeScript data files for static page sections
+    homepage/     # content.mdx — homepage sections data
+    pricing/      # content.mdx — pricing page sections data
+  content.config.ts  # Content collection schemas (Zod)
   layouts/
-    BaseLayout.astro
-    Navbar.astro
-    TopBar.astro
-    footer/
-      Footer.astro
-      FooterLegal.astro
-      FooterMain.astro
-      FooterSecondary.astro
+    BaseLayout.astro  # <head>, SEO, shared document shell
   lib/
-    strapi.ts     # typed Strapi client
-    pricing.ts    # pricing calculation helpers
+    strapi.ts            # typed Strapi client + seed fallback
+    pricing.ts           # pricing calculation helpers
+    pricing-data.json    # plan data (prices, CPUs, RAM, feature groups)
+    pricing-content.json # pricing page copy (hero, FAQ, etc.)
+    pricingSchema.ts     # Zod schemas for pricing data validation
   types/
     seo.ts        # SEOProps, HreflangEntry
-    homepage.ts   # HomepageImageKey, HomepageFeatureSection, Testimonial, etc.
-    changelog.ts  # shared interfaces
+    homepage.ts   # HomepageFeatureSection, Testimonial, etc.
+    changelog.ts  # ChangelogEntry, StrapiChangelogEntry, StrapiListResponse
     pricing.ts    # Plan, Currency, Environment, BillingPeriod
+    core.ts       # Shared base types (e.g. PaginatedResult)
+    forms.ts      # LeadFormData
+    uitypes.ts    # FlexAlign, FlexJustify, FlexGap, etc.
   pages/
     en/
       index.astro
       plans-and-prices/index.astro
-    changelog/
-      index.astro
+      changelog/index.astro
+    api/
+      leads.ts    # POST /api/leads — lead form handler
+    index.astro   # Redirect → /en/
 strapi/
   seed.json       # fallback fixture data
 .env.example      # documents required environment variables
@@ -176,6 +187,10 @@ Each file in `src/types/` represents a single bounded context.
 | `src/types/seo.ts` | SEOProps, HreflangEntry |
 | `src/types/changelog.ts` | ChangelogEntry, StrapiChangelogEntry, StrapiListResponse |
 | `src/types/pricing.ts` | Plan, Currency, Environment, BillingPeriod |
+| `src/types/homepage.ts` | HomepageFeatureSection, Testimonial, etc. |
+| `src/types/core.ts` | Shared base types (e.g. PaginatedResult) |
+| `src/types/forms.ts` | LeadFormData |
+| `src/types/uitypes.ts` | FlexAlign, FlexJustify, FlexGap, FlexWrap |
 
 Never put interfaces inside component files unless they are props interfaces
 used exclusively by that component and nowhere else.
@@ -307,16 +322,16 @@ const getPrice = (plan: Plan, currency: Currency) => {
 ### Atomic UI — component decomposition
 
 1. **Primitives** (`ui/primitives/`) — Button, Badge, Tag, Icon, segmented controls, and presentational shells. No business logic. Primitives may be `.astro` or `.tsx` depending on whether interactivity is required.
-2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, TestimonialsGrid, TestimonialsSection. Composed from primitives.
-3. **Islands (feature-local first)** — interactive components live inside `components/pages-view/*` when page-specific; promote to `components/islands/` only when genuinely shared across multiple pages/domains.
+2. **Blocks** (`ui/blocks/`) — FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip, FormSection, HeroImage, IconGridSection, FAQAccordion, TestimonialsGrid, TestimonialsSection, SectionAnchorIntro. Composed from primitives.
+3. **Islands (feature-local first)** — interactive components live inside `components/pages-view/*` when page-specific. There is no shared `components/islands/` folder; keep interactive components in the feature folder they belong to.
 4. **Pages** (`components/pages-view/`) — feature-first folders that assemble page-specific Astro and React components into full page layouts.
-5. **Layout** (`layouts/`) — BaseLayout, Navbar, TopBar, Footer modules. Site chrome and document shell.
+5. **Layout** (`components/layout/`) — Navbar, TopBar, Footer modules and their data files. `layouts/` contains only `BaseLayout.astro`.
 
 ### Feature-first structure
 
 - Prefer grouping page-specific components by feature folder under `src/components/pages-view/`.
 - If a component exists only to serve one page or one feature area, keep it in that page folder even when it is a `.tsx` island.
-- Use `src/components/islands/` only for interactive components that are genuinely shared across multiple pages or domains.
+- There is no `src/components/islands/` folder — do not create one. Interactive components stay in `src/components/pages-view/*` unless they are genuinely reusable across multiple pages, in which case promote to `src/components/ui/blocks/`.
 - Keep page-specific interactive components in `src/components/pages-view/*`.
 - Use `src/components/ui/blocks/` only for reusable page-agnostic building blocks.
 - Do not split by renderer first. `.astro` and `.tsx` may live next to each other inside a feature folder when they belong to the same page flow.
@@ -332,7 +347,7 @@ const getPrice = (plan: Plan, currency: Currency) => {
   - it has a stable props interface that makes sense on its own,
   - it represents a distinct UI concept such as a modal, card, controls block, or section header.
 - Avoid creating many tiny files for trivial one-off fragments with no stable API.
-- Prefer feature-local files before promoting a component to `ui/blocks/` or `islands/`.
+- Prefer feature-local files before promoting a component to `ui/blocks/`.
 
 ### Styling — Tailwind
 
@@ -471,13 +486,24 @@ export interface IconGridProps {
 }
 ```
 
-### PricingTable (React island)
+### Pricing island (`src/components/pages-view/pricing/`)
 
-Manages three independent toggles: Environment (Production/Development), Currency (EUR/GBP), Billing (Monthly/Daily, Yearly where available at -15%). Pricing data is passed as a prop from the `.astro` page. No client-side API calls.
+The pricing section is split across multiple focused React components:
+- `PricingLayout.tsx` — top-level island (`client:load`), owns all toggle state
+- `PricingControls.tsx` — environment/currency/billing toggles
+- `PricingEnvironmentToggle.tsx` — Production / Development switcher
+- `PricingToggle.tsx` — generic binary toggle primitive
+- `PricingProviderPanel.tsx` — tab panel for a single provider (Combell OpenStack, AWS, Standard Dedicated, Enterprise Dedicated)
+- `PricingSection.tsx` / `PricingDesktopTable.tsx` / `PricingMobile.tsx` / `PricingMobileCard.tsx` — table and card renderers
+- `PricingFeaturesModal.tsx` — modal listing plan features
+- `PricingSidebar.tsx` — sticky feature-group sidebar
+- `pricingUtils.tsx` — pure formatting/calculation helpers
 
-### ChangelogFilters (React island)
+Pricing data comes from `src/lib/pricing-data.json` and `src/lib/pricing-content.json`, validated at startup by `src/lib/pricingSchema.ts`. No client-side API calls.
 
-Filters changelog entries by category client-side with `useState`. Entries are fetched from Strapi at build time and passed as a prop.
+### ChangelogFilters (React island — `src/components/pages-view/changelog/`)
+
+Filters changelog entries by category client-side with `useState`. Supports pagination via `Pagination` primitive. Entries are fetched from Strapi at build time and passed as a prop.
 
 ---
 

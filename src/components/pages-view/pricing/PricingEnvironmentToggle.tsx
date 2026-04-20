@@ -1,14 +1,10 @@
 import VerticalFlex from '../../ui/primitives/VerticalFlex'
 
+import { ENVIRONMENT_OPTIONS } from '../../../types/pricing'
 import type { Environment } from '../../../types/pricing'
 
-const ENVIRONMENT_OPTIONS: Array<{ label: string; value: Environment }> = [
-  { label: 'Production', value: 'production' },
-  { label: 'Development', value: 'development' },
-]
-
 const BUTTON_CLASS =
-  'rounded-full px-3.5 py-2 text-ui-sm font-bold transition-all focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'rounded-full px-3.5 py-2 text-ui-sm font-bold transition-all focus-ring'
 
 interface PricingEnvironmentToggleProps {
   value: Environment

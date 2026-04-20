@@ -37,7 +37,7 @@ const HomepageLeadForm = ({ submitLabel, newsHref, privacyPolicyHref }: Homepage
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: React.ComponentProps<'form'>['onSubmit'] = async (e) => {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
@@ -67,14 +67,15 @@ const HomepageLeadForm = ({ submitLabel, newsHref, privacyPolicyHref }: Homepage
   }
 
   const isLoading = status === 'loading'
-  const submitText =
-    status === 'success' ? "Message sent. We'll be in touch." :
-    status === 'error' ? 'Something went wrong' :
-    isLoading ? 'Sending…' :
-    submitLabel
+  const submitText = {
+    success: "Message sent. We'll be in touch.",
+    error: 'Something went wrong',
+    loading: 'Sending…',
+    idle: submitLabel,
+  }[status]
 
   return (
-    <form method="post" action="/api/leads" onSubmit={handleSubmit}>
+    <form method="post" action="/api/leads" onSubmit={handleSubmit} noValidate>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <FormField id="firstname" placeholder="Your first name" autoComplete="given-name" required error={errors.firstname} />
         <FormField id="lastname" placeholder="Your last name" autoComplete="family-name" required error={errors.lastname} />

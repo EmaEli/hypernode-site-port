@@ -38,7 +38,7 @@ Using conservative hydration instead of `client:load` everywhere reduces Time to
 
 ## 3. Content strategy — typed static content files for pages, Strapi for changelog only
 
-**Decision:** Homepage and Plans & Prices content lives in typed TypeScript content modules under `src/content/pages/`. The changelog is managed through Strapi.
+**Decision:** Homepage and Plans & Prices content lives in MDX content collections under `src/content/homepage/` and `src/content/pricing/` respectively. The changelog is managed through Strapi.
 
 **Context:** The team asked for a headless CMS. However, not all content benefits equally from a CMS.
 
@@ -88,7 +88,7 @@ This approach reduces duplication and makes adding new sections (e.g. a future p
 
 **Implementation:**
 
-- Astro file-based routing mirrors the original URL structure (`/en/`, `/en/plans-and-prices/`, `/changelog/`).
+- Astro file-based routing mirrors the original URL structure (`/en/`, `/en/plans-and-prices/`, `/en/changelog/`).
 - `BaseLayout.astro` accepts a `seo` prop with title, description, canonical URL, Open Graph image, and `hreflang` alternates (EN/NL).
 - `@astrojs/sitemap` generates `sitemap.xml` at build time.
 - `robots.txt` is preserved as-is from the original site.
@@ -97,13 +97,13 @@ This approach reduces duplication and makes adding new sections (e.g. a future p
 
 ## 7. Changelog subdomain
 
-**Decision:** For this port, the changelog is served at `/changelog/` rather than `changelog.hypernode.com`.
+**Decision:** For this port, the changelog is served at `/en/changelog/` rather than `changelog.hypernode.com`.
 
-**Context:** The original changelog lives on a separate subdomain. Replicating subdomain routing requires infrastructure configuration beyond the scope of this take-home assignment.
+**Context:** The original changelog lives on a separate subdomain. Replicating subdomain routing requires infrastructure configuration beyond the scope of this take-home assignment. The page was placed under `/en/` to keep all in-scope English routes in a single subtree, consistent with the homepage and pricing paths.
 
 **Production path:** In a real deployment, this would be handled by one of:
 - A separate Astro deployment with `site: "https://changelog.hypernode.com"` in `astro.config.mjs`.
-- A reverse proxy rule routing `changelog.hypernode.com` to the `/changelog/` path of the main deployment.
+- A reverse proxy rule routing `changelog.hypernode.com` to the `/en/changelog/` path of the main deployment.
 
 The component architecture and Strapi integration are identical either way — only the routing configuration changes.
 

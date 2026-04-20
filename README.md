@@ -20,9 +20,9 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 |---|---|---|
 | `/en/` | `src/pages/en/index.astro` | MDX content collection, near-fully static |
 | `/en/plans-and-prices/` | `src/pages/en/plans-and-prices/index.astro` | Static shell, React island for pricing table |
-| `/changelog/` | `src/pages/changelog/index.astro` | Fetched from Strapi at build time |
+| `/en/changelog/` | `src/pages/en/changelog/index.astro` | Fetched from Strapi at build time |
 
-> The changelog lives at `changelog.hypernode.com` in production. For this port it is served at `/changelog/`. See [`DECISIONS.md`](./DECISIONS.md) for the subdomain strategy.
+> The changelog lives at `changelog.hypernode.com` in production. For this port it is served at `/en/changelog/`. See [`DECISIONS.md`](./DECISIONS.md) for the subdomain strategy.
 
 ## Project structure
 
@@ -33,35 +33,54 @@ A port of [hypernode.com](https://www.hypernode.com/en/) away from WordPress, bu
 ├── public/
 │   └── robots.txt
 ├── src/
+│   ├── assets/
+│   │   └── images/              # Downloaded site images (SVG, WebP, PNG)
 │   ├── components/
+│   │   ├── layout/
+│   │   │   ├── navbar/          # Navbar.astro, NavbarMobileDrawer.tsx, navbarLinks.ts
+│   │   │   ├── topbar/          # TopBar.astro
+│   │   │   └── footer/          # Footer.astro, FooterMain.astro, FooterLegal.astro, FooterSecondary.astro, footerData.ts
 │   │   ├── pages-view/          # Feature-first page assembly components
-│   │   ├── ui/
-│   │   │   ├── primitives/      # Button, Badge, Tag, Icon
-│   │   │   └── blocks/          # FeatureBlock, IconGrid, SectionHeader, etc.
+│   │   │   ├── changelog/       # ChangelogPage.astro, ChangelogFilters.tsx, ChangelogCard.tsx
+│   │   │   ├── homepage/        # Homepage.astro, HomepageLeadForm.tsx
+│   │   │   └── pricing/         # PricingPage.astro + all pricing React islands
+│   │   └── ui/
+│   │       ├── primitives/      # Button, Badge, Tag, Icon, FormField, Grid, HorizontalFlex,
+│   │       │                    # VerticalFlex, Section, RoundedCard, Pagination, SearchField,
+│   │       │                    # SelectField, ImageLinkButton, CheckboxField, ErrorBoundary
+│   │       └── blocks/          # FeatureBlock, IconGrid, SectionHeader, CompanyLogoStrip,
+│   │                            # FormSection, HeroImage, IconGridSection,
+│   │                            # TestimonialsGrid, TestimonialsSection, FAQAccordion
 │   ├── content/
-│   │   ├── homepage/            # MDX content entry for homepage
-│   │   ├── pricing/             # MDX content entry for pricing
-│   │   └── config.ts            # Content collection schemas (Zod)
+│   │   ├── homepage/            # content.mdx — homepage sections data
+│   │   └── pricing/             # content.mdx — pricing page sections data
+│   ├── content.config.ts        # Content collection schemas (Zod)
 │   ├── layouts/
-│   │   ├── BaseLayout.astro     # <head>, SEO, shared structure
-│   │   ├── Navbar.astro
-│   │   ├── TopBar.astro
-│   │   └── footer/              # Footer split into focused components
+│   │   └── BaseLayout.astro     # <head>, SEO, shared document shell
 │   ├── lib/
-│   │   ├── strapi.ts            # Strapi client + typed fetchers
-│   │   └── pricing.ts           # Pricing calculation helpers
+│   │   ├── strapi.ts            # Strapi client + typed fetchers + seed fallback
+│   │   ├── pricing.ts           # Pricing calculation helpers
+│   │   ├── pricing-data.json    # Plan data (prices, CPUs, RAM, features)
+│   │   ├── pricing-content.json # Pricing page copy (hero, FAQ, etc.)
+│   │   └── pricingSchema.ts     # Zod schemas for pricing data validation
 │   ├── types/
-│   │   ├── changelog.ts
-│   │   ├── homepage.ts
-│   │   ├── pricing.ts
-│   │   └── seo.ts
+│   │   ├── changelog.ts         # ChangelogEntry, StrapiChangelogEntry, StrapiListResponse
+│   │   ├── core.ts              # Shared base types (e.g. PaginatedResult)
+│   │   ├── forms.ts             # LeadFormData
+│   │   ├── homepage.ts          # HomepageFeatureSection, Testimonial, etc.
+│   │   ├── pricing.ts           # Plan, Currency, Environment, BillingPeriod
+│   │   ├── seo.ts               # SEOProps, HreflangEntry
+│   │   └── uitypes.ts           # FlexAlign, FlexJustify, FlexGap, etc.
 │   └── pages/
 │       ├── en/
 │       │   ├── index.astro
-│       │   └── plans-and-prices/
+│       │   ├── plans-and-prices/
+│       │   │   └── index.astro
+│       │   └── changelog/
 │       │       └── index.astro
-│       └── changelog/
-│           └── index.astro
+│       ├── api/
+│       │   └── leads.ts         # POST /api/leads — lead form handler
+│       └── index.astro          # Redirect → /en/
 ├── strapi/
 │   └── seed.json                # Fixture data for local development
 ├── eslint.config.js
@@ -209,7 +228,7 @@ The homepage contact form (`src/components/pages-view/homepage/HomepageLeadForm.
 
 ## Changelog
 
-The changelog is fetched from Strapi at build time (`src/pages/changelog/index.astro`). Entries are cached in `strapi/seed.json` as a fallback if Strapi is unavailable.
+The changelog is fetched from Strapi at build time (`src/pages/en/changelog/index.astro`). Entries are cached in `strapi/seed.json` as a fallback if Strapi is unavailable.
 
 **To update changelog entries:** Add/edit records in Strapi, then rebuild (`npm run build`).
 

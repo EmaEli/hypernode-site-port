@@ -26,7 +26,7 @@ const WRAP_MAP: Record<FlexWrap, string> = {
 
 type Tag = 'div' | 'section' | 'article' | 'header' | 'footer' | 'nav' | 'ul' | 'li' | 'span'
 
-export interface VerticalFlexProps {
+export interface HorizontalFlexProps {
   children?: ReactNode
   align?: FlexAlign
   justify?: FlexJustify
@@ -35,12 +35,11 @@ export interface VerticalFlexProps {
   gapX?: FlexGap
   gapY?: FlexGap
   inline?: boolean
-  rounded?: boolean
   as?: Tag
   className?: string
 }
 
-const VerticalFlex = ({
+const HorizontalFlex = ({
   children,
   align,
   justify,
@@ -49,14 +48,12 @@ const VerticalFlex = ({
   gapX,
   gapY,
   inline = false,
-  rounded = false,
   as: Tag = 'div',
   className,
-}: VerticalFlexProps) => {
+}: HorizontalFlexProps) => {
   const classes = [
     inline ? 'inline-flex' : 'flex',
-    'flex-col',
-    rounded ? 'rounded-card' : '',
+    'flex-row',
     align ? ALIGN_MAP[align] : '',
     justify ? JUSTIFY_MAP[justify] : '',
     wrap ? WRAP_MAP[wrap] : '',
@@ -71,4 +68,4 @@ const VerticalFlex = ({
   return <Tag className={classes}>{children}</Tag>
 }
 
-export default VerticalFlex
+export default HorizontalFlex
