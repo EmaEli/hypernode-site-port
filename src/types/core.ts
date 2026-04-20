@@ -6,6 +6,7 @@ export interface FaqItem {
 export interface NavbarLink {
   label: string
   href: string
+  children?: { label: string; href: string }[]
 }
 
 export interface FooterLinkItem {

@@ -10,6 +10,7 @@ const navLinkClass = `block rounded-lg px-3 py-3 text-base font-medium text-gray
 
 const NavbarMobileDrawer = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
   const drawerRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const openButtonRef = useRef<HTMLButtonElement>(null)
@@ -128,14 +129,51 @@ const NavbarMobileDrawer = () => {
         >
           <ul className="flex flex-col gap-1 list-none m-0 p-0">
             {NAVBAR_LINKS.map(link => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={close}
-                  className={navLinkClass}
-                >
-                  {link.label}
-                </a>
+              <li key={link.label}>
+                {link.children ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setOpenSubmenu(openSubmenu === link.label ? null : link.label)}
+                      aria-expanded={openSubmenu === link.label}
+                      className={`${navLinkClass} w-full flex items-center justify-between`}
+                    >
+                      {link.label}
+                      <Icon
+                        icon="heroicons:chevron-down"
+                        width={16}
+                        height={16}
+                        aria-hidden="true"
+                        className={`transition-transform ${openSubmenu === link.label ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {openSubmenu === link.label && (
+                      <ul className="flex flex-col gap-1 list-none m-0 pl-4 pb-1">
+                        {link.children.map(child => (
+                          <li key={child.href}>
+                            <a
+                              href={child.href}
+                              target={child.external ? '_blank' : undefined}
+                              rel={child.external ? 'noopener noreferrer' : undefined}
+                              onClick={close}
+                              className={navLinkClass}
+                            >
+                              {child.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <a
+                    href={link.href}
+                    onClick={close}
+                    className={navLinkClass}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
