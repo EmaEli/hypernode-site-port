@@ -5,5 +5,14 @@ export const NAVBAR_LINKS: NavbarLink[] = [
   { label: 'Products', href: 'https://www.hypernode.com/en/features/' },
   { label: 'Plans & prices', href: '/en/plans-and-prices/' },
   { label: 'Partners', href: 'https://www.hypernode.com/en/our-partners/' },
-  { label: 'Resources', href: 'https://www.hypernode.com/en/blog/' },
+  {
+    label: 'Resources',
+    href: 'https://www.hypernode.com/en/blog/',
+    children: [
+      { label: 'Events', href: 'https://www.hypernode.com/en/events/' },
+      { label: 'Blog', href: 'https://www.hypernode.com/en/blog/' },
+      { label: 'Changelog', href: '/en/changelog/' },
+      { label: 'Support Documentation', href: 'https://docs.hypernode.com/' },
+    ],
+  },
 ]
