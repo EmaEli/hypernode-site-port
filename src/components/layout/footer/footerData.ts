@@ -1,16 +1,7 @@
-export interface FooterLinkItem {
-  href: string
-  label: string
-  title?: string
-}
-
-export interface FooterLinkGroup {
-  heading: string
-  links: FooterLinkItem[]
-}
+import type { FooterLinkItem, FooterLinkGroup } from '../../../types/core'
 
 export const LINK_CLASS =
-  'text-gray-300 hover:text-brand-orange transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'text-gray-300 hover:text-brand-orange transition-colors focus-ring'
 
 export const COLUMN_HEADING_CLASS = 'text-ui-label font-bold uppercase tracking-wider text-white mb-4'
 export const COLUMN_LIST_CLASS = 'space-y-2 text-sm list-none p-0'

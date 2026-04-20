@@ -29,7 +29,7 @@ const PricingFeaturesModal = ({ featureGroups, plan, onClose }: PricingFeaturesM
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-brand-blue-dark transition hover:border-brand-orange hover:text-brand-orange focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-brand-blue-dark transition hover:border-brand-orange hover:text-brand-orange focus-ring"
             aria-label="Close features modal"
           >
             <Icon icon="heroicons:x-mark-20-solid" className="h-4 w-4" aria-hidden="true" />

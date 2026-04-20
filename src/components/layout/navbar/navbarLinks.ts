@@ -1,7 +1,4 @@
-export interface NavbarLink {
-  label: string
-  href: string
-}
+import type { NavbarLink } from '../../../types/core'
 
 export const NAVBAR_LINKS: NavbarLink[] = [
   { label: 'Why Hypernode', href: 'https://www.hypernode.com/en/' },

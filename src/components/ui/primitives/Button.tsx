@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'active' | 'inactive' | 'link'
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'active' | 'inactive' | 'link'
   size?: 'default' | 'large'
   href?: string
   type?: 'button' | 'submit' | 'reset'
@@ -23,13 +23,15 @@ const BASE_CLASS =
   'inline-flex items-center justify-center rounded-full text-ui-button font-bold transition-all duration-300 focus:outline-2 focus:outline-offset-2 disabled:opacity-60 disabled:cursor-not-allowed'
 
 const LINK_CLASS =
-  'w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'w-fit text-ui-sm font-bold text-brand-orange underline-offset-4 hover:underline focus-ring'
 
 const VARIANT_MODIFIER: Record<Exclude<NonNullable<ButtonProps['variant']>, 'link'>, string> = {
   primary:
     'border border-transparent bg-brand-orange text-white hover:bg-white hover:text-brand-orange hover:border-brand-orange focus:outline-brand-orange',
   secondary:
     'border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus:outline-brand-blue',
+  outline:
+    'border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white focus:outline-brand-orange',
   ghost:
     'text-brand-blue underline-offset-4 hover:underline focus:outline-brand-blue',
   active:

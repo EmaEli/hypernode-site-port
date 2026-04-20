@@ -21,28 +21,26 @@ const FormField = ({
   autoComplete,
   required = false,
   error,
-}: FormFieldProps) => {
-  return (
-    <div>
-      <input
-        id={id}
-        name={name ?? id}
-        type={type}
-        placeholder={placeholder}
-        inputMode={inputMode}
-        autoComplete={autoComplete}
-        required={required || undefined}
-        aria-invalid={error ? 'true' : undefined}
-        aria-describedby={error ? `${id}-error` : undefined}
-        className={INPUT_CLASS}
-      />
-      {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-sm text-red-300">
-          {error}
-        </p>
-      )}
-    </div>
-  )
-}
+}: FormFieldProps) => (
+  <div>
+    <input
+      id={id}
+      name={name ?? id}
+      type={type}
+      placeholder={placeholder}
+      inputMode={inputMode}
+      autoComplete={autoComplete}
+      required={required || undefined}
+      aria-invalid={error ? 'true' : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
+      className={INPUT_CLASS}
+    />
+    {error && (
+      <p id={`${id}-error`} role="alert" className="mt-1 text-sm text-red-300">
+        {error}
+      </p>
+    )}
+  </div>
+)
 
 export default FormField

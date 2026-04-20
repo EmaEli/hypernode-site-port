@@ -1,3 +1,4 @@
+import RoundedCard from '../../ui/primitives/RoundedCard'
 import PricingDesktopTable from './PricingDesktopTable'
 import PricingMobile from './PricingMobile'
 
@@ -31,7 +32,7 @@ const PricingProviderPanel = ({
   const plans = provider.plans.filter(plan => plan.environment === environment)
 
   return (
-    <section className="rounded-shell surface-card pad-card-md">
+    <RoundedCard as="section" padding="md">
       <div>
         <h3 className="text-brand-blue-dark">{provider.title}</h3>
 
@@ -59,7 +60,7 @@ const PricingProviderPanel = ({
         onOpenFeatures={onOpenFeatures}
         plans={plans}
       />
-    </section>
+    </RoundedCard>
   )
 }
 

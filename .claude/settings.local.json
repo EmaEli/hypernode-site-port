@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(npx astro *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const icons = require\\('./node_modules/@iconify-json/heroicons/icons.json'\\); Object.keys\\(icons.icons\\).filter\\(k => k.includes\\('arrow'\\) || k.includes\\('chevron'\\)\\).forEach\\(k => console.log\\(k\\)\\)\")",
+      "Bash(node -e \"const d = require\\('./node_modules/@iconify-json/heroicons/icons.json'\\); const keys = Object.keys\\(d.icons\\).filter\\(k => k.includes\\('arrow'\\) || k.includes\\('chevron'\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
+      "Bash(grep -r \"text-ui-button\" c:/Users/Elisa/Desktop/Hypernode/src/styles/ c:/Users/Elisa/Desktop/Hypernode/tailwind.config*)",
+      "Bash(ls C:/Users/Elisa/Desktop/Hypernode/*.md)"
     ]
   }
 }

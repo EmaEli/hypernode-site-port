@@ -10,6 +10,15 @@
     "version": "10770"
   },
   {
+    "id": 68928,
+    "title": "Control Panel: bulk node restart",
+    "slug": "control-panel-bulk-node-restart",
+    "date": "2026-03-10",
+    "category": "ControlPanel",
+    "summary": "Operators can now restart multiple nodes in a single action from the control panel, reducing manual steps during rolling maintenance windows.",
+    "href": "https://changelog.hypernode.com/?p=68928"
+  },
+  {
     "id": 68926,
     "title": "Hypernode Deploy v4.8.0",
     "slug": "hypernode-deploy-v4-8-0",
@@ -18,6 +27,15 @@
     "summary": "Hypernode Deploy 4.8.0 speeds up static content rollout, improves deploy visibility, and reduces rollback friction for larger storefronts.",
     "href": "https://changelog.hypernode.com/?p=68926",
     "version": "4.8.0"
+  },
+  {
+    "id": 68924,
+    "title": "API: webhook signature verification",
+    "slug": "api-webhook-signature-verification",
+    "date": "2026-02-20",
+    "category": "API",
+    "summary": "Webhook payloads now include an HMAC-SHA256 signature header so integrations can verify the authenticity of every event before processing it.",
+    "href": "https://changelog.hypernode.com/?p=68924"
   },
   {
     "id": 68921,
@@ -30,6 +48,43 @@
     "version": "10755"
   },
   {
+    "id": 68919,
+    "title": "Autoscaling: cooldown period now configurable",
+    "slug": "autoscaling-cooldown-period-configurable",
+    "date": "2026-02-14",
+    "category": "Autoscaling",
+    "summary": "The autoscaling cooldown period can now be set per-node plan, giving high-traffic stores finer control over scale-in timing after traffic spikes.",
+    "href": "https://changelog.hypernode.com/?p=68919"
+  },
+  {
+    "id": 68915,
+    "title": "Hypernode Deploy v4.7.2",
+    "slug": "hypernode-deploy-v4-7-2",
+    "date": "2026-01-30",
+    "category": "HypernodeDeploy",
+    "summary": "Patch release fixing a rare condition where symlink rotation could leave the previous release directory locked during high-concurrency deploys.",
+    "href": "https://changelog.hypernode.com/?p=68915",
+    "version": "4.7.2"
+  },
+  {
+    "id": 68910,
+    "title": "MageReport: CVE scanner updated to 2026 ruleset",
+    "slug": "magereport-cve-scanner-2026-ruleset",
+    "date": "2026-01-15",
+    "category": "MageReport",
+    "summary": "The MageReport CVE scanner now uses the 2026 vulnerability ruleset, covering newly disclosed Magento and PHP ecosystem issues.",
+    "href": "https://changelog.hypernode.com/?p=68910"
+  },
+  {
+    "id": 68905,
+    "title": "Cluster: cross-region failover preview",
+    "slug": "cluster-cross-region-failover-preview",
+    "date": "2026-01-08",
+    "category": "Cluster",
+    "summary": "Early access for cross-region failover lets enterprise clusters designate a secondary region that takes over automatically if the primary becomes unreachable.",
+    "href": "https://changelog.hypernode.com/?p=68905"
+  },
+  {
     "id": 68893,
     "title": "Release 10647: Two-factor Authentication",
     "slug": "release-10647-two-factor-authentication",
@@ -38,6 +93,110 @@
     "summary": "Enabled stronger two-factor authentication flows in the control panel to improve account security and reduce administrative access risk.",
     "href": "https://changelog.hypernode.com/?p=68893",
     "version": "10647"
+  },
+  {
+    "id": 68890,
+    "title": "API: pagination added to node list endpoint",
+    "slug": "api-pagination-node-list-endpoint",
+    "date": "2025-11-18",
+    "category": "API",
+    "summary": "The /nodes endpoint now supports cursor-based pagination, making it easier to handle large fleets programmatically without hitting response size limits.",
+    "href": "https://changelog.hypernode.com/?p=68890"
+  },
+  {
+    "id": 68885,
+    "title": "Release 10630: PHP 8.3 support",
+    "slug": "release-10630-php-83-support",
+    "date": "2025-11-05",
+    "category": "Platform",
+    "summary": "PHP 8.3 is now available on all Hypernode plans. The release includes JIT improvements, typed class constants, and several deprecation cleanups.",
+    "href": "https://changelog.hypernode.com/?p=68885",
+    "version": "10630"
+  },
+  {
+    "id": 68880,
+    "title": "Hypernode Deploy v4.7.0",
+    "slug": "hypernode-deploy-v4-7-0",
+    "date": "2025-10-22",
+    "category": "HypernodeDeploy",
+    "summary": "Introduces parallel asset compilation and a new --dry-run flag that prints the full deploy plan without executing any steps.",
+    "href": "https://changelog.hypernode.com/?p=68880",
+    "version": "4.7.0"
+  },
+  {
+    "id": 68875,
+    "title": "Autoscaling: memory pressure metric",
+    "slug": "autoscaling-memory-pressure-metric",
+    "date": "2025-10-09",
+    "category": "Autoscaling",
+    "summary": "Autoscaling decisions can now factor in memory pressure alongside CPU, preventing OOM conditions during catalog import and reindex operations.",
+    "href": "https://changelog.hypernode.com/?p=68875"
+  },
+  {
+    "id": 68870,
+    "title": "MageReport: Magento 2.4.7 patch coverage",
+    "slug": "magereport-magento-247-patch-coverage",
+    "date": "2025-09-15",
+    "category": "MageReport",
+    "summary": "Scan rules updated to detect missing Magento 2.4.7 security patches, including APSB25-08 and related ACL bypass vectors.",
+    "href": "https://changelog.hypernode.com/?p=68870"
+  },
+  {
+    "id": 68865,
+    "title": "Cluster: read replica promotion improvements",
+    "slug": "cluster-read-replica-promotion-improvements",
+    "date": "2025-09-01",
+    "category": "Cluster",
+    "summary": "Read replica promotion is now faster and produces clearer audit log entries, making post-failover forensics easier for platform engineers.",
+    "href": "https://changelog.hypernode.com/?p=68865"
+  },
+  {
+    "id": 68860,
+    "title": "Release 10590: Redis 7.2 default",
+    "slug": "release-10590-redis-72-default",
+    "date": "2025-08-12",
+    "category": "Platform",
+    "summary": "Redis 7.2 is now the default cache backend on new Hypernode instances, bringing improved memory efficiency and ACL enhancements.",
+    "href": "https://changelog.hypernode.com/?p=68860",
+    "version": "10590"
+  },
+  {
+    "id": 68855,
+    "title": "API: scoped read-only tokens",
+    "slug": "api-scoped-read-only-tokens",
+    "date": "2025-07-28",
+    "category": "API",
+    "summary": "Read-only API tokens can now be scoped to specific resources, enabling monitoring integrations without granting unnecessary write access.",
+    "href": "https://changelog.hypernode.com/?p=68855"
+  },
+  {
+    "id": 68850,
+    "title": "Control Panel: usage graphs redesign",
+    "slug": "control-panel-usage-graphs-redesign",
+    "date": "2025-07-10",
+    "category": "ControlPanel",
+    "summary": "CPU, memory, and disk usage graphs have been redesigned with higher resolution data points and adjustable time windows up to 90 days.",
+    "href": "https://changelog.hypernode.com/?p=68850"
+  },
+  {
+    "id": 68845,
+    "title": "Hypernode Deploy v4.6.0",
+    "slug": "hypernode-deploy-v4-6-0",
+    "date": "2025-06-24",
+    "category": "HypernodeDeploy",
+    "summary": "Adds native support for multi-store Magento setups, allowing a single pipeline to deploy and configure multiple store views in one pass.",
+    "href": "https://changelog.hypernode.com/?p=68845",
+    "version": "4.6.0"
+  },
+  {
+    "id": 68840,
+    "title": "Release 10550: Elasticsearch 8 support",
+    "slug": "release-10550-elasticsearch-8-support",
+    "date": "2025-06-05",
+    "category": "Platform",
+    "summary": "Elasticsearch 8 is now available as an opt-in search backend, with automatic index migration tooling for stores upgrading from ES 7.",
+    "href": "https://changelog.hypernode.com/?p=68840",
+    "version": "10550"
   },
   {
     "id": 68412,
@@ -49,6 +208,24 @@
     "href": "https://changelog.hypernode.com/?p=68412"
   },
   {
+    "id": 68400,
+    "title": "Autoscaling: scheduled scale rules",
+    "slug": "autoscaling-scheduled-scale-rules",
+    "date": "2024-08-20",
+    "category": "Autoscaling",
+    "summary": "Stores can now pre-schedule scale-up windows for known high-traffic events, ensuring resources are available before demand arrives.",
+    "href": "https://changelog.hypernode.com/?p=68400"
+  },
+  {
+    "id": 68350,
+    "title": "Cluster: automated backup verification",
+    "slug": "cluster-automated-backup-verification",
+    "date": "2024-05-14",
+    "category": "Cluster",
+    "summary": "Cluster backups are now automatically restored to a sandboxed environment nightly and verified for integrity, reducing silent backup corruption risk.",
+    "href": "https://changelog.hypernode.com/?p=68350"
+  },
+  {
     "id": 67742,
     "title": "Cluster failover maintenance window improvements",
     "slug": "cluster-failover-maintenance-window-improvements",
@@ -56,6 +233,15 @@
     "category": "Cluster",
     "summary": "Refined cluster failover orchestration to shorten maintenance windows and provide more predictable node handoff behavior during upgrades.",
     "href": "https://changelog.hypernode.com/?p=67742"
+  },
+  {
+    "id": 67700,
+    "title": "API: OpenAPI 3.1 spec published",
+    "slug": "api-openapi-31-spec-published",
+    "date": "2023-03-08",
+    "category": "API",
+    "summary": "The full Hypernode API is now described with an OpenAPI 3.1 specification, available for download and compatible with major code-generation tools.",
+    "href": "https://changelog.hypernode.com/?p=67700"
   },
   {
     "id": 66218,

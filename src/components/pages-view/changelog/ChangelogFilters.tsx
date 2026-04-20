@@ -1,218 +1,162 @@
-import { useDeferredValue, useMemo, useState } from 'react'
+import { useDeferredValue, useEffect, useRef, useState } from 'react'
 
+import Button from '../../ui/primitives/Button'
+import RoundedCard from '../../ui/primitives/RoundedCard'
 import ErrorBoundary from '../../ui/primitives/ErrorBoundary'
 import ErrorMessage from '../../ui/primitives/ErrorMessage'
+import Pagination from '../../ui/primitives/Pagination'
+import SearchField from '../../ui/primitives/SearchField'
+import SelectField from '../../ui/primitives/SelectField'
+import { fetchChangelogPage, PAGE_SIZE } from '../../../lib/strapi'
+import { CATEGORY_TABS, CATEGORY_TO_URL, URL_TO_CATEGORY } from '../../../types/changelog'
 import type { ChangelogCategory, ChangelogEntry } from '../../../types/changelog'
+import { ChangelogCard, EmptyState } from './ChangelogCard'
+import HorizontalFlex from '../../ui/primitives/HorizontalFlex'
 
-export interface ChangelogFiltersProps {
-  entries: ChangelogEntry[]
-}
-
-interface CategoryTab {
-  value: ChangelogCategory
-  label: string
-}
-
-const CATEGORY_TABS: CategoryTab[] = [
-  { value: 'All', label: 'All' },
-  { value: 'API', label: 'API' },
-  { value: 'Autoscaling', label: 'Autoscaling' },
-  { value: 'Cluster', label: 'Cluster' },
-  { value: 'ControlPanel', label: 'Control panel' },
-  { value: 'HypernodeDeploy', label: 'Hypernode Deploy' },
-  { value: 'MageReport', label: 'MageReport' },
-  { value: 'Platform', label: 'Platform' },
+const CURRENT_YEAR = new Date().getFullYear()
+const YEAR_OPTIONS = [
+  { value: 'all', label: 'All years' },
+  ...Array.from({ length: CURRENT_YEAR - 2009 }, (_, i) => ({ value: String(CURRENT_YEAR - i), label: String(CURRENT_YEAR - i) })),
 ]
 
-const focusRing = 'focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
-const fieldClass = 'h-12 rounded-full border border-slate-300 bg-white px-4 text-base font-medium text-brand-blue-dark'
-const labelClass = 'flex flex-col gap-2 text-sm font-bold text-brand-blue-dark'
-const filterButtonActiveClass = 'border-brand-blue bg-brand-blue text-white'
-const filterButtonInactiveClass = 'border-slate-300 bg-white text-brand-blue-dark hover:border-brand-blue hover:text-brand-blue'
-const filterButtonBaseClass = `rounded-full border px-4 py-2 text-sm font-bold transition-colors duration-200 ${focusRing}`
-const bulletClass = 'h-1.5 w-1.5 rounded-full bg-brand-orange'
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL
 
-const formatCategoryLabel = (category: ChangelogEntry['category']): string =>
-  CATEGORY_TABS.find(tab => tab.value === category)?.label ?? category
-
-const matchesSearch = (entry: ChangelogEntry, query: string): boolean => {
-  if (!query) return true
-  return `${entry.title} ${entry.summary}`.toLowerCase().includes(query.toLowerCase())
+const syncUrl = (category: ChangelogCategory, year: string, search: string, page: number) => {
+  const p = new URLSearchParams()
+  if (category !== 'All') p.set('category', CATEGORY_TO_URL[category] ?? '')
+  if (year !== 'all') p.set('year', year)
+  if (search) p.set('q', search)
+  if (page > 1) p.set('page', String(page))
+  const qs = p.toString()
+  window.history.pushState({}, '', qs ? `?${qs}` : window.location.pathname)
 }
 
-const matchesYear = (entry: ChangelogEntry, year: string): boolean =>
-  year === 'all' || entry.date.startsWith(year)
-
-const matchesCategory = (entry: ChangelogEntry, category: ChangelogCategory): boolean =>
-  category === 'All' || entry.category === category
-
-const formatDate = (value: string): string =>
-  new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(value))
-
-// — Subcomponents —
-
-interface ChangelogCardProps {
-  entry: ChangelogEntry
+export interface ChangelogFiltersProps {
+  initialEntries: ChangelogEntry[]
+  initialTotal: number
 }
 
-const ChangelogCard = ({ entry }: ChangelogCardProps) => (
-  <article className="rounded-[28px] surface-card pad-card-xl transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-panel-hover">
-    <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-brand-blue">
-      <span>{formatDate(entry.date)}</span>
-      <span
-        className={bulletClass}
-        aria-hidden="true"
-      />
-      <span>{formatCategoryLabel(entry.category)}</span>
-      {entry.version ? (
-        <>
-          <span
-            className={bulletClass}
-            aria-hidden="true"
-          />
-          <span>Version {entry.version}</span>
-        </>
-      ) : null}
-    </div>
-
-    <h2 className="mt-4">
-      <a
-        href={entry.href}
-        className={`text-brand-blue no-underline transition-colors duration-200 hover:text-brand-orange hover:no-underline focus:outline-2 focus:outline-offset-4 focus:outline-brand-orange`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {entry.title}
-      </a>
-    </h2>
-
-    <p className="mt-4 max-w-3xl text-copy text-brand-blue">{entry.summary}</p>
-
-    <div className="mt-6">
-      <a
-        href={entry.href}
-        className={`inline-flex items-center justify-center rounded-full border border-brand-orange px-5 py-2.5 text-sm font-bold text-brand-orange transition-colors duration-200 hover:bg-brand-orange hover:text-white ${focusRing}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Read more
-      </a>
-    </div>
-  </article>
-)
-
-const EmptyState = () => (
-  <div className="rounded-[28px] border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center text-brand-blue">
-    <h2>No changelog entries match the current filters.</h2>
-    <p className="mt-3 text-copy">Try another year, clear the search, or switch to a different category tab.</p>
-  </div>
-)
-
-// — Main component —
-
-const ChangelogFilters = ({ entries }: ChangelogFiltersProps) => {
+const ChangelogFilters = ({ initialEntries, initialTotal }: ChangelogFiltersProps) => {
   const [activeCategory, setActiveCategory] = useState<ChangelogCategory>('All')
   const [selectedYear, setSelectedYear] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
-  const deferredSearchQuery = useDeferredValue(searchQuery)
+  const deferredSearch = useDeferredValue(searchQuery)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const filteredEntries = useMemo(
-    () => entries.filter(entry =>
-      matchesCategory(entry, activeCategory) &&
-      matchesYear(entry, selectedYear) &&
-      matchesSearch(entry, deferredSearchQuery)
-    ),
-    [activeCategory, deferredSearchQuery, entries, selectedYear],
-  )
+  const [entries, setEntries] = useState(initialEntries)
+  const [total, setTotal] = useState(initialTotal)
+  const [isLoading, setIsLoading] = useState(false)
+  const [fetchError, setFetchError] = useState<string | null>(null)
 
-  const yearOptions = useMemo(
-    () => Array.from(new Set(entries.map(entry => Number.parseInt(entry.date.slice(0, 4), 10))))
-      .filter(year => Number.isFinite(year))
-      .sort((a, b) => b - a),
-    [entries],
-  )
+  const isMounted = useRef(false)
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search)
+    const cat = p.get('category')
+    const year = p.get('year')
+    const q = p.get('q')
+    const page = parseInt(p.get('page') ?? '1', 10)
+
+    if (cat && URL_TO_CATEGORY[cat]) setActiveCategory(URL_TO_CATEGORY[cat])
+    if (year) setSelectedYear(year)
+    if (q) setSearchQuery(q)
+    if (page > 1) setCurrentPage(page)
+  }, [])
+
+  // Fetch / filter on every state change
+  useEffect(() => {
+    if (!isMounted.current) { isMounted.current = true; return }
+
+    syncUrl(activeCategory, selectedYear, deferredSearch, currentPage)
+
+    if (!STRAPI_URL) {
+      const filtered = initialEntries.filter(e =>
+        (activeCategory === 'All' || e.category === activeCategory) &&
+        (selectedYear === 'all' || e.date.startsWith(selectedYear)) &&
+        (!deferredSearch || `${e.title} ${e.summary}`.toLowerCase().includes(deferredSearch.toLowerCase()))
+      )
+      const start = (currentPage - 1) * PAGE_SIZE
+      setEntries(filtered.slice(start, start + PAGE_SIZE))
+      setTotal(filtered.length)
+      return
+    }
+
+    const controller = new AbortController()
+    setIsLoading(true)
+    setFetchError(null)
+
+    fetchChangelogPage(
+      {
+        category: activeCategory !== 'All' ? activeCategory : undefined,
+        year: selectedYear !== 'all' ? parseInt(selectedYear, 10) : undefined,
+        search: deferredSearch || undefined,
+      },
+      currentPage,
+      controller.signal,
+    )
+      .then(result => { setEntries(result.entries); setTotal(result.pagination.total) })
+      .catch(err => { if ((err as Error).name !== 'AbortError') setFetchError('Could not load changelog entries. Please try again.') })
+      .finally(() => setIsLoading(false))
+
+    return () => controller.abort()
+  }, [activeCategory, selectedYear, deferredSearch, currentPage, initialEntries])
+
+  const handleCategoryChange = (category: ChangelogCategory) => { setActiveCategory(category); setCurrentPage(1) }
+  const handleYearChange = (year: string) => { setSelectedYear(year); setCurrentPage(1) }
+  const handleSearchChange = (value: string) => { setSearchQuery(value); setCurrentPage(1) }
+
+  const totalPages = Math.ceil(total / PAGE_SIZE)
 
   return (
-    <section className="pb-20 md:pb-24">
-      <div className="rounded-[28px] surface-card pad-card-lg">
-        <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-end">
-          <label
-            htmlFor="changelog-year"
-            className={labelClass}
-          >
-            Year
-            <select
-              id="changelog-year"
-              value={selectedYear}
-              onChange={event => setSelectedYear(event.target.value)}
-              className={`${fieldClass} ${focusRing}`}
+    <section className="space-y-8 pb-20 md:pb-24">
+      <RoundedCard padding="md">
+        <HorizontalFlex gap="4" align="end">
+          <SelectField id="changelog-year" label="Year" value={selectedYear} onChange={handleYearChange} options={YEAR_OPTIONS} className="shrink-0" />
+
+          <SearchField
+            id="changelog-search"
+            label="Search changelog"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Search releases, features, or updates"
+            className="grow"
+          />
+        </HorizontalFlex>
+
+        <HorizontalFlex gap="4" className="mt-4 pt-4 border-t border-slate-200">
+          {CATEGORY_TABS.map(tab => (
+            <Button
+              key={tab.value}
+              variant={tab.value === activeCategory ? 'active' : 'inactive'}
+              onClick={() => handleCategoryChange(tab.value)}
+              aria-pressed={tab.value === activeCategory}
             >
-              <option value="all">All years</option>
-              {yearOptions.map(year => (
-                <option
-                  key={year}
-                  value={String(year)}
-                >{year}</option>
-              ))}
-            </select>
-          </label>
+              {tab.label}
+            </Button>
+          ))}
+        </HorizontalFlex>
+      </RoundedCard>
 
-          <label
-            htmlFor="changelog-search"
-            className={labelClass}
-          >
-            Search changelog
-            <input
-              id="changelog-search"
-              type="search"
-              value={searchQuery}
-              onChange={event => setSearchQuery(event.target.value)}
-              placeholder="Search releases, features, or updates"
-              className={`${fieldClass} placeholder:text-slate-400 ${focusRing}`}
-            />
-          </label>
-        </div>
+      {fetchError && <ErrorMessage rounded message={fetchError} />}
 
-        <div className="mt-6 flex flex-wrap gap-3 border-t border-slate-200 pt-6">
-          {CATEGORY_TABS.map(tab => {
-            const isActive = tab.value === activeCategory
-            return (
-              <button
-                key={tab.value}
-                type="button"
-                className={`${filterButtonBaseClass} ${isActive ? filterButtonActiveClass : filterButtonInactiveClass}`}
-                onClick={() => setActiveCategory(tab.value)}
-                aria-pressed={isActive}
-              >
-                {tab.label}
-              </button>
-            )
-          })}
-        </div>
+      <div className={`space-y-5 transition-opacity duration-200 ${isLoading ? 'opacity-50' : 'opacity-100'}`}>
+        {entries.length > 0
+          ? entries.map(entry => <ChangelogCard key={entry.id} entry={entry} />)
+          : !isLoading && <EmptyState />}
       </div>
 
-      <div className="mt-8 space-y-5">
-        {filteredEntries.length > 0
-          ? filteredEntries.map(entry => (
-            <ChangelogCard
-              key={entry.id}
-              entry={entry}
-            />
-          ))
-          : <EmptyState />}
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+        disabled={isLoading}
+      />
     </section>
   )
 }
 
-const ChangelogFiltersWithBoundary = (props: ChangelogFiltersProps) => (
-  <ErrorBoundary
-    fallback={
-      <ErrorMessage rounded message="The changelog could not be loaded. Please refresh the page." />
-    }
-  >
+export default (props: ChangelogFiltersProps) => (
+  <ErrorBoundary fallback={<ErrorMessage rounded message="The changelog could not be loaded. Please refresh the page." />}>
     <ChangelogFilters {...props} />
   </ErrorBoundary>
 )
-
-export default ChangelogFiltersWithBoundary

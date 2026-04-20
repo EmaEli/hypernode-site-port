@@ -6,10 +6,10 @@ import type { Currency, PlanLabel } from '../../../types/pricing'
 export const TABLE_COLUMNS = ['Name', 'CPUs', 'SSD storage', 'RAM']
 
 export const BUY_LINK_CLASS =
-  'inline-flex items-center justify-center text-brand-blue-dark transition-colors duration-300 hover:text-brand-orange focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'inline-flex items-center justify-center text-brand-blue-dark transition-colors duration-300 hover:text-brand-orange focus-ring'
 
 export const MOBILE_BUY_LINK_CLASS =
-  'mt-auto inline-flex self-end items-center justify-center text-brand-blue-dark no-underline transition-colors duration-300 hover:text-brand-orange focus:outline-2 focus:outline-offset-2 focus:outline-brand-orange'
+  'mt-auto inline-flex self-end items-center justify-center text-brand-blue-dark no-underline transition-colors duration-300 hover:text-brand-orange focus-ring'
 
 export const HEADER_CELL_CLASS =
   'px-4 py-1.5 text-left text-xs font-bold uppercase tracking-[0.18em] text-brand-blue-dark/70'

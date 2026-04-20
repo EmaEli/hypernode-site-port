@@ -1,72 +1,63 @@
 import type { APIRoute } from 'astro'
 
-export interface LeadFormData {
-  firstname: string
-  lastname: string
-  email: string
-  company?: string
-  website?: string
-  phone?: string
-  leave_us_a_message?: string
-  'LEGAL_CONSENT.subscription_type_36279934'?: string
-  'LEGAL_CONSENT.subscription_type_20878176'?: string
-}
+const REQUIRED_FIELDS = ['firstname', 'lastname', 'leave_us_a_message'] as const
 
-const validateLeadData = (data: Record<string, unknown>): { valid: boolean; errors: string[] } => {
+const isEmpty = (v: unknown): boolean => typeof v !== 'string' || !v.trim()
+
+const validate = (data: Record<string, unknown>): string[] => {
   const errors: string[] = []
 
-  // Required fields
-  if (!data.firstname || typeof data.firstname !== 'string' || data.firstname.trim().length === 0) {
-    errors.push('First name is required')
+  for (const field of REQUIRED_FIELDS) {
+    if (isEmpty(data[field])) errors.push(`${field} is required`)
   }
 
-  if (!data.lastname || typeof data.lastname !== 'string' || data.lastname.trim().length === 0) {
-    errors.push('Last name is required')
-  }
-
-  if (!data.email || typeof data.email !== 'string' || !data.email.includes('@')) {
+  if (isEmpty(data.email)) {
+    errors.push('email is required')
+  } else if (!(data.email as string).includes('@')) {
     errors.push('Valid email is required')
   }
 
-  // Privacy consent is required
   if (!data['LEGAL_CONSENT.subscription_type_20878176']) {
     errors.push('Privacy policy consent is required')
   }
 
-  return {
-    valid: errors.length === 0,
-    errors,
+  return errors
+}
+
+const forwardToExternalApi = async (data: Record<string, unknown>) => {
+  const url = import.meta.env.PUBLIC_LEAD_API_URL
+  const token = import.meta.env.LEAD_API_TOKEN
+
+  if (!url) return
+
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!res.ok) {
+      console.warn(`[LEAD_FORM] External API returned ${res.status}`, await res.text())
+    }
+  } catch (err) {
+    console.warn('[LEAD_FORM] Failed to forward to external API:', err instanceof Error ? err.message : String(err))
   }
 }
 
-export const GET: APIRoute = () =>
-  new Response(JSON.stringify({ error: 'Method not allowed' }), {
-    status: 405,
-    headers: { 'Content-Type': 'application/json', Allow: 'POST' },
-  })
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })
 
 export const POST: APIRoute = async ({ request }) => {
-  if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 })
-  }
-
   try {
-    const formData = await request.formData()
-    const data = Object.fromEntries(formData)
+    const data = Object.fromEntries(await request.formData())
 
-    // Validate
-    const { valid, errors } = validateLeadData(data)
-    if (!valid) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          errors,
-        }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } },
-      )
-    }
+    const errors = validate(data)
+    if (errors.length) return json({ success: false, errors }, 400)
 
-    // Log in development
     console.log('[LEAD_FORM] New submission:', {
       email: data.email,
       firstname: data.firstname,
@@ -74,48 +65,11 @@ export const POST: APIRoute = async ({ request }) => {
       timestamp: new Date().toISOString(),
     })
 
-    // Attempt to forward to external API if configured
-    const leadApiUrl = import.meta.env.PUBLIC_LEAD_API_URL
-    const leadApiToken = import.meta.env.PUBLIC_LEAD_API_TOKEN
+    await forwardToExternalApi(data)
 
-    if (leadApiUrl) {
-      try {
-        const response = await fetch(leadApiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            ...(leadApiToken && { Authorization: `Bearer ${leadApiToken}` }),
-          },
-          body: JSON.stringify(data),
-        })
-
-        if (!response.ok) {
-          console.warn(`[LEAD_FORM] External API returned ${response.status}`, await response.text())
-        }
-      } catch (error) {
-        console.warn('[LEAD_FORM] Failed to forward to external API:', error instanceof Error ? error.message : String(error))
-        // Continue anyway — we already logged it locally
-      }
-    }
-
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: 'Thank you for reaching out! We will contact you shortly.',
-      }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      },
-    )
-  } catch (error) {
-    console.error('[LEAD_FORM] Error processing submission:', error)
-    return new Response(
-      JSON.stringify({
-        success: false,
-        error: 'Failed to process form submission',
-      }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } },
-    )
+    return json({ success: true, message: 'Thank you for reaching out! We will contact you shortly.' })
+  } catch (err) {
+    console.error('[LEAD_FORM] Error processing submission:', err)
+    return json({ success: false, error: 'Failed to process form submission' }, 500)
   }
 }
