@@ -18,7 +18,7 @@ const PricingEnvironmentToggle = ({ value, onChange }: PricingEnvironmentToggleP
         Environment
       </p>
 
-      <div className="rounded-full p-0.5 shadow-inner ring-1 ring-slate-200" role="group" aria-label="Environment">
+      <div className="inline-flex self-center rounded-full p-0.5 shadow-inner ring-1 ring-slate-200" role="group" aria-label="Environment">
         {ENVIRONMENT_OPTIONS.map(option => {
           const isActive = option.value === value
 

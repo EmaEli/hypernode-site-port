@@ -7,7 +7,15 @@
       "Bash(node -e \"const icons = require\\('./node_modules/@iconify-json/heroicons/icons.json'\\); Object.keys\\(icons.icons\\).filter\\(k => k.includes\\('arrow'\\) || k.includes\\('chevron'\\)\\).forEach\\(k => console.log\\(k\\)\\)\")",
       "Bash(node -e \"const d = require\\('./node_modules/@iconify-json/heroicons/icons.json'\\); const keys = Object.keys\\(d.icons\\).filter\\(k => k.includes\\('arrow'\\) || k.includes\\('chevron'\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
       "Bash(grep -r \"text-ui-button\" c:/Users/Elisa/Desktop/Hypernode/src/styles/ c:/Users/Elisa/Desktop/Hypernode/tailwind.config*)",
-      "Bash(ls C:/Users/Elisa/Desktop/Hypernode/*.md)"
+      "Bash(ls C:/Users/Elisa/Desktop/Hypernode/*.md)",
+      "Bash(curl -sL \"https://www.hypernode.com/wp-content/uploads/2026/03/Hypernode-main.png\" -o src/assets/images/hypernode-logo.png)",
+      "Bash(file src/assets/images/hypernode-logo.png)",
+      "Bash(identify src/assets/images/hypernode-logo.png)",
+      "Bash(python3 -c \"import struct; d=open\\('src/assets/images/hypernode-logo.png','rb'\\).read\\(24\\); print\\(struct.unpack\\('>II',d[16:24]\\)\\)\")",
+      "Bash(curl -s \"https://www.hypernode.com/en/\")",
+      "Bash(curl -sL \"https://www.hypernode.com/wp-content/uploads/2024/05/cropped-Hypernode-logo1-32x32.png\" -o public/favicon-32.png)",
+      "Bash(curl -sL \"https://www.hypernode.com/wp-content/uploads/2024/05/cropped-Hypernode-logo1-180x180.png\" -o public/apple-touch-icon.png)",
+      "Bash(curl -sL \"https://www.hypernode.com/wp-content/uploads/2024/05/cropped-Hypernode-logo1-192x192.png\" -o public/favicon-192.png)"
     ]
   }
 }

@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets'
 import Button from "../../ui/primitives/Button"
 import { Icon } from 'astro-icon/components'
 import { NAVBAR_LINKS } from "./navbarLinks"
 import NavbarMobileDrawer from "./NavbarMobileDrawer"
+import hypernodeLogo from '../../../assets/images/hypernode-logo.png'
 
 const NAV_LINK_CLASS =
   'text-gray-700 hover:text-brand-orange transition-colors focus-ring'
@@ -13,11 +15,8 @@ const NAV_LINK_CLASS =
     class="max-w-content mx-auto px-4 flex items-center justify-between h-16"
     aria-label="Main navigation"
   >
-    <a
-      href="/en/"
-      class="font-bold text-brand-blue text-xl focus-ring"
-    >
-      Hypernode
+    <a href="/en/" class="focus-ring shrink-0">
+      <Image src={hypernodeLogo} alt="Hypernode" height={32} class="h-8 w-auto" />
     </a>
 
     <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
